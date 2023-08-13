@@ -1,0 +1,67 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './About.scss'
+
+import {
+  faCss3,
+  faGitAlt,
+  faHtml5,
+  faJsSquare,
+  faPython,
+  faReact,
+} from '@fortawesome/free-brands-svg-icons'
+import Loader from 'react-loaders'
+
+const About = () => {
+  return (
+    <>
+      <div className="container about-page">
+        <div className="text-zone">
+          <h1>A propos de moi</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
+            aliquam iusto, voluptas exercitationem laborum maxime corporis atque
+            consequatur perferendis cupiditate a et rem autem alias, vel quidem
+            voluptatem ex non!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+            temporibus, dicta, deleniti debitis repellat provident incidunt quae
+            explicabo aspernatur totam non labore veniam quasi at eveniet. Totam
+            quidem aut mollitia?
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia,
+            aspernatur cupiditate at quidem molestias voluptas debitis nobis
+            vero nemo sit dolores expedita voluptatem, obcaecati asperiores
+            architecto eos maxime sed reprehenderit.
+          </p>
+        </div>
+        <div className="stage-cube-cont">
+          <div className="cubespinner">
+            <div className="face1">
+              <FontAwesomeIcon icon={faCss3} color="#264de4" />
+            </div>
+            <div className="face2">
+              <FontAwesomeIcon icon={faHtml5} color="#f06529" />
+            </div>
+            <div className="face3">
+              <FontAwesomeIcon icon={faReact} color="#149eca" />
+            </div>
+            <div className="face4">
+              <FontAwesomeIcon icon={faPython} color="#dd0031" />
+            </div>
+            <div className="face5">
+              <FontAwesomeIcon icon={faJsSquare} color="#f0db4f" />
+            </div>
+            <div className="face6">
+              <FontAwesomeIcon icon={faGitAlt} color="#7f7f7f" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <Loader type="pacman" />
+    </>
+  )
+}
+
+export default About

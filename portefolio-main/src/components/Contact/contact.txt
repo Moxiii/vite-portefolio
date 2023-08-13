@@ -1,0 +1,39 @@
+<>
+      <div className="container contact-page">
+        <div className="text-zone">
+          <h1>Contactez-moi</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+            quaerat exercitationem unde vel reiciendis tenetur voluptas deleniti
+            eum cupiditate atque in sunt aut esse obcaecati, sint omnis sapiente
+            quam dicta?
+          </p>
+          <div className="contact-form">
+            <form ref={refForm} onSubmit={sendEmail}>
+              <ul>
+                <li className="half">
+                  <input type="text" name="name" placeholder="name" required />
+                </li>
+                <li className="half">
+                  <input type="text" name="mail" placeholder="mail" required />
+                </li>
+                <li className="half">
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="subject"
+                    required
+                  />
+                </li>
+                <li>
+                  <textarea placeholder="message" name="message"></textarea>
+                </li>
+                <li>
+                  <input type="submit" className="flat-button" />
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>

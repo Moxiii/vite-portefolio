@@ -1,0 +1,115 @@
+.page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.container {
+  width: 100%;
+  will-change: contents;
+  height: 100%;
+  min-height: 566px;
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  z-index: 1;
+  transform-style: preserve-3d;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container.contact-page,
+.container.about-page,
+.container.portfolio-page {
+  h1 {
+    font-size: 53px;
+    font-family: 'Coolvetica';
+    color: #ffd700;
+    font-weight: 400;
+    margin-top: 0;
+    position: relative;
+    margin-bottom: 5%;
+  }
+
+  p {
+    font-size: 13px;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 300;
+    max-width: fit-content;
+  }
+
+  .text-zone {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+    vertical-align: middle;
+    display: table-cell;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .text-animate-hover {
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page {
+    position: initial;
+  }
+
+  .container {
+    position: initial;
+    height: auto;
+    min-height: auto;
+
+    &.contact-page,
+    &.about-page,
+    &.portfolio-page {
+      .text-zone {
+        position: initial;
+        transform: none;
+        width: 50%;
+        display: block;
+        padding: 20px;
+        box-sizing: border-box;
+        transform: translateX(-40%);
+      }
+    }
+
+    &.portfolio-page {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+
+      h1.page-title {
+        margin-left: 20px;
+        margin-top: 20px;
+      }
+
+      .image-box {
+        height: 200px;
+        max-width: calc(50% - 10px);
+      }
+    }
+  }
+
+  .stage-cube-cont {
+    position: initial;
+    width: 100%;
+    height: 0%;
+    overflow: visible;
+  }
+}
