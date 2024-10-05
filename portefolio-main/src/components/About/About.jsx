@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './About.scss'
-
+// import PythonLogo from '/src/assets/Logo/Python-logo-notext.svg'
+import PythonLogo from '../../assets/Logo/Python-logo-notext.svg'
 import {
-  faCss3,
+  faDocker,
   faGitAlt,
-  faHtml5,
+  faJava,
   faJsSquare,
-  faPython,
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
 import Loader from 'react-loaders'
@@ -39,22 +39,23 @@ const About = () => {
         <div className="stage-cube-cont">
           <div className="cubespinner">
             <div className="face1">
-              <FontAwesomeIcon icon={faCss3} color="#264de4" />
+              <FontAwesomeIcon icon={faJava} color="#007396" />
             </div>
             <div className="face2">
-              <FontAwesomeIcon icon={faHtml5} color="#f06529" />
+              <FontAwesomeIcon icon={faDocker} color="#2496ED" />
             </div>
             <div className="face3">
-              <FontAwesomeIcon icon={faReact} color="#149eca" />
+              <FontAwesomeIcon icon={faReact} color="#61DAFB" />
             </div>
             <div className="face4">
-              <FontAwesomeIcon icon={faPython} color="#dd0031" />
+              {/* <FontAwesomeIcon icon={faPython} color="#3776AB" /> */}
+              <img src={PythonLogo} />
             </div>
             <div className="face5">
-              <FontAwesomeIcon icon={faJsSquare} color="#f0db4f" />
+              <FontAwesomeIcon icon={faJsSquare} color="#F7DF1E" />
             </div>
             <div className="face6">
-              <FontAwesomeIcon icon={faGitAlt} color="#7f7f7f" />
+              <FontAwesomeIcon icon={faGitAlt} color="#F05032" />
             </div>
           </div>
         </div>

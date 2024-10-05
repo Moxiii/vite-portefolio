@@ -41,11 +41,7 @@ const Sidebar = () => (
         </a>
       </li>
       <li>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://www.linkedin.com/in/maxime-lapouge-1a0970207/"
-        >
+        <a target="_blank" rel="noreferrer" href="https://github.com/Moxiii">
           <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
         </a>
       </li>
