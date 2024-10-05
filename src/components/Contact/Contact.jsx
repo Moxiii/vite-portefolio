@@ -8,7 +8,6 @@ const Contact = () => {
   const clearInput = () => {
     var form = document.querySelectorAll('form')
     form.reset()
-    console.log('value correctly erased')
   }
   const sendEmail = (e) => {
     e.preventDefault()

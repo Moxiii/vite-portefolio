@@ -2,7 +2,7 @@
   width: 50%;
   height: 100%;
   top: 0;
-  padding-top: 22%;
+  padding-top: 20%;
   margin-left: 0;
   position: absolute;
   right: 0;
@@ -56,6 +56,21 @@
     color: #ec4d28;
   }
 }
+.text-zone {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  vertical-align: middle;
+  display: table-cell;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 
 @keyframes spincube {
   from,
