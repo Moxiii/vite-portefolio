@@ -1,4 +1,8 @@
-$primary-color: #ffd700;
+$primary-color: #2274A5;
+$background-color : #E7DFC6 ;
+$sidebar-color : #2274A5;
+$accentuation-color : 4F4F4F;
+
 
 @import 'animate.css';
 @import 'loaders.css/src/animations/pacman.scss';
@@ -49,6 +53,83 @@ textarea {
   animation-fill-mode: forwards;
 }
 .App {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  background: $background-color;
+}
+.container{
+  .text-zone{
+    h1{
+      color : $primary-color;
+    }
+    h2, p {
+      color : $accentuation-color;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .page {
+    position: initial;
+  }
+  nav{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background: $sidebar-color;
+    width: 100%;
+    transition: all 0.3s ease;
+    &.menu-open{
+      display: flex;
+    }
+    &.menu-closed{
+      display: none;
+    }
+    a{
+      display: none;
+    }
+  }
+  .container {
+    position: initial;
+    height: auto;
+    min-height: auto;
+
+    &.contact,
+    &.about,
+    &.home
+    &.cv{
+      .text-zone {
+        position: initial;
+        transform: none;
+        width: 50%;
+        display: block;
+        padding: 20px;
+        box-sizing: border-box;
+        transform: translateX(-40%);
+      }
+    }
+
+    &.portfolio-page {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+
+      h1.page-title {
+        margin-left: 20px;
+        margin-top: 20px;
+      }
+
+      .image-box {
+        height: 200px;
+        max-width: calc(50% - 10px);
+      }
+    }
+  }
+
+  .stage-cube-cont {
+    position: initial;
+    width: 100%;
+    height: 0%;
+    overflow: visible;
+  }
 }

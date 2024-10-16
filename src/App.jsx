@@ -7,6 +7,7 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Cv from './components/Cv/Cv.jsx'
 import Projets from './components/Projets/Projets.jsx'
+import "./App.scss"
 function App() {
   return (
     <>

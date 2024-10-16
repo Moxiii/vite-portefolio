@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './About.scss'
-// import PythonLogo from '/src/assets/Logo/Python-logo-notext.svg'
 import PythonLogo from '../../assets/Logo/Python-logo-notext.svg'
 import {
   faDocker,

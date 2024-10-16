@@ -5,7 +5,7 @@ import Loader from 'react-loaders'
 const Home = () => {
   return (
     <>
-      <div className="container home-page">
+      <div className="container home">
         <div className="text-zone">
           <h1>
             Bonjour <br /> je suis Maxime Lapouge
