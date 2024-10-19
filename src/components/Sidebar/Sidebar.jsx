@@ -37,7 +37,7 @@ const Sidebar = () => {
         </Link>
         <nav className={isOpen?'menu-open' : 'menu-closed'}>
           <NavLink exact="true" activeclassname="active" to="/" data-title="Home">
-            <FontAwesomeIcon icon={faHome} color="#E7DFC6" />
+            <FontAwesomeIcon icon={faHome} className="icon-color" />
           </NavLink>
           <NavLink
             exact="true"
@@ -46,7 +46,7 @@ const Sidebar = () => {
             data-title="About"
             to="/about"
           >
-            <FontAwesomeIcon icon={faUser} color="#E7DFC6" />
+            <FontAwesomeIcon icon={faUser} className="icon-color" />
           </NavLink>
 
           <NavLink
@@ -56,7 +56,7 @@ const Sidebar = () => {
             className="cv-link"
             to="/cv"
           >
-            <FontAwesomeIcon icon={faFile} color="#E7DFC6" />
+            <FontAwesomeIcon icon={faFile} className="icon-color" />
           </NavLink>
           <NavLink
             exact="true"
@@ -65,7 +65,7 @@ const Sidebar = () => {
             data-title="Contact"
             to="/contact"
           >
-            <FontAwesomeIcon icon={faEnvelope} color="#E7DFC6" />
+            <FontAwesomeIcon icon={faEnvelope} className="icon-color" />
           </NavLink>
         </nav>
         <ul>
@@ -76,7 +76,7 @@ const Sidebar = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/maxime-lapouge-1a0970207/"
             >
-              <FontAwesomeIcon icon={faLinkedin} color="#E7DFC6" />
+              <FontAwesomeIcon icon={faLinkedin} className="icon-color" />
             </a>
           </li>
           <li>
@@ -86,7 +86,7 @@ const Sidebar = () => {
               rel="noreferrer"
               href="https://github.com/Moxiii"
             >
-              <FontAwesomeIcon icon={faGithub} color="#E7DFC6" />
+              <FontAwesomeIcon icon={faGithub} className="icon-color" />
             </a>
           </li>
         </ul>

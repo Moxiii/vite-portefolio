@@ -8,6 +8,9 @@
   z-index: 3;
   min-height: 500px;
   transition: all 0.3s ease;
+  .icon-color{
+    color: $background-color;
+  }
 
 
   @media (max-width: 1000px) {
@@ -51,7 +54,6 @@
       display: block;
       font-size: 15px;
       line-height: 16px;
-      color: $background-color;
 
       svg {
         width: 30px;
@@ -99,12 +101,12 @@ bottom: 0;
 
         svg {
           width: 30px;
-          margin-right: 5px; // Espace entre l'icône et le texte
+          margin-right: 5px;
         }
 
         &::after {
-          content: attr(data-title); // Utilise l'attribut data-title
-          position: absolute; // Nécessaire pour le positionnement
+          content: attr(data-title);
+          position: absolute;
           left: 50%;
           transform: translateX(-50%);
           color: $accentuation-color;

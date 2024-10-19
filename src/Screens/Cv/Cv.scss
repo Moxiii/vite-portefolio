@@ -1,7 +1,8 @@
+@import "../../const";
 .download-btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #2274A5;
+  background-color: $primary-color ;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -9,5 +10,5 @@
 }
 
 .download-btn:hover {
-  background-color: #1a5a84;
+  background-color: $accentuation-color;
 }

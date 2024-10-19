@@ -67,8 +67,6 @@ nav-bar{
   justify-content: center;
   align-content: center;
   overflow: hidden;
-  width: calc(100vw - 5%);
-  flex-grow: initial;
   position: relative;
   left:5%;
 }
@@ -84,6 +82,7 @@ nav-bar{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     h1{
       color : $primary-color;
     }
@@ -92,12 +91,11 @@ nav-bar{
     }
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
   nav{
     display: none;
     flex-direction: column;
     position: absolute;
-    background: $primary-color;
     width: 100%;
     transition: all 0.3s ease;
     &.menu-open{
