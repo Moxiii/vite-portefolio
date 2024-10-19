@@ -1,0 +1,40 @@
+[
+  {
+    "id" : 1,
+    "title" : "Georges",
+    "desc" : "Le jarvis fr",
+    "presentation": "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités, son utilisation, et bien plus.",
+    "links" : [
+      {
+      "ultra repo":"https://github.com/Moxiii/juste-prix",
+      "front repo" : "https://github.com/Moxiii/juste-prix",
+      "back repo" : "https://github.com/Moxiii/juste-prix"
+    }
+    ],
+    "img" : [
+      {"mock": "../src/assets/Project/Georges/Mock/mockGeorges.png"},
+       "../src/assets/Project/Georges/georges1.png",
+       "../src/assets/Project/Georges/georges2.png"
+
+    ]
+  },
+  {
+    "id" : 2,
+    "title" : "Hera",
+    "desc" : "Le chercheur de baskettes de collection par excelence",
+    "presentation": "Voici une présentation détaillée du projet Hera, expliquant ses fonctionnalités, son utilisation, et bien plus.",
+    "links" : [
+      {
+        "ultra repo":"https://github.com/Moxiii/juste-prix",
+        "front repo" : "https://github.com/Moxiii/juste-prix",
+        "back repo" : "https://github.com/Moxiii/juste-prix"
+      }
+    ],
+    "img" : [
+      {"mock": "../src/assets/Project/Hera/Mock/mockHera.png"},
+      "../src/assets/Project/Hera/hera1.png",
+      "../src/assets/Project/Hera/hera2.jpg"
+
+    ]
+  }
+]

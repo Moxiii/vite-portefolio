@@ -2,19 +2,9 @@
 
 body {
   margin: 0;
-  font: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }
 
-.dashboard {
-  margin-top: 200px;
-  margin-left: 200px;
-}
 
-@media screen and (max-width: 1200px) {
-  body {
-    overflow: hidden;
-  }
-}

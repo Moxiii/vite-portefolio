@@ -58,14 +58,11 @@
 }
 .about-page{
   .text-zone {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    left: 50%;
-    width: 50%;
-    height: 100vh;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
     vertical-align: middle;
     display: table-cell;
     max-height: 100vh;

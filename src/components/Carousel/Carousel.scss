@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+.carousel {
+  font-family: "Ubuntu Mono";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  gap: 10px;
+  padding: 20px 0;
+
+  > .carousel-item {
+    flex: 0 0 120px;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px #1e0e3e;
+    position: relative;
+    overflow: hidden;
+height: 500px;
+    // Ici, on va ajouter l'arrière-plan via le style en ligne dans le composant
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .content {
+      z-index: 2;
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; // Aligner le contenu en bas
+      padding: 15px;
+      height: 100%;
+      background: rgba(2, 2, 46, 0.675); // Couleur de fond avec opacité
+      transform: translateY(100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+      visibility: hidden;
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+      h2{
+        color: white;
+      }
+    }
+
+    &:hover {
+      flex: 0 0 250px;
+      box-shadow: 1px 3px 15px #7645d8;
+      transform: translateY(-30px);
+    }
+
+    &:hover .content {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+}

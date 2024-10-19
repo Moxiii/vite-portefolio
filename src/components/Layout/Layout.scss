@@ -1,27 +1,19 @@
-@import "../../App.scss";
-.page {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  overflow: hidden;
-}
+@import "../../const.scss";
+
 
 .container {
-  width: 100%;
   will-change: contents;
-  height: 100%;
+  height: auto;
   min-height: 566px;
-  position: absolute;
   opacity: 0;
   margin: 0 auto;
   z-index: 1;
-  transform-style: preserve-3d;
   animation: fadeIn 1s forwards;
   animation-delay: 1s;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .container.contact-page,
@@ -45,20 +37,7 @@
     max-width: fit-content;
   }
 
-  .text-zone {
-    position: absolute;
-    left: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 35%;
-    vertical-align: middle;
-    display: table-cell;
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+
 
   .text-animate-hover {
     &:hover {

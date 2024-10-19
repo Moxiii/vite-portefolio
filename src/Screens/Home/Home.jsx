@@ -1,20 +1,17 @@
-import { Link } from 'react-router-dom'
+
 import './Home.scss'
 import Loader from 'react-loaders'
-
+import Carousell from '../../components/Carousel/Carousel.jsx'
 const Home = () => {
   return (
     <>
       <div className="container home">
         <div className="text-zone">
           <h1>
-            Bonjour <br /> je suis Maxime Lapouge
-            <br /> developpeur web
+            Bonjour !  <br/> Bienvenue sur mon portefolio.
           </h1>
-          <h2>Frontend / Backend developpeur</h2>
-          <Link to="/contact" className="flat-button">
-            Contactez-moi
-          </Link>
+          <h2>Voici mes réalisations : </h2>
+          <Carousell/>
         </div>
       </div>
       <Loader type="pacman" />

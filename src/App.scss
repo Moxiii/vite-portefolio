@@ -1,7 +1,6 @@
-$primary-color: #2274A5;
-$background-color : #E7DFC6 ;
-$sidebar-color : #2274A5;
-$accentuation-color : 4F4F4F;
+@import "const";
+
+
 
 
 @import 'animate.css';
@@ -9,23 +8,23 @@ $accentuation-color : 4F4F4F;
 
 @font-face {
   font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
+  src: url('assets/fonts/helvetica-neu.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'La Belle Aurore';
-  src: url('./assets/fonts/LaBelleAurore.woff2') format('woff2'),
-    url('./assets/fonts/LaBelleAurore.woff') format('woff');
+  src: url('assets/fonts/LaBelleAurore.woff2') format('woff2'),
+    url('assets/fonts/LaBelleAurore.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Coolvetica';
-  src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2'),
-    url('./assets/fonts/CoolveticaRg-Regular.woff') format('woff');
+  src: url('assets/fonts/CoolveticaRg-Regular.woff2') format('woff2'),
+    url('assets/fonts/CoolveticaRg-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -52,14 +51,39 @@ textarea {
   animation: fadeOut 1s 1s;
   animation-fill-mode: forwards;
 }
+nav-bar{
+  position: absolute;
+}
 .App {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
   background: $background-color;
 }
+.page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  width: calc(100vw - 5%);
+  flex-grow: initial;
+  position: relative;
+  left:5%;
+}
 .container{
+  width: calc(100vw - 5% );
+  flex-grow: 1;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   .text-zone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h1{
       color : $primary-color;
     }
@@ -69,14 +93,11 @@ textarea {
   }
 }
 @media screen and (min-width: 1200px) {
-  .page {
-    position: initial;
-  }
   nav{
     display: none;
     flex-direction: column;
     position: absolute;
-    background: $sidebar-color;
+    background: $primary-color;
     width: 100%;
     transition: all 0.3s ease;
     &.menu-open{

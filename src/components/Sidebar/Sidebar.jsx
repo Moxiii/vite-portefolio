@@ -7,7 +7,6 @@ import {
   faHome,
   faEnvelope,
   faFile,
-  faGears,
   faTimes,
   faBars,
 } from '@fortawesome/free-solid-svg-icons'
@@ -58,15 +57,6 @@ const Sidebar = () => {
             to="/cv"
           >
             <FontAwesomeIcon icon={faFile} color="#E7DFC6" />
-          </NavLink>
-          <NavLink
-            exact="true"
-            activeclassname="active"
-            className="projet-link"
-            to="/projets"
-            data-title="Project"
-          >
-            <FontAwesomeIcon icon={faGears} color="#E7DFC6" />
           </NavLink>
           <NavLink
             exact="true"

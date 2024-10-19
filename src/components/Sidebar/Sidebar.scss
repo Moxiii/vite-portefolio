@@ -1,7 +1,7 @@
-@import "../../App.scss";
+@import "../../const.scss";
 .nav-bar {
   width: 5%;
-  background: $sidebar-color;
+  background: $primary-color;
   height: 100%;
   position: absolute;
   top: 0;
@@ -9,14 +9,14 @@
   min-height: 500px;
   transition: all 0.3s ease;
 
-  // En dessous de 1000px, la sidebar sera cachée par défaut
+
   @media (max-width: 1000px) {
     width: 0;
     overflow: hidden;
   }
 
   &.open {
-    width: 250px; // Quand le menu est ouvert
+    width: 250px;
   }
 
   .Logo {
@@ -47,11 +47,11 @@
     width: 100%;
     a {
       position: relative;
-      padding: 7px 0;
+      padding: 10% 0 30%;
       display: block;
       font-size: 15px;
       line-height: 16px;
-      color: #E7DFC6;
+      color: $background-color;
 
       svg {
         width: 30px;
@@ -64,16 +64,16 @@
         transform: translateX(-50%);
         color: $accentuation-color;
         border-radius: 5px;
-        opacity: 0; // Masque le titre par défaut
-        transition: opacity 0.3s ease; // Transition pour une apparence douce
-        pointer-events: none; // Empêche les événements de la souris
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
       }
 
       &:hover {
         svg{opacity: 0}
-        color: $accentuation-color; // Change la couleur de l'icône au survol
+        color: $accentuation-color;
         &::after {
-          opacity: 1; // Affiche le titre au survol
+          opacity: 1;
         }
       }
     }
@@ -81,7 +81,7 @@
 
   ul {
     position: absolute;
-    bottom: 20px;
+bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -95,6 +95,7 @@
         display: block;
         font-size: 15px;
         line-height: 16px;
+        padding: 0 0 15%;
 
         svg {
           width: 30px;
@@ -128,14 +129,13 @@
   }
 }
 
-// Style du bouton burger, visible uniquement sur mobile
 .burger-menu {
   display: none;
   position: fixed;
   top: 5%;
   left: 5%;
   z-index: 4;
-  width: 5%; /* Taille du bouton augmentée */
+  width: 5%;
   height: 5%;
   cursor: pointer;
   .menu-open{
@@ -149,7 +149,7 @@
   }
 
   svg {
-    width: 100%; /* S'adapte à la taille du bouton */
+    width: 100%;
     height: auto;
   }
 }
