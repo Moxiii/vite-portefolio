@@ -1,8 +1,10 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ________  _______   ________  ________ _________        ________  ________  ________  _________  _______   ________ ________  ___       ___  ________     
+|\   __  \|\  ___ \ |\   __  \|\   ____\\___   ___\     |\   __  \|\   __  \|\   __  \|\___   ___\\  ___ \ |\  _____\\   __  \|\  \     |\  \|\   __  \    
+\ \  \|\  \ \   __/|\ \  \|\  \ \  \___\|___ \  \_|     \ \  \|\  \ \  \|\  \ \  \|\  \|___ \  \_\ \   __/|\ \  \__/\ \  \|\  \ \  \    \ \  \ \  \|\  \   
+\ \   _  _\ \  \_|/_\ \   __  \ \  \       \ \  \       \ \   ____\ \  \\\  \ \   _  _\   \ \  \ \ \  \_|/_\ \   __\\ \  \\\  \ \  \    \ \  \ \  \\\  \  
+\ \  \\  \\ \  \_|\ \ \  \ \  \ \  \____   \ \  \       \ \  \___|\ \  \\\  \ \  \\  \|   \ \  \ \ \  \_|\ \ \  \_| \ \  \\\  \ \  \____\ \  \ \  \\\  \
+\ \__\\ _\\ \_______\ \__\ \__\ \_______\  \ \__\       \ \__\    \ \_______\ \__\\ _\    \ \__\ \ \_______\ \__\   \ \_______\ \_______\ \__\ \_______\
+\|__|\|__|\|_______|\|__|\|__|\|_______|   \|__|        \|__|     \|_______|\|__|\|__|    \|__|  \|_______|\|__|    \|_______|\|_______|\|__|\|_______|
+                                                                                                                                                           
+                                                                                                                                                           
+                                                                                                                                                           
