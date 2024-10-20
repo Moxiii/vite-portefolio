@@ -8,4 +8,11 @@
     \|__|\|__|\|_______|\|__|\|__|\|_______|   \|__|           \|__|     \|_______|\|__|\|__|    \|__|  \|_______|\|__|    \|_______|\|_______|\|__|\|_______|
                                                                                                                                                               
                                                                                                                                                               
-                                                                                                                                                              
+  </pre>                                                                                                                                                            
+
+
+## Run 
+For run locally use npm i && npm run dev 
+
+## Destination 
+This is for work on React + discover CI/CD on FTP server 
