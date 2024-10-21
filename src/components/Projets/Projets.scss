@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.container .projet{
+  width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+
+.text-zone {
+  margin-bottom: 20px;
+  text-align: center;
+
+  h1 {
+    font-family: 'DM Sans', sans-serif;
+    color: #403d40;
+  }
+
+  p {
+    color: #6b6b6b;
+  }
+}
+}
+.carouselProjet {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; // Change de flex-start à center
+  align-items: center; // Centre verticalement
+}
+
+.carousel__wrapper {
+  position: relative;
+  width: 60%; // Définit une largeur pour les images
+  height: 80%; // Peut être ajusté si nécessaire
+}
+
+.item {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.4;
+  z-index: 0;
+  cursor: pointer;
+
+  &.visible {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 1;
+
+    img {
+      box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+    }
+  }
+}
+
+// Transitions pour les autres items
+.item:nth-child(n + 1) {
+  transform: translateX(-40%) scale(0.8);
+}
+
+.item:nth-child(n + 2) {
+  transform: translateX(40%) scale(0.8);
+}
+
+.footer {
+  text-align: center;
+}
+
+.carousel-footer {
+  margin-top: auto;
+  text-align: center;
+
+  h4 {
+    color: #403d40;
+  }
+
+  p {
+    color: #6b6b6b;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    div {
+      margin: 0 10px;
+
+      a {
+        color: #428aa6;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.carousel-title-card {
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  width: 60%;
+  transform: translateY(30px); // Commence un peu en bas
+  opacity: 0;
+  transition: all 0.5s ease; // Change ici pour une transition fluide
+}
+
+// Change le sélecteur pour appliquer l'animation
+.item.visible + .carousel-footer .carousel-title-card {
+  transform: translateY(0); // Remonte à la position d'origine
+  opacity: 1; // Rendre visible
+}

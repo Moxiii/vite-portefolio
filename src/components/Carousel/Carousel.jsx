@@ -22,7 +22,7 @@ const handleClick = (id)=>{
     <div className="carousel">
       {projets.map((projet) => {
         // Cherche l'image de mockup pour le projet
-        const mockup = projet.img.find(image => typeof image === 'object' && image.mock)?.mock || '';
+        const mockup = projet.img.find(image => image.isMock)?.src || '';
 
         return (
           <div
@@ -33,6 +33,7 @@ const handleClick = (id)=>{
           >
             <div className="content">
               <h2>{projet.title}</h2>
+              <span>{projet.desc}</span>
             </div>
           </div>
         );

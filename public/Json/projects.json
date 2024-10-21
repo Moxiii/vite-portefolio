@@ -1,40 +1,57 @@
 [
   {
-    "id" : 1,
-    "title" : "Georges",
-    "desc" : "Le jarvis fr",
-    "presentation": "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités, son utilisation, et bien plus.",
-    "links" : [
-      {
-      "ultra repo":"https://github.com/Moxiii/juste-prix",
-      "front repo" : "https://github.com/Moxiii/juste-prix",
-      "back repo" : "https://github.com/Moxiii/juste-prix"
-    }
+    "id": 1,
+    "title": "Georges",
+    "desc": "Le jarvis fr",
+    "presentation": [
+      "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, asperiores culpa dignissimos."
     ],
-    "img" : [
-      {"mock": "../src/assets/Project/Georges/Mock/mockGeorges.png"},
-       "../src/assets/Project/Georges/georges1.png",
-       "../src/assets/Project/Georges/georges2.png"
-
+    "techno": [
+      { "name": "Java", "icon": "faJava" },
+      { "name": "React", "icon": "faReact" }
+    ],
+    "fini": true,
+    "deploy": false,
+    "links": [
+      {
+        "ultra repo": "https://github.com/Moxiii/juste-prix",
+        "front repo": "https://github.com/Moxiii/juste-prix",
+        "back repo": "https://github.com/Moxiii/juste-prix"
+      }
+    ],
+    "img": [
+      { "isMock": true, "src": "../src/assets/Project/Georges/Mock/mockGeorges.png" },
+      { "isMock": false, "src": "../src/assets/Project/Georges/georges1.png", "title": "Image 1" },
+      { "isMock": false, "src": "../src/assets/Project/Georges/georges2.png", "title": "Image 2" }
     ]
   },
   {
-    "id" : 2,
-    "title" : "Hera",
-    "desc" : "Le chercheur de baskettes de collection par excelence",
-    "presentation": "Voici une présentation détaillée du projet Hera, expliquant ses fonctionnalités, son utilisation, et bien plus.",
-    "links" : [
+    "id": 2,
+    "title": "Hera",
+    "desc": "Le chercheur de baskettes de collection par excellence",
+    "presentation": [
+      "Voici une présentation détaillée du projet Hera, expliquant ses fonctionnalités.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    ],
+    "techno": [
+      { "name": "Python", "icon": "faPython" },
+      { "name": "Java", "icon": "faJava" },
+      { "name": "React", "icon": "faReact" }
+    ],
+    "finit": false,
+    "deployer": true,
+    "links": [
       {
-        "ultra repo":"https://github.com/Moxiii/juste-prix",
-        "front repo" : "https://github.com/Moxiii/juste-prix",
-        "back repo" : "https://github.com/Moxiii/juste-prix"
+        "ultra repo": "https://github.com/Moxiii/juste-prix",
+        "front repo": "https://github.com/Moxiii/juste-prix",
+        "back repo": "https://github.com/Moxiii/juste-prix"
       }
     ],
-    "img" : [
-      {"mock": "../src/assets/Project/Hera/Mock/mockHera.png"},
-      "../src/assets/Project/Hera/hera1.png",
-      "../src/assets/Project/Hera/hera2.jpg"
-
+    "img": [
+      { "isMock": true, "src": "../src/assets/Project/Hera/Mock/mockHera.png" },
+      { "isMock": false, "src": "../src/assets/Project/Hera/hera1.png", "title": "Image 1" },
+      { "isMock": false, "src": "../src/assets/Project/Hera/hera2.jpg", "title": "Image 2" }
     ]
   }
 ]
