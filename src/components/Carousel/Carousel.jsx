@@ -10,32 +10,35 @@ export default function Carousel() {
   useEffect(() => {
     const fetchProjets = async () => {
       try {
-        let response = await fetch('http://localhost:3000/api/projects');
+        let response;
         let data;
-        let isFromApi = true;
-
-        if (!response.ok) {
-          console.warn('API non disponible, tentative de récupération du JSON');
-          console.log('Response status:', response.status);
+        try{
+         response = await fetch('http://localhost:3000/api/projects');
+          if (!response.ok) {
+            throw new Error('Erreur de l\'API');
+          }
+         data = await response.json();
+         setProjets(data)
+        }
+        catch(error)
+        {(console.log(error))
+        }
           response = await fetch('/Json/projects.json');
-          isFromApi = false;
-
           if (!response.ok) {
             throw new Error('Erreur lors du chargement des données JSON');
-          }
         }
 
         data = await response.json();
-        if (!isFromApi) {
-          data = data.map(projet => {
+
+          const filteredData = data.map(projet => {
             const mockups = projet.img.filter(image => image.isMock === true); // Filtrer les mockups
             return {
               ...projet,
               img: mockups
             };
           });
-        }
-        setProjets(data);
+
+        setProjets(filteredData);
       } catch (error) {
         console.error('Erreur lors du chargement des projets:', error);
       } finally {

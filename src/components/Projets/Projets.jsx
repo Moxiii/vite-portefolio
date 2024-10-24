@@ -17,21 +17,40 @@ const Projets = () => {
   useEffect(() => {
     const fetchProjet = async () => {
       try {
-        let response = await fetch(`http://localhost:3000/api/projects/${id}`);
-        if (!response.ok) {
-          response = await fetch('Json/projects.json');
-          const foundProjet = data.find((p)=>p.id === parseInt(id))
-          setProjet(foundProjet)
+        let response;
+        let data;
+
+        // Essayer d'abord de récupérer les données de l'API
+        try {
+          response = await fetch(`http://localhost:3000/api/projects/${id}`);
           if (!response.ok) {
-            throw new Error('Erreur lors du chargement des données JSON locales');
+            throw new Error('Erreur lors de la récupération de l\'API');
           }
+          data = await response.json();
+          setProjet(data);
+          return; // Sortir de la fonction si les données de l'API ont été récupérées
+        } catch (error) {
+          console.warn('L\'API ne répond pas, tentative de récupération du JSON', error);
         }
-        const data = await response.json();
-        setProjet(data);
+
+        // Si l'API échoue, récupérer les données depuis le fichier JSON
+        response = await fetch('/Json/projects.json');
+        if (!response.ok) {
+          throw new Error('Erreur lors du chargement des données JSON locales');
+        }
+
+        data = await response.json();
+        // Trouver le projet par ID dans les données JSON
+        const foundProjet = data.find((p) => p.id === parseInt(id));
+        if (!foundProjet) {
+          throw new Error('Projet introuvable dans les données JSON');
+        }
+        const filteredData = foundProjet.img.filter(image=>image.isMock===false)
+        setProjet({ ...foundProjet, img: filteredData });
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
       } finally {
-        setLoading(false); // Arrête le chargement
+        setLoading(false); // Arrêter le chargement
       }
     };
 

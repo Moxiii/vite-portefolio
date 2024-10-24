@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Georges",
-    "desc": "Le jarvis fr",
+    "description": "Le jarvis fr",
     "presentation": [
       "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités.",
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, asperiores culpa dignissimos."
@@ -29,7 +29,7 @@
   {
     "id": 2,
     "title": "Hera",
-    "desc": "Le chercheur de baskettes de collection par excellence",
+    "description": "Le chercheur de baskettes de collection par excellence",
     "presentation": [
       "Voici une présentation détaillée du projet Hera, expliquant ses fonctionnalités.",
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
