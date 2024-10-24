@@ -1,5 +1,4 @@
 import './Projets.scss';
-import Loader from 'react-loaders';
 import { useState, useEffect } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -16,21 +15,27 @@ const Projets = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {setLoading} = useOutletContext();
   useEffect(() => {
-
-      fetch(`http://localhost:3000/api/projects/${id}`)
-        .then((response) => {
+    const fetchProjet = async () => {
+      try {
+        let response = await fetch(`http://localhost:3000/api/projects/${id}`);
+        if (!response.ok) {
+          response = await fetch('Json/projects.json');
+          const foundProjet = data.find((p)=>p.id === parseInt(id))
+          setProjet(foundProjet)
           if (!response.ok) {
-            throw new Error('Erreur lors du chargement des données');
+            throw new Error('Erreur lors du chargement des données JSON locales');
           }
-          return response.json();
-        })
-        .then((data) => {
-          setProjet(data);
-        })
-        .catch((error) => console.error('Erreur de chargement du JSON : ', error))
-        .finally(() => {
-          setLoading(false);
-        });
+        }
+        const data = await response.json();
+        setProjet(data);
+      } catch (error) {
+        console.error('Erreur lors du chargement des données:', error);
+      } finally {
+        setLoading(false); // Arrête le chargement
+      }
+    };
+
+    fetchProjet();
   }, [id, setLoading]);
 
   const handleImageClick = (index) => {

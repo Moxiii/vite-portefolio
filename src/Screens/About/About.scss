@@ -1,11 +1,19 @@
+.about-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  .text-zone {
+    padding-left: 5%;
+    height: 100%;
+  }
+
+}
+
 .stage-cube-cont {
-  width: 50%;
-  height: 100%;
-  top: 0;
-  padding-top: 20%;
-  margin-left: 0;
-  position: absolute;
-  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
 }
 
 .cubespinner {
@@ -14,9 +22,10 @@
   animation-iteration-count: infinite;
   animation-duration: 25s;
   transform-style: preserve-3d;
-  transform-origin: 100px 100px 0;
-  margin-left: calc(50% - 100px);
-
+  transform-origin: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
   div {
     position: absolute;
     width: 200px;
@@ -56,22 +65,7 @@
     color: #ec4d28;
   }
 }
-.about-page{
-  .text-zone {
-    position: absolute;
-    left: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 35%;
-    vertical-align: middle;
-    display: table-cell;
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-}
+
 
 @keyframes spincube {
   from,
