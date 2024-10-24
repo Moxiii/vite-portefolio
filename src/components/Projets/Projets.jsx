@@ -14,11 +14,10 @@ const Projets = () => {
   const [projet, setProjet] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
-    fetch('/Json/projects.json')
+    fetch(`http://localhost:3000/api/projects/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        const foundProjet = data.find((p) => p.id === parseInt(id));
-        setProjet(foundProjet);
+        setProjet(data);
       })
       .catch((error) => console.error('erreur de chargement du Json : ', error));
   }, [id]);
@@ -26,7 +25,6 @@ const Projets = () => {
 const handleImageClick=(index)=>{
   setCurrentImageIndex(index)
 }
-  const filteredImages = projet ? projet.img.filter((image) => !image.isMock) : [];
 
   return (
     <>
@@ -39,7 +37,7 @@ const handleImageClick=(index)=>{
         </div>
         <div className="carouselProjet">
           <div className="carousel__wrapper">
-            {filteredImages.map((image, index) => (
+            {projet && projet.img.map((image, index) => (
                   <div
                     className={`item ${index === currentImageIndex ? 'visible' : ''}`}
                     key={index}
@@ -49,10 +47,10 @@ const handleImageClick=(index)=>{
                   </div>
                 ))}
           </div>
-          {filteredImages.length > 0 && (
+          {projet && projet.img.length > 0 && (
             <footer className="carousel-footer">
               <div className="carousel-title-card">
-                <h4>{filteredImages[currentImageIndex].title}</h4>
+                <h4>{projet.img[currentImageIndex].title}</h4>
               </div>
               <div className="links">
                 {projet.links.map((link, index) => (

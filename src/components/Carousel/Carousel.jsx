@@ -27,9 +27,7 @@ export default function Carousel() {
   return (
     <div className="carousel">
       {projets.map((projet) => {
-        // Filtrer les images pour obtenir le mockup
-        const mockup = projet.img.find(image => image[1] === "1")?.[0] || '';
-
+        const mockup = projet.img[0]?.src || '';
         return (
           <div
             key={projet.id}

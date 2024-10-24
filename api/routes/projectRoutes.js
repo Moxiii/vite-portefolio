@@ -1,5 +1,6 @@
 import db from '../db.js'
 import express from 'express'
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -12,6 +13,7 @@ router.get('/', (req, res) => {
   `;
 
   db.query(query, (err, results) => {
+    
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -49,7 +51,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const projectId = req.params.id;
   const query = `
-      SELECT p.id, p.title, p.description, p.presentation,
+      SELECT p.id, p.title, p.presentation,
              i.src AS image_src, i.isMock AS image_isMock, i.title AS image_title,
              l.name AS link_name, l.url AS link_url
       FROM projects p
@@ -59,6 +61,7 @@ router.get('/:id', (req, res) => {
   `;
 
   db.query(query, [projectId], (err, results) => {
+    
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -70,12 +73,10 @@ router.get('/:id', (req, res) => {
 
     // Transformation des résultats
     const project = {
-      id: results[0].id,
       title: results[0].title,
-      description: results[0].description,
       presentation: JSON.parse(results[0].presentation),
       links: [],
-      images: []
+      img: []
     };
 
     const uniqueLinks = new Set();
@@ -96,7 +97,7 @@ router.get('/:id', (req, res) => {
         const imageKey = row.image_src;
         if (!uniqueImages.has(imageKey)) {
           uniqueImages.add(imageKey);
-          project.images.push({ isMock: row.isMock, src: row.image_src, title: row.image_title });
+          project.img.push({ isMock: row.isMock, src: row.image_src, title: row.image_title });
         }
       }
     });
@@ -157,6 +158,7 @@ router.post('/', (req, res) => {
       } else {
         res.status(201).json({ id: projectId, title, description, presentation, fini, deploy });
       }
+      
     });
 });
 
@@ -233,7 +235,7 @@ router.delete('/:id' ,(req,res)=>{
         if (results.affectedRows === 0) {
           return res.status(404).json({ error: 'Projet non trouvé' });
         }
-
+        
         res.json({ message: 'Projet supprimé' });
       });
     });
