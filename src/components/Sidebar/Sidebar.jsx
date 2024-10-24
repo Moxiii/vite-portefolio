@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { useEffect, useState } from 'react'
-const Sidebar = () => {
+const Sidebar=() => {
   const [isOpen, setIsOpen] = useState(window.innerWidth > 1000);
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
@@ -29,6 +29,8 @@ const Sidebar = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize); // Nettoyage
   }, []);
+
+
   return (
     <>
       <div className="nav-bar">
@@ -45,6 +47,7 @@ const Sidebar = () => {
             className="about-link"
             data-title="About"
             to="/about"
+            
           >
             <FontAwesomeIcon icon={faUser} className="icon-color" />
           </NavLink>
@@ -55,6 +58,7 @@ const Sidebar = () => {
             activeclassname="active"
             className="cv-link"
             to="/cv"
+            
           >
             <FontAwesomeIcon icon={faFile} className="icon-color" />
           </NavLink>
@@ -64,6 +68,7 @@ const Sidebar = () => {
             className="contact-link"
             data-title="Contact"
             to="/contact"
+            
           >
             <FontAwesomeIcon icon={faEnvelope} className="icon-color" />
           </NavLink>

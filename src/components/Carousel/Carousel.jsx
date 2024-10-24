@@ -1,24 +1,28 @@
 import { useEffect, useState } from 'react';
 import "./Carousel.scss";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useOutletContext } from 'react-router-dom';
 
 export default function Carousel() {
   const [projets, setProjets] = useState([]);
   const navigate = useNavigate();
+  const { setLoading } = useOutletContext();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/projects')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Erreur lors de la récupération des projets');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProjets(data);
-      })
-      .catch((error) => console.error('Erreur du chargement Json:', error));
-  }, []);
+      fetch('http://localhost:3000/api/projects')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des projets');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setProjets(data);
+        })
+        .catch((error) => console.error('Erreur du chargement Json:', error))
+        .finally(() => {
+          setLoading(false);
+        });
+  }, [setLoading]);
 
   const handleClick = (id) => {
     navigate(`/projet/${id}`);

@@ -1,8 +1,6 @@
 import './Contact.scss'
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
-import Loader from 'react-loaders'
-
 const Contact = () => {
   const refForm = useRef()
   const clearInput = () => {
@@ -64,7 +62,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Loader type="pacman" />
     </>
   )
 }

@@ -1,8 +1,8 @@
 
 import './Home.scss'
-import Loader from 'react-loaders'
 import Carousell from '../../components/Carousel/Carousel.jsx'
 const Home = () => {
+
   return (
     <>
       <div className="container home">
@@ -14,7 +14,6 @@ const Home = () => {
           <Carousell/>
         </div>
       </div>
-      <Loader type="pacman" />
     </>
   )
 }

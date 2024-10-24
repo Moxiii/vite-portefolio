@@ -1,7 +1,7 @@
 import './Projets.scss';
 import Loader from 'react-loaders';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython} from '@fortawesome/free-brands-svg-icons'
 const iconMap={
@@ -10,21 +10,32 @@ const iconMap={
   faPython
 }
 const Projets = () => {
+
   const { id } = useParams();
   const [projet, setProjet] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const {setLoading} = useOutletContext();
   useEffect(() => {
-    fetch(`http://localhost:3000/api/projects/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProjet(data);
-      })
-      .catch((error) => console.error('erreur de chargement du Json : ', error));
-  }, [id]);
 
-const handleImageClick=(index)=>{
-  setCurrentImageIndex(index)
-}
+      fetch(`http://localhost:3000/api/projects/${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erreur lors du chargement des données');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setProjet(data);
+        })
+        .catch((error) => console.error('Erreur de chargement du JSON : ', error))
+        .finally(() => {
+          setLoading(false);
+        });
+  }, [id, setLoading]);
+
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <>
@@ -67,7 +78,6 @@ const handleImageClick=(index)=>{
           )}
         </div>
       </div>
-      <Loader type="pacman" />
     </>
   );
 };
