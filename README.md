@@ -12,7 +12,11 @@
 
 
 ## Run 
-For run locally use npm i && npm run dev 
+- For run locally use npm i && npm run dev
+
+For run server 
+- npm i -global nodemon 
+- use nodemon ./api/server.js
 
 ## Destination 
 This is for work on React + discover CI/CD on FTP server 
