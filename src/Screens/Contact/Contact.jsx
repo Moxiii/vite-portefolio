@@ -32,10 +32,6 @@ const Contact = () => {
       <div className="container contact-page">
         <div className="text-zone">
           <h1>Contactez-moi</h1>
-          <p>
-            Je reste disponible pour toutes informations <br /> toutes demande
-            de contact sera traité dans les 48h
-          </p>
           <div className="contact-form">
             <form ref={refForm} onSubmit={sendEmail & clearInput}>
               <ul>

@@ -1,11 +1,14 @@
 @import "const";
 
-
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
 
 
 @import 'animate.css';
 @import 'loaders.css/src/animations/pacman.scss';
 
+* {
+  box-sizing: border-box;
+}
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('assets/fonts/helvetica-neu.ttf') format('ttf');
@@ -66,27 +69,28 @@ nav-bar{
   display: flex;
   justify-content: center;
   align-content: center;
-  overflow: hidden;
+  overflow: auto;
 }
 .container{
-  width: calc(100vw - 5% );
   flex-grow: 1;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  h1{
+  color : $primary-color;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h2, p {
+    color : $accentuation-color;
+  }
   .text-zone{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    h1{
-      color : $primary-color;
-    }
-    h2, p {
-      color : $accentuation-color;
-    }
+
   }
 }
 @media screen and (min-width: 1000px) {

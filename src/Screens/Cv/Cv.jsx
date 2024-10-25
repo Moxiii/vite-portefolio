@@ -7,14 +7,16 @@ const Cv = () => {
       <div className="container cv">
         <div className="text-zone">
           <h1>Mon Cv trop bien</h1>
-          <embed
-            src={cvPdf}
-            type="application/pdf"
-            width="1000px"
-            height="700px"
-            style={{ border: 'none' }}
-          />
-          {/* Bouton de téléchargement */}
+          <div className="cv-embed">
+            <embed
+              src={cvPdf}
+              type="application/pdf"
+              width="1000px"
+              height="700px"
+              style={{ border: 'none' }}
+            />
+          </div>
+
           <a href={cvPdf} download="CV-Lapouge-Maxime" className="download-btn">Télécharger le CV</a>
         </div>
       </div>

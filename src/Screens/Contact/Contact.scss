@@ -20,7 +20,7 @@
     }
 
     li.half {
-      width: 49%;
+      width: 50%;
       margin-left: 2%;
       float: left;
       clear: none;
@@ -69,6 +69,11 @@
     float: right;
     text-align: center;
     margin-right: 10px;
+    cursor: pointer;
+    &:hover{
+      color: $background-color;
+      background-color: $primary-color;
+    }
   }
 }
 

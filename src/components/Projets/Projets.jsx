@@ -10,6 +10,8 @@ const iconMap={
   Python:faPython
 }
 const Projets = () => {
+  const PARAGRAPH_LIMIT = 2;
+  const MAX_PARAGRAPH_LENGTH = 300;
   const typedElement = useRef(null);
   const typedInstance = useRef(null);
   const { id } = useParams();
@@ -96,6 +98,13 @@ const Projets = () => {
   const handleImageClick = (index) => {
     setCurrentImageIndex((index +1)% (projet.img.length || 1));
   };
+  const initialParagraphs = projet?.presentation
+    .filter((para) => para.length <= MAX_PARAGRAPH_LENGTH)
+    .slice(0, PARAGRAPH_LIMIT) || [];
+
+  const remainingParagraphs = projet?.presentation
+    .slice(initialParagraphs.length)
+    .concat(projet.presentation.filter((para) => para.length > MAX_PARAGRAPH_LENGTH)) || [];
 
   return (
     <>
@@ -103,12 +112,12 @@ const Projets = () => {
         <div className="text-zone">
           <h1>{projet ? projet.title : 'Chargement...'}</h1>
           <div style={{ marginBottom: '10px' }}>
-           <p> Développé en <span ref={typedElement} style={{ fontWeight: 'bold' }} />
-            {currentIcon && <FontAwesomeIcon icon={currentIcon} style={{ marginLeft: '5px' }} />}</p>
+            <p> Développé en <span ref={typedElement} style={{ fontWeight: 'bold' }} />
+              {currentIcon && <FontAwesomeIcon icon={currentIcon} style={{ marginLeft: '5px' }} />}</p>
           </div>
-          {projet ? projet.presentation.map((para, index) => (
+          {initialParagraphs.map((para, index) => (
             <p key={index}>{para}</p>
-          )) : 'Chargement ...'}
+          ))}
         </div>
         <div className="carouselProjet">
           <div className="carousel__wrapper">
@@ -116,12 +125,12 @@ const Projets = () => {
               const isVisible = index === currentImageIndex;
               const isNext = index === (currentImageIndex + 1) % projet.img.length;
               const isPrev = index === (currentImageIndex - 1 + projet.img.length) % projet.img.length;
-                return (
-                  <div
+              return (
+                <div
                   className={`item ${isVisible ? 'visible' : ''} ${isNext ? 'next' : ''} ${isPrev ? 'prev' : ''}`}
                   key={index}
                   onClick={() => handleImageClick(index)}
-                  >
+                >
                   <img src={image.src} alt={image.title} />
                 </div>)
 
@@ -132,20 +141,29 @@ const Projets = () => {
               <div className="carousel-title-card">
                 <h4>{projet.img[currentImageIndex].title}</h4>
               </div>
-              <div className="links">
-              {projet.links.map((link, index) => (
-                  <div key={index}>
 
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
-                        {link.name}
-                      </a>
-                  </div>
-                ))}
-              </div>
             </div>
           )}
         </div>
+        <div className="links">
+          {projet&&projet.links.map((link, index) => (
+            <div key={index}>
+
+              <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
+                {link.name}
+              </a>
+            </div>
+          ))}
+        </div>
+        {remainingParagraphs.length > 0 && (
+          <div className="remaining-presentation">
+            {remainingParagraphs.map((para, index) => (
+              <p key={index}>{para}</p>
+            ))}
+          </div>
+          )}
       </div>
+
     </>
   );
 };
