@@ -1,7 +1,9 @@
-import './Contact.scss'
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
+import './Contact.scss'
 const Contact = () => {
+
+
   const refForm = useRef()
   const clearInput = () => {
     var form = document.querySelectorAll('form')

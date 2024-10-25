@@ -53,10 +53,13 @@ router.get('/:id', (req, res) => {
   const query = `
       SELECT p.id, p.title, p.presentation,
              i.src AS image_src, i.isMock AS image_isMock, i.title AS image_title,
-             l.name AS link_name, l.url AS link_url
+             l.name AS link_name, l.url AS link_url,
+             t.name as tech_name , t.icon as tech_icon
+            
       FROM projects p
       LEFT JOIN images i ON p.id = i.project_id AND i.isMock = 0
       LEFT JOIN links l ON p.id = l.project_id
+      LEFT JOIN technos t on p.id = t.project_id
       WHERE p.id = ?
   `;
 
@@ -76,14 +79,15 @@ router.get('/:id', (req, res) => {
       title: results[0].title,
       presentation: JSON.parse(results[0].presentation),
       links: [],
-      img: []
+      img: [],
+      technologies:[]
     };
 
     const uniqueLinks = new Set();
     const uniqueImages = new Set();
+    const uniqueTech = new Set();
 
     results.forEach(row => {
-      // Ajout des liens uniques
       if (row.link_name && row.link_url) {
         const linkKey = `${row.link_name}_${row.link_url}`;
         if (!uniqueLinks.has(linkKey)) {
@@ -92,12 +96,18 @@ router.get('/:id', (req, res) => {
         }
       }
 
-      // Ajout des images uniques
       if (row.image_src) {
         const imageKey = row.image_src;
         if (!uniqueImages.has(imageKey)) {
           uniqueImages.add(imageKey);
           project.img.push({ isMock: row.isMock, src: row.image_src, title: row.image_title });
+        }
+      }
+      if(row.tech_name && row.tech_icon){
+        const techKey = `${row.tech_name}_${row.tech_icon}`;
+        if(!uniqueTech.has(techKey)){
+          uniqueTech.add(techKey);
+          project.technologies.push({name:row.tech_name,icon:row.tech_icon})
         }
       }
     });

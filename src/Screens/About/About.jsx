@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './About.scss'
 import PythonLogo from '../../assets/Logo/Python-logo-notext.svg'
 import {
   faDocker,
@@ -8,6 +7,7 @@ import {
   faJsSquare,
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
+import './About.scss'
 
 const About = () => {
   return (

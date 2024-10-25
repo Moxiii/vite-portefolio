@@ -1,6 +1,7 @@
-import './Cv.scss'
 import cvPdf from "../../assets/Cv/CV LAPOUGE Maxime-4.pdf"
+import './Cv.scss'
 const Cv = () => {
+
   return (
     <>
       <div className="container cv">

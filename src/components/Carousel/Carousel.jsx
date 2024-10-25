@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import "./Carousel.scss";
 import { useNavigate,useOutletContext } from 'react-router-dom';
-
+import './Carousel.scss'
 export default function Carousel() {
   const [projets, setProjets] = useState([]);
   const navigate = useNavigate();
