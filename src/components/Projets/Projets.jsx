@@ -3,11 +3,15 @@ import { useParams, useOutletContext } from 'react-router-dom';
 import { Typed } from 'react-typed'
 import './Projets.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faJava,faReact,faPython} from '@fortawesome/free-brands-svg-icons'
+import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 const iconMap={
   React:faReact,
   Java:faJava,
-  Python:faPython
+  Python:faPython,
+  js:faJs,
+  sass:faSass,
+  angular:faAngular,
 }
 const Projets = () => {
   const PARAGRAPH_LIMIT = 2;
@@ -111,10 +115,34 @@ const Projets = () => {
       <div className="container projet">
         <div className="text-zone">
           <h1>{projet ? projet.title : 'Chargement...'}</h1>
-          <div style={{ marginBottom: '10px' }}>
+          <div style={{ marginBottom: '10px'}} className="typed">
             <p> Développé en <span ref={typedElement} style={{ fontWeight: 'bold' }} />
-              {currentIcon && <FontAwesomeIcon icon={currentIcon} style={{ marginLeft: '5px' }} />}</p>
+              {currentIcon && <FontAwesomeIcon icon={currentIcon} style={{ marginLeft: '5px', fontSize: '150%' }} />}</p>
           </div>
+          {projet && (
+            <div className="project-status">
+              <div className="status-item">
+                <span>Fini: </span>
+                <FontAwesomeIcon
+                  icon={projet.fini ? faCheckCircle : faTimesCircle}
+                  style={{
+                    color: projet.fini ? '#1ee11e' : 'red',
+                    marginLeft: '5px'
+                  }}
+                />
+              </div>
+              <div className="status-item">
+                <span>Déployé: </span>
+                <FontAwesomeIcon
+                  icon={projet.deploy ? faCheckCircle : faTimesCircle}
+                  style={{
+                    color: projet.deploy ? '#1ee11e' : 'red',
+                    marginLeft: '5px'
+                  }}
+                />
+              </div>
+            </div>
+          )}
           {initialParagraphs.map((para, index) => (
             <p key={index}>{para}</p>
           ))}
@@ -146,6 +174,7 @@ const Projets = () => {
           )}
         </div>
         <div className="links">
+          <p>Liens utiles :</p>
           {projet&&projet.links.map((link, index) => (
             <div key={index}>
 

@@ -1,9 +1,21 @@
-
+@import "../../const.scss";
 .projet {
   .text-zone {
+    span{color:$accentuation-color}
   margin-bottom: 5%;
+  .typed{
+    p{font-size: 15px;}
+    span{color:$accentuation-color;}
+  }
+    .project-status {
+      display: flex;
+      gap: 20px;
+    }
 
-
+    .status-item {
+      display: flex;
+      align-items: center;
+    }
 }
   overflow-y: scroll;
   width: 100%;
@@ -15,16 +27,26 @@ justify-content: space-between;
   &.blue {
     background-color: #428aa6;
   }
-}
-.remaining-presentation {
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  position: relative;
+  .remaining-presentation {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+    position: relative;
 
+  }
 }
+
 
 
 .carouselProjet {
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
   position: relative;
   width: 100%;
   display: flex;
@@ -104,30 +126,59 @@ justify-content: space-between;
   h4 {
     color: #403d40;
   }
+}
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+p{
+  font-size: 15px;
+  color:$primary-color;
+}
+  border-style: solid;
+  border-width: .125em 0;
+  box-shadow: -.375em 0 0 -.125em,
+  .375em 0 0 -.125em;
+  margin: 5% .5em;
+  padding: .5em 10%;
+  position: relative;
+  z-index: 1;
 
-  .links {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-
-    a {
-      color: #428aa6;
-      text-decoration: none;
-      margin: 0 5px;
-
-      &:hover {
-        text-decoration: underline;
-      }
+  &:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .125em;
+    bottom: .375em;
+    content: '';
+    left: -.5em;
+    pointer-events: none;
+    position: absolute;
+    top: .375em;
+    right: -.5em;
+    z-index: -1;
+  }
+div{
+  margin:10px 0;
+}
+  a{
+    text-decoration: none;
+    color:$accentuation-color;
+    &:hover {
+      text-decoration: underline;
     }
   }
-}
-.links{
-  display: inline-flex;
-  justify-content: space-between ;
-  align-items: center;
-  margin-top:5%;
-  margin-bottom: 10%;
-  a{
-    margin-left: 1%;
+  &:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .125em;
+    bottom: .125em;
+    content: '';
+    left: -.375em;
+    position: absolute;
+    top: .125em;
+    right: -.375em;
+    z-index: -2;
   }
 }

@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const projectId = req.params.id;
   const query = `
-      SELECT p.id, p.title, p.presentation,
+      SELECT p.id, p.title, p.presentation, p.fini,p.deploy,
              i.src AS image_src, i.isMock AS image_isMock, i.title AS image_title,
              l.name AS link_name, l.url AS link_url,
              t.name as tech_name , t.icon as tech_icon
@@ -80,7 +80,9 @@ router.get('/:id', (req, res) => {
       presentation: JSON.parse(results[0].presentation),
       links: [],
       img: [],
-      technologies:[]
+      technologies:[],
+      fini:results[0].fini,
+      deploy:results[0].deploy,
     };
 
     const uniqueLinks = new Set();

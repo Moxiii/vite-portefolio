@@ -7,7 +7,7 @@
       "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités.",
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, asperiores culpa dignissimos."
     ],
-    "techno": [
+    "technologies": [
       { "name": "Java", "icon": "faJava" },
       { "name": "React", "icon": "faReact" }
     ],
@@ -15,9 +15,16 @@
     "deploy": false,
     "links": [
       {
-        "ultra repo": "https://github.com/Moxiii/juste-prix",
-        "front repo": "https://github.com/Moxiii/juste-prix",
-        "back repo": "https://github.com/Moxiii/juste-prix"
+        "name": "Ultra Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
+      },
+      {
+        "name": "Front Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
+      },
+      {
+        "name": "Back Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
       }
     ],
     "img": [
@@ -34,18 +41,25 @@
       "Voici une présentation détaillée du projet Hera, expliquant ses fonctionnalités.",
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
     ],
-    "techno": [
+    "technologies": [
       { "name": "Python", "icon": "faPython" },
       { "name": "Java", "icon": "faJava" },
       { "name": "React", "icon": "faReact" }
     ],
-    "finit": false,
-    "deployer": true,
+    "fini": false,
+    "deploy": true,
     "links": [
       {
-        "ultra repo": "https://github.com/Moxiii/juste-prix",
-        "front repo": "https://github.com/Moxiii/juste-prix",
-        "back repo": "https://github.com/Moxiii/juste-prix"
+        "name": "Ultra Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
+      },
+      {
+        "name": "Front Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
+      },
+      {
+        "name": "Back Repo",
+        "url": "https://github.com/Moxiii/juste-prix"
       }
     ],
     "img": [

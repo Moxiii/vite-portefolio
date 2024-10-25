@@ -9,43 +9,36 @@ export default function Carousel() {
   useEffect(() => {
     const fetchProjets = async () => {
       try {
-        let response;
-        let data;
-        try{
-         response = await fetch('http://localhost:3000/api/projects');
-          if (!response.ok) {
-            throw new Error('Erreur de l\'API');
-          }
-         data = await response.json();
-         setProjets(data)
-        }
-        catch(error)
-        {(console.log(error))
-        }
+        let response = await fetch('http://localhost:3000/api/projects').catch(() => null);
+        if (response && response.ok) {
+          // Si l'API est disponible et répond correctement
+          let data = await response.json();
+          setProjets(data);
+        } else {
+          // Si l'API est indisponible, basculer vers les données locales
+          console.warn("API non disponible, chargement des données locales...");
+
           response = await fetch('/Json/projects.json');
-          if (!response.ok) {
-            throw new Error('Erreur lors du chargement des données JSON');
-        }
-
-        data = await response.json();
-
-          const filteredData = data.map(projet => {
-            const mockups = projet.img.filter(image => image.isMock === true); // Filtrer les mockups
-            return {
+          if (response.ok) {
+            let data = await response.json();
+            const filteredData = data.map(projet => ({
               ...projet,
-              img: mockups
-            };
-          });
-
-        setProjets(filteredData);
+              img: projet.img.filter(image => image.isMock === true)
+            }));
+            setProjets(filteredData);
+          } else {
+            throw new Error("Erreur lors du chargement des données locales");
+          }
+        }
       } catch (error) {
-        console.error('Erreur lors du chargement des projets:', error);
+        console.error("Erreur lors du chargement des projets:", error);
       } finally {
-        setLoading(false);
+        setLoading(false); // Désactiver le chargement en toutes circonstances
       }
     };
+
     fetchProjets();
-  }, [setLoading]);
+  }, []);
 
   const handleClick = (id) => {
     navigate(`/projet/${id}`);
