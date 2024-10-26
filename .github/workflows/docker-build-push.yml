@@ -11,10 +11,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Check if secrets are populated
-        run: |
-          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then echo "DOCKER_USERNAME is empty"; fi
-          if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then echo "DOCKER_PASSWORD is empty"; fi
       - name: Logging to DockerHub
         uses: docker/login-action@v3
         with:
@@ -23,14 +19,14 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name : Build and push API
         run : | 
-          docker build -t moxii/portefolio/api:latest -f api/Dockerfile ./api
-          docker push moxii/portefolio/api:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio/api:latest -f api/Dockerfile ./api
+          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/api:latest
 
       - name: Build and push Front
         run: |
-          docker build -t moxii/portefolio/front:latest -f Dockerfile/Dockerfile ./
-          docker push moxii/portefolio/front:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio/front:latest -f Dockerfile/Dockerfile ./
+          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/front:latest
 
       - name : Deploy to serv
         run: |
-          ssh -i moxi@${{ secrets.SERVER_IP }} 'cd ./Docker/compose.yaml && docker-compose pull && docker-compose up -d'
+          ssh -o StrictHostKeyChecking=no moxi@${{ secrets.SERVER_IP }} 'cd ./Docker/compose.yaml && docker-compose pull && docker-compose up -d'
