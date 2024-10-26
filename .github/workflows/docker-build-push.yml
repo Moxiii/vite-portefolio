@@ -32,6 +32,7 @@ jobs:
 
       - name: Set Up SSH key
         run: |
+          mkdir -p $HOME/ .ssh
           echo "${{ secrets.SERVER_SSH_KEY }}" > $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
           
