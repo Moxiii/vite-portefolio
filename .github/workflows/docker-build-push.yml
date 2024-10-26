@@ -30,6 +30,17 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:front -f Docker/Dockerfile ./
           docker push ${{ secrets.DOCKER_USERNAME }}/portefolio:front
 
+      - name: Add SSH Key
+        id : ssh_keygen
+        run: |
+          ssh-keygen - t rsa -b 4096 -C "github-action" -f $HOME/ .ssh/id_rsa -n ""
+          echo "::set-output name= public_key::$cat"($HOME/ .ssh/id_rsa.pub)" 
+
+      - name : Add pub key to serv
+        run: |
+          echo "${{ steps.ssh_keygen.outputs.public_key }}" | ssh -o StrictHostKeyChecking=no moxi@${{ secrets.SERVER_IP }} 'cat >> ~/.ssh/authorized_keys'
+        
+
       - name : Deploy to serv
         run: |
           ssh moxi@${{ secrets.SERVER_IP }} 'cd ./Docker/compose.yaml && docker-compose pull && docker-compose up -d'
