@@ -13,8 +13,9 @@ jobs:
       - name: Logging to DockerHub
         uses: docker/login-action@v3
         with:
-          username : moxii
-          password : dckr_pat_wyAl5SOpS5x0V8PcVIQKfNYo3mU
+          registry: https://index.docker.io/v1/
+          username : ${{ vars.DOCKER_USERNAME }}
+          password : ${{ secrets.DOCKER_PASSWORD }}
       - name : Build and push API
         run : | 
           docker build -t moxii/portefolio/api:latest -f api/Dockerfile ./api
