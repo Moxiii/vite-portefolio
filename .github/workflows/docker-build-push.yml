@@ -28,7 +28,7 @@ jobs:
       - name: Build and push Front
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:front -f Docker/Dockerfile ./
-          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/front
+          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio:front
 
       - name : Deploy to serv
         run: |
