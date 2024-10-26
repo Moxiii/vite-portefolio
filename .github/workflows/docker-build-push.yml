@@ -10,13 +10,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Log to Docker
+      - name: Logging to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
+          username : ${{ SECRET.DOCKER_USERNAME }}
+          password : ${{ SECRET.DOCKER_PASSWORD }}
       - name : Build and push API
         run : | 
           docker build -t moxii/portefolio/api:latest -f api/Dockerfile ./api
