@@ -20,9 +20,9 @@ jobs:
           docker build -t moxii/portefolio/api:latest -f api/Dockerfile ./api
           docker push moxii/portefolio/api:latest
 
-      - name: : Build and Push Front
-          run: | 
-          docker build -t moxii/portefolio/front:latest -f Docker/Dockerfile ./
+      - name: Build and push API
+        run: |
+          docker build -t moxii/portefolio/front:latest -f Dockerfile/Dockerfile ./
           docker push moxii/portefolio/front:latest
 
       - name : Deploy to serv
