@@ -22,13 +22,13 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name : Build and push API
         run : | 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio/api:latest -f api/Dockerfile ./api
-          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/api:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:api -f api/Dockerfile ./api
+          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio:api
 
       - name: Build and push Front
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio/front:latest -f Dockerfile/Dockerfile ./
-          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/front:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:front -f Docker/Dockerfile ./
+          docker push ${{ secrets.DOCKER_USERNAME }}/portefolio/front
 
       - name : Deploy to serv
         run: |
