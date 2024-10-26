@@ -1,0 +1,7 @@
+node_modules
+./.git/
+*/public/
+./src/fonts/
+.prettierrc
+.README.md
+./api/
