@@ -32,4 +32,4 @@ jobs:
 
       - name : Deploy to serv
         run: |
-          ssh -o StrictHostKeyChecking=no moxi@${{ secrets.SERVER_IP }} 'cd ./Docker/compose.yaml && docker-compose pull && docker-compose up -d'
+          ssh moxi@${{ secrets.SERVER_IP }} 'cd ./Docker/compose.yaml && docker-compose pull && docker-compose up -d'
