@@ -28,9 +28,9 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "../src/assets/Project/Georges/Mock/mockGeorges.png" },
-      { "isMock": false, "src": "../src/assets/Project/Georges/georges1.png", "title": "Image 1" },
-      { "isMock": false, "src": "../src/assets/Project/Georges/georges2.png", "title": "Image 2" }
+      { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png" },
+      { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
+      { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
     ]
   },
   {
@@ -63,9 +63,9 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "../src/assets/Project/Hera/Mock/mockHera.png" },
-      { "isMock": false, "src": "../src/assets/Project/Hera/hera1.png", "title": "Image 1" },
-      { "isMock": false, "src": "../src/assets/Project/Hera/hera2.jpg", "title": "Image 2" }
+      { "isMock": true, "src": "/Project/Hera/Mock/mockHera.png" },
+      { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
+      { "isMock": false, "src": "/Project/Hera/hera2.jpg", "title": "Image 2" }
     ]
   }
 ]
