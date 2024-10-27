@@ -1,5 +1,5 @@
 name: Deploy with dock
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is 🚀 deploy website on push
 on:
   push:
     branches:
@@ -8,7 +8,8 @@ on:
     branches:
       - main
 jobs:
-  deploy:
+  deploy_ssh:
+    if: ${{false}}
     environment: SECRET
     runs-on: ubuntu-latest
     steps:
@@ -44,3 +45,28 @@ jobs:
       - name : cleanup
         run: | 
           rm rf $HOME/ .ssh/id_rsa
+  deploy_ftp:
+    environment: SECRET
+    name : 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name : 🔧 Install dependencies and build
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+        run : |
+          npm install 
+          npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-DEPLOY-Action@v4.3.4
+        with:
+          server: ${{secrets.FTP_SERVER}}
+          username: ${{secrets.FTP_USERNAME}}
+          password: ${{secrets.FTP_PASSWORD}}
+          local-dir: dist
+          server-dir: www
+          delete: true
