@@ -11,24 +11,24 @@
       { "name": "Java", "icon": "faJava" },
       { "name": "React", "icon": "faReact" }
     ],
-    "fini": true,
+    "fini": false,
     "deploy": false,
     "links": [
       {
         "name": "Ultra Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "https://github.com/Moxiii/UltraLyra"
       },
       {
         "name": "Front Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "https://github.com/Martindvttt/GilbertNativeApp/tree/8ab0e948080352cfe2261501043bdf7cca5373d6"
       },
       {
         "name": "Back Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "hhttps://github.com/Moxiii/georgesBack/tree/d4383d9a2dfc34e04ff076e18ca6f3c2e82c3d22"
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png" },
+      { "isMock": true, "src": "/Project/nomockup.png" },
       { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
     ]
@@ -47,25 +47,57 @@
       { "name": "React", "icon": "faReact" }
     ],
     "fini": false,
-    "deploy": true,
+    "deploy": false,
     "links": [
       {
         "name": "Ultra Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "https://github.com/Moxiii/UltraHera"
       },
       {
         "name": "Front Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "https://github.com/Moxiii/HeraFront/tree/d8905a54810aa3b6b594b130bc7140c3723d799d"
       },
       {
         "name": "Back Repo",
-        "url": "https://github.com/Moxiii/juste-prix"
+        "url": "https://github.com/Moxiii/HeraBack/tree/212f4014887cdf3ac2d95a496a87d015128296a3"
+      },
+
+      {
+        "name": "Scrapp repo",
+        "url": "https://github.com/Moxiii/HeraBack/tree/212f4014887cdf3ac2d95a496a87d015128296a3"
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/Hera/Mock/mockHera.png" },
+      { "isMock": true, "src": "/Project/nomockup.png" },
       { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Hera/hera2.jpg", "title": "Image 2" }
     ]
+  },
+  {
+  "id": 3,
+  "title": "Portefolio",
+  "description": "Presentation de mon portefolio",
+  "presentation": [
+  "Issus d'une discution avec Marina notre chargé de placement en entreprise",
+  "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react"
+],
+  "technologies": [
+  { "name": "React", "icon": "faReact" },
+    {"name" :  "Javascript" , "icon" : "faJs"}
+],
+  "fini": false,
+  "deploy": true,
+  "links": [
+  {
+    "name": "Basic repo with workflows",
+    "url": "https://github.com/Moxiii/vite-portefolio"
+  }
+],
+  "img": [
+  { "isMock": true, "src": "/Project/Portefolio/Mockup/portefolioMock.png" },
+  { "isMock": false, "src": "/Project/Portefolio/portefolio1.png", "title": "Présentation des projets" },
+  { "isMock": false, "src": "/Project/Portefolio/portefolio2.png", "title": "La page présentation" },
+    { "isMock": false, "src": "/Project/Portefolio/portefolio3.png", "title": "Page Contact permettant d'envoyer des mail" }
+]
   }
 ]
