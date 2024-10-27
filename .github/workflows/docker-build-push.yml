@@ -72,6 +72,6 @@ jobs:
           server: ${{secrets.FTP_SERVER}}
           username: ${{secrets.FTP_USERNAME}}
           password: ${{secrets.FTP_PASSWORD}}
-          local-dir: dist
-          server-dir: www
-          delete: true
+          local-dir: dist/
+          server-dir: www/
+          dangerous-clean-slate: true
