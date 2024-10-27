@@ -9,7 +9,7 @@ const iconMap={
   React:faReact,
   Java:faJava,
   Python:faPython,
-  js:faJs,
+  Javascript:faJs,
   sass:faSass,
   angular:faAngular,
 }
