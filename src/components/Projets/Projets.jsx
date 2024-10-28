@@ -29,7 +29,7 @@ const Projets = () => {
         let response;
         let data;
         try {
-          response = await fetch(`http://localhost:3000/api/projects/${id}`);
+          response = await fetch(`/api/projects/${id}`);
           if (!response.ok) {
             throw new Error('Erreur lors de la récupération de l\'API');
           }

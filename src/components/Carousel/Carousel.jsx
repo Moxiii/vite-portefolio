@@ -9,7 +9,7 @@ export default function Carousel() {
   useEffect(() => {
     const fetchProjets = async () => {
       try {
-        let response = await fetch('http://localhost:3000/api/projects').catch(() => null);
+        let response = await fetch('/api/projects').catch(() => null);
         if (response && response.ok) {
           // Si l'API est disponible et répond correctement
           let data = await response.json();
