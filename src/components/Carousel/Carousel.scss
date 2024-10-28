@@ -18,7 +18,6 @@
     position: relative;
     overflow: hidden;
 height: 500px;
-    // Ici, on va ajouter l'arrière-plan via le style en ligne dans le composant
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -30,10 +29,10 @@ height: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between; // Aligner le contenu en bas
+      justify-content: space-between;
       padding: 15px;
       height: 100%;
-      background: rgba(2, 2, 46, 0.675); // Couleur de fond avec opacité
+      background: rgba(2, 2, 46, 0.675);
       transform: translateY(100%);
       transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
       visibility: hidden;
