@@ -1,6 +1,9 @@
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
 import './Contact.scss'
+import ReactGA from 'react-ga'
+const TRACK_ID = "GTM-MQXDT7ZH"
+ReactGA.initialize(TRACK_ID);
 const Contact = () => {
 
 
@@ -20,7 +23,10 @@ const Contact = () => {
       )
       .then(
         () => {
-          alert('Message envoyé')
+          ReactGA.event({
+            category:'User',
+            action:'Send a mail',
+          })
         },
         () => {
           alert('Message non envoyé')
