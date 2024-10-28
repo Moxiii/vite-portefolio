@@ -33,7 +33,11 @@ const Contact = () => {
         <div className="text-zone">
           <h1>Contactez-moi</h1>
           <div className="contact-form">
-            <form ref={refForm} onSubmit={sendEmail & clearInput}>
+            <form ref={refForm} onSubmit={(e)=>{
+              e.preventDefault();
+              sendEmail();
+              clearInput();
+            }}>
               <ul>
                 <li className="half">
                   <input type="text" name="name" placeholder="name" required />

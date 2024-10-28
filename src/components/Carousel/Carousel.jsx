@@ -4,7 +4,7 @@ import './Carousel.scss'
 export default function Carousel() {
   const [projets, setProjets] = useState([]);
   const navigate = useNavigate();
-  const { setLoading } = useOutletContext();
+  const { setLoading } = useOutletContext() || {};
 
   useEffect(() => {
     const fetchProjets = async () => {

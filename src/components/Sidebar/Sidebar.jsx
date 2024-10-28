@@ -12,23 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { useEffect, useState } from 'react'
-const Sidebar=() => {
-  const [isOpen, setIsOpen] = useState(window.innerWidth > 1000);
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen)
-  }
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 1000) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(true);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize); // Nettoyage
-  }, []);
+const Sidebar=({ isMobile }) => {
 
 
   return (
@@ -37,41 +21,53 @@ const Sidebar=() => {
         <Link className="Logo" to="/">
           <img src={Logo}></img>
         </Link>
-        <nav className={isOpen?'menu-open' : 'menu-closed'}>
-          <NavLink exact="true" activeclassname="active" to="/" data-title="Home">
-            <FontAwesomeIcon icon={faHome} className="icon-color" />
-          </NavLink>
-          <NavLink
-            exact="true"
-            activeclassname="active"
-            className="about-link"
-            data-title="About"
-            to="/about"
-            
-          >
-            <FontAwesomeIcon icon={faUser} className="icon-color" />
-          </NavLink>
+        <nav>
+          {isMobile?(
+            <>
+              <a href='#home'></a>
+              <a href="#about">About</a>
+              <a href="#cv">CV</a>
+              <a href="#contact">Contact</a>
+            </>
+          ):(
+            <>
+              <NavLink exact="true" activeclassname="active" to="/" data-title="Home">
+              <FontAwesomeIcon icon={faHome} className="icon-color" />
+            </NavLink>
+              <NavLink
+                exact="true"
+                activeclassname="active"
+                className="about-link"
+                data-title="About"
+                to="/about"
 
-          <NavLink
-            exact="true"
-            data-title="Cv"
-            activeclassname="active"
-            className="cv-link"
-            to="/cv"
-            
-          >
-            <FontAwesomeIcon icon={faFile} className="icon-color" />
-          </NavLink>
-          <NavLink
-            exact="true"
-            activeclassname="active"
-            className="contact-link"
-            data-title="Contact"
-            to="/contact"
-            
-          >
-            <FontAwesomeIcon icon={faEnvelope} className="icon-color" />
-          </NavLink>
+              >
+                <FontAwesomeIcon icon={faUser} className="icon-color" />
+              </NavLink>
+
+              <NavLink
+                exact="true"
+                data-title="Cv"
+                activeclassname="active"
+                className="cv-link"
+                to="/cv"
+
+              >
+                <FontAwesomeIcon icon={faFile} className="icon-color" />
+              </NavLink>
+              <NavLink
+                exact="true"
+                activeclassname="active"
+                className="contact-link"
+                data-title="Contact"
+                to="/contact"
+
+              >
+                <FontAwesomeIcon icon={faEnvelope} className="icon-color" />
+              </NavLink>
+            </>
+          )}
+
         </nav>
         <ul>
           <li>
@@ -97,9 +93,6 @@ const Sidebar=() => {
         </ul>
       </div>
 
-      <div className="burger-menu" onClick={toggleSidebar}>
-        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} color="#FF7f00" />
-      </div>
 
     </>
   )
