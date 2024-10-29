@@ -4,9 +4,7 @@
 .container {
   will-change: contents;
   height: auto;
-  min-height: 566px;
   opacity: 0;
-  margin: 0 auto;
   z-index: 1;
   animation: fadeIn 1s forwards;
   animation-delay: 1s;
@@ -17,7 +15,6 @@
   h1 {
   font-size: 53px;
   font-weight: 400;
-  margin-top: 0;
   position: relative;
   margin-bottom: 5%;
 }
@@ -28,14 +25,6 @@
     font-family: sans-serif;
     font-weight: 300;
     max-width: fit-content;
-  }
-
-
-
-  .text-animate-hover {
-    &:hover {
-      color: #fff;
-    }
   }
 }
 

@@ -4,24 +4,11 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Loader from 'react-loaders'
 import { useEffect, useState } from 'react'
 import MobileView from '../../Screens/MobileView/MobileView.jsx'
+import {  useMediaQuery } from 'react-responsive'
 const Layout = () => {
-
+  const isDesktop = useMediaQuery({minWidth:769})
   const location = useLocation();
   const [loading, setLoading] = useState(true);
-  const [isMobile, setisMobile] = useState(window.innerWidth <= 1000);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 1000) {
-        setisMobile(true);
-      } else {
-        setisMobile(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -34,11 +21,11 @@ const Layout = () => {
   return (
     <>
     <div className="App">
-       <Sidebar isMobile={isMobile} />
+      {isDesktop && <Sidebar/>}
       <div className="page">
         {loading ? (
           <Loader type="pacman" />
-        ):isMobile ? (
+        ): !isDesktop ? (
             <MobileView setLoading={ setLoading}/>
         ) :
           (

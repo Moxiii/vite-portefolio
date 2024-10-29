@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate,useOutletContext } from 'react-router-dom';
 import './Carousel.scss'
+import { useMediaQuery } from 'react-responsive'
 export default function Carousel() {
   const [projets, setProjets] = useState([]);
   const navigate = useNavigate();
@@ -43,28 +44,42 @@ export default function Carousel() {
   const handleClick = (id) => {
     navigate(`/projet/${id}`);
   };
-
+const isDesktop = useMediaQuery({minWidth:1024})
   return (
-    <div className="carousel">
-      {projets.map((projet) => {
-        const mockup = projet.img[0]?.src || '';
-        return (
-          <div
-            key={projet.id}
-            className="carousel-item"
-            style={{ backgroundImage: `url(${mockup})` }}
-            onClick={() => handleClick(projet.id)}
-            role="button"
-            tabIndex={0}
-            onKeyPress={(e) => e.key === 'Enter' && handleClick(projet.id)}
-          >
-            <div className="content">
-              <h2>{projet.title}</h2>
-              <span>{projet.description}</span>
+    <>
+    {isDesktop ? (
+      <div className="carousel">
+        {projets.map((projet) => {
+          const mockup = projet.img[0]?.src || '';
+          return (
+            <div
+              key={projet.id}
+              className="carousel-item"
+              style={{ backgroundImage: `url(${mockup})` }}
+              onClick={() => handleClick(projet.id)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => e.key === 'Enter' && handleClick(projet.id)}
+            >
+              <div className="content">
+                <h2>{projet.title}</h2>
+                <span>{projet.description}</span>
+              </div>
             </div>
+          );
+        })}
+      </div>
+      ):(
+      <div className="card-container">
+        {projets.map((projet) => (
+          <div key={projet.id} className="card">
+            <h2>{projet.title}</h2>
+            <p>{projet.description}</p>
           </div>
-        );
-      })}
-    </div>
-  );
+        ))}
+      </div>
+    )}
+
+    </>
+      );
 }

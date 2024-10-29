@@ -8,8 +8,10 @@ import {
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
 import './About.scss'
+import { useMediaQuery } from 'react-responsive'
 
 const About = () => {
+  const isDesktop = useMediaQuery({minWidth:769})
   return (
     <>
       <div className="container about-page">
@@ -34,7 +36,7 @@ const About = () => {
             architecto eos maxime sed reprehenderit.
           </p>
         </div>
-        <div className="stage-cube-cont">
+        {isDesktop &&  <div className="stage-cube-cont">
           <div className="cubespinner">
             <div className="face1">
               <FontAwesomeIcon icon={faJava} color="#007396" />
@@ -56,7 +58,7 @@ const About = () => {
               <FontAwesomeIcon icon={faGitAlt} color="#F05032" />
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </>
   )

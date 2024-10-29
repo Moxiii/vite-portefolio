@@ -1,8 +1,10 @@
 
 import './Home.scss'
 import Carousell from '../../components/Carousel/Carousel.jsx'
-const Home = () => {
+import {useMediaQuery} from 'react-responsive'
 
+const Home = () => {
+  const isDesktop = useMediaQuery({ minWidth: 769 });
   return (
     <>
       <div className="container home">
@@ -10,7 +12,10 @@ const Home = () => {
           <h1>
             Bonjour !  <br/> Bienvenue sur mon portefolio.
           </h1>
-          <h2>Voici mes réalisations : </h2>
+          {isDesktop && <h2>Voici mes réalisations : </h2>}
+
+        </div>
+        <div className='projects'>
           <Carousell/>
         </div>
       </div>

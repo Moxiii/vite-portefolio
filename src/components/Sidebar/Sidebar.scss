@@ -13,11 +13,6 @@
   }
 
 
-  @media (max-width: 1000px) {
-    width: 0;
-    overflow: hidden;
-  }
-
   &.open {
     width: 250px;
   }
