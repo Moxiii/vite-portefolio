@@ -83,10 +83,10 @@ const Projets = () => {
       const techNames = projet.technologies.map((tech) => tech.name);
       const options = {
         strings: techNames,
-        typeSpeed: 100,
+        typeSpeed: 75,
         backSpeed: 100,
         loop: true,
-        backDelay: 900,
+        backDelay: 200,
         preStringTyped: (index) => {
           const tech = projet.technologies[index % techNames.length];
           setCurrentIcon(iconMap[tech.name]);

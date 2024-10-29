@@ -44,7 +44,7 @@ export default function Carousel() {
   const handleClick = (id) => {
     navigate(`/projet/${id}`);
   };
-const isDesktop = useMediaQuery({minWidth:1024})
+const isDesktop = useMediaQuery({minWidth:769})
   return (
     <>
     {isDesktop ? (

@@ -1,7 +1,23 @@
 import cvPdf from "../../assets/Cv/CV LAPOUGE Maxime-4.pdf"
 import './Cv.scss'
+import { useMediaQuery } from 'react-responsive'
+import { useEffect, useState } from 'react'
 const Cv = () => {
+  const [heightScreen, setHeightScreen] = useState(window.innerHeight);
+  const [widthScreen, setWidthScreen] = useState(window.innerWidth);
+  const isDesktop = useMediaQuery({ minWidth: 769 });
 
+  const handleResize= () => {
+    setWidthScreen(window.innerWidth);
+    setHeightScreen(window.innerHeight)
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize' , handleResize)
+    return ()=>{
+      window.removeEventListener('resize',handleResize)
+    }
+  }, [])
   return (
     <>
       <div className="container cv">
@@ -11,9 +27,9 @@ const Cv = () => {
             <embed
               src={cvPdf}
               type="application/pdf"
-              width="1000px"
-              height="700px"
-              style={{ border: 'none' }}
+              width={isDesktop? widthScreen*0.6 : widthScreen*0.9}
+              height={heightScreen* 0.70}
+              style={{border: 'none' , frameborder:0}}
             />
           </div>
 

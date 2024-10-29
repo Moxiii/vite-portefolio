@@ -20,7 +20,6 @@ const Layout = () => {
   }, [location]);
   return (
     <>
-    <div className="App">
       {isDesktop && <Sidebar/>}
       <div className="page">
         {loading ? (
@@ -33,7 +32,6 @@ const Layout = () => {
           )
         }
       </div>
-    </div>
     </>
   )
 }
