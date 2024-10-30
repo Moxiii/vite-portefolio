@@ -23,7 +23,7 @@ export default function MobileView(){
 return(
   <>
     <ReactLenis ref={lenisRef}>
-     <section id="home"><Home/></section>
+     <section id="home"><Home lenisRef={lenisRef} /></section>
      <section id="about"><About/></section>
      <section id="cv"><Cv/></section>
      <section id="contact"><Contact/></section>

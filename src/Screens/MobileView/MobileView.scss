@@ -1,4 +1,125 @@
-.card{
-  min-height: 100vh;
-  min-width: 100vw;
+@import '../../const.scss';
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.projects {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  overflow-x:auto;
+  scroll-snap-type: x mandatory;
+  justify-content: space-around;
+  overflow: hidden;
+  gap:20px;
+
+  .card-container {
+    flex : 0 0 auto;
+    scroll-snap-align: start;
+    border: solid;
+    border-radius: 5%;
+    --image-scale: 1.001;
+    --title-color: $accentuation-color;
+    --link-icon-translate: -20px;
+    --link-icon-opacity: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    transform-origin: center;
+    transition: all 0.4s ease-in-out;
+    height: 90vh;
+    min-width: 80vw;
+
+  .card-content{
+    background: #fff;
+  }
+    .card {
+      min-height: 100vh;
+      min-width: 90vw;
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+      > figure {
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+
+        > img {
+          max-width: 100%;
+          transform-origin: center;
+          transform: scale(var(--image-scale));
+          transition: transform 0.4s ease-in-out;
+        }
+      }
+
+      > h2 {
+        margin: 0 0 18px 0;
+        font-size: 1.9rem;
+        letter-spacing: 0.6em;
+        color: var(--title-color);
+        transition: color 0.3s ease-in-out;
+      }
+
+      > p {
+        font-size: 1.3rem;
+        color: $accentuation-color;
+        line-height: 1.6rem;
+      }
+
+      > a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--title-color);
+        transition: all 0.3s;
+
+        &:focus {
+          outline: 1px dotted #28666e;
+        }
+
+        > .icon {
+          min-width: 24px;
+          width: 24px;
+          height: 24px;
+          margin-left: 5px;
+          transform: translateX(var(--link-icon-translate));
+          opacity: var(--link-icon-opacity);
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
