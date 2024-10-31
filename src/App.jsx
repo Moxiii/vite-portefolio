@@ -2,11 +2,13 @@
 import './App.scss'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
+
 import Home from './Screens/Home/Home.jsx'
 import About from './Screens/About/About.jsx'
 import Contact from './Screens/Contact/Contact.jsx'
 import Cv from './Screens/Cv/Cv.jsx'
 import Projets from './components/Projets/Projets.jsx'
+
 import "./App.scss"
 import ReactGA from 'react-ga';
 import { useEffect } from 'react'

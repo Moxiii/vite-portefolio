@@ -22,6 +22,14 @@ html.lenis body {
 }
 
 .projects {
+  .projects{
+    >.card-container > .card >h2{
+      margin: 0 0 ;
+      font-weight: 400;
+      font-size: 35px;
+      letter-spacing:0;
+    }
+  }
   width: 100vw;
   height: 100vh;
   padding: 0 10px;

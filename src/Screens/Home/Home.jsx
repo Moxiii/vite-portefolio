@@ -50,9 +50,7 @@ const Home = ({ lenisRef }) => {
           {isDesktop && <h2>Voici mes réalisations : </h2>}
 
         </div>
-        <div className='projects'>
           <Carousell/>
-        </div>
       </div>
     </>
   )

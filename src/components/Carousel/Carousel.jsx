@@ -77,7 +77,7 @@
           })}
         </div>
         ):(
-        <div  className="projets">
+          <div className="projects">
       {projets.map((projet) => {
         return (
         <div key={projet.id} className="card-container">

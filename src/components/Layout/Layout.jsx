@@ -20,18 +20,27 @@ const Layout = () => {
   }, [location]);
   return (
     <>
-      {isDesktop && <Sidebar/>}
-      <div className="page">
-        {loading ? (
-          <Loader type="pacman" />
-        ): !isDesktop ? (
-            <MobileView setLoading={ setLoading}/>
-        ) :
-          (
-          <Outlet context={{ setLoading }} />
-          )
-        }
-      </div>
+      {isDesktop ? (
+        <div className="App">
+          <Sidebar />
+          <div className="page">
+            {loading ? (
+              <Loader type="pacman" />
+            ) : (
+              <Outlet context={{ setLoading }} />
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="page">
+          {/* Directement le rendu mobile */}
+          {loading ? (
+            <Loader type="pacman" />
+          ) : (
+            <MobileView setLoading={setLoading} />
+          )}
+        </div>
+      )}
     </>
   )
 }
