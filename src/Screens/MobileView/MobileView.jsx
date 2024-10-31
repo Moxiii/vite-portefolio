@@ -7,7 +7,6 @@ import { ReactLenis,useLenis } from 'lenis/react'
 
 export default function MobileView(){
   const lenis = useLenis(({scroll})=>{
-      console.log("Scroll position:", scroll);
       wheelMultiplier: 1;
       lerp: 0.05;
       smoothTouch: true;
