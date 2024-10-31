@@ -5,7 +5,7 @@ import {useMediaQuery} from 'react-responsive'
 import { useEffect, useRef } from 'react'
 import { Typed } from 'react-typed'
 
-const Home = ({ lenisRef }) => {
+const Home = () => {
   const isDesktop = useMediaQuery({ minWidth: 769 });
   const typedElement = useRef(null);
   const typedInstance = useRef(null);

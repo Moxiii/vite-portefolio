@@ -36,7 +36,6 @@ textarea {
 #root {
   position: relative;
   background: $background-color;
-
 }
 @media (min-width: 769px) {
   .page {
@@ -74,7 +73,6 @@ textarea {
 }
 @media (max-width: 768px) {
   .page{
-    justify-content: flex-start;
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -82,12 +80,19 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    min-width: 100vw;
     margin:0;
     overflow: auto;
   }
+  .container , .home {
+    height: 100vh;
+  }
   #home {
+    h1,h2{
+      color:$primary-color;
+      > section{
+        justify-content: flex-start;
+      }
+    }
     .text-zone {
       display: flex;
       flex-direction: column;
@@ -97,35 +102,35 @@ textarea {
       text-align: center;
       overflow: hidden;
       h1 {
-        width: 100%; // Prend toute la largeur
-        font-size: 75px; // Ajustez la taille de la police si nécessaire
-        margin: 0; // Enlève la marge par défaut
-        padding: 0; // Enlève le padding par défaut
+        width: 100%;
+        font-size: 75px;
+        margin: 0;
+        padding: 0;
       }
     }
 
 
   }
-   #about , #cv , #contact {
-      .text-zone{
-        margin:auto;
-        width: 100vw;
-        padding: 0 10px;
-        left:0;
-        h1{
-          font-size:70px;
+  #about , #cv , #contact {
+    .text-zone{
+      margin:auto;
+      width: 100vw;
+      padding: 0 10px;
+      left:0;
+      height: 100vh;
+    }
+    #about{
+      .about-page {
+        .text-zone{
+          display: flex;
+          flex-direction: column;
+          left:0;
         }
       }
-#about{
-  .about-page {
-    .text-zone{
-    display: flex;
-    flex-direction: column;
-    left:0;
     }
-  }
+
+#cv>.container , .cv > .text-zone{
+  justify-content: space-between;
 }
-
-
   }
 }

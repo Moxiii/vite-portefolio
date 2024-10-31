@@ -26,7 +26,7 @@ const Cv = () => {
         const context = canvas.getContext('2d');
         // Récupération des dimensions du canvas
         const canvasWidth = widthScreen * 0.7;
-        const canvasHeight = heightScreen * 0.8;
+        const canvasHeight = heightScreen * 0.7;
         // Calcul du scale pour que le PDF remplisse le canvas
         const viewport = page.getViewport({ scale: 1 });
         const scale = Math.min(canvasWidth / viewport.width, canvasHeight / viewport.height);
