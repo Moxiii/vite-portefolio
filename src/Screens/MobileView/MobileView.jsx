@@ -4,11 +4,9 @@ import About from '../About/About.jsx'
 import Home from '../Home/Home.jsx'
 import Contact from '../Contact/Contact.jsx'
 import { ReactLenis,useLenis } from 'lenis/react'
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
+import { useEffect} from 'react'
 export default function MobileView(){
   const lenis = useLenis(({ scroll }) => {
-    // Configuration de Lenis
     return {
       wheelMultiplier: 0.33,
       lerp: 0.05,
@@ -18,8 +16,23 @@ export default function MobileView(){
     };
   });
   useEffect(() => {
+    if (!lenis) {
+      console.error("Lenis is undefined!");
+      return;
+    }
+    const handleScroll = () => {
+      const scrollPos = lenis.scroll; // Obtenez la position de défilement
+      console.log('Scroll position:', scrollPos);
+      if (scrollPos > 100) {
+        console.log('Vous avez défilé plus de 100 pixels');
+      }
+    };
+
+    lenis.on('scroll', handleScroll); // Ajoutez l'écouteur d'événement
+
+    // Nettoyage à la destruction du composant
     return () => {
-      lenis.destroy(); // Nettoyage lors du démontage
+      lenis.off('scroll', handleScroll);
     };
   }, [lenis]);
 
