@@ -37,41 +37,26 @@ const Contact = () => {
     <>
       <div className="container contact-page">
         <div className="text-zone">
-          <h1>Contactez-moi</h1>
+          <div className="header">
+            <h1>Contactez-moi</h1>
+          </div>
+
           <div className="contact-form">
-            <form ref={refForm} onSubmit={(e)=>{
+            <form ref={refForm} onSubmit={(e) => {
               e.preventDefault();
               sendEmail();
               clearInput();
             }}>
-              <ul>
-                <li className="half">
-                  <input type="text" name="name" placeholder="name" required />
-                </li>
-                <li className="half">
-                  <input type="text" name="email" placeholder="mail" required />
-                </li>
-                <li className="half">
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder="subject"
-                    required
-                  />
-                </li>
-                <li>
-                  <textarea placeholder="message" name="message"></textarea>
-                </li>
-                <li>
-                  <input type="submit" className="flat-button" />
-                </li>
-              </ul>
+              <input className="feedback-body__email" type="email" placeholder="Email" />
+              <input className="feedback-body__email" type="text" placeholder="Subject" />
+              <textarea className="feedback-body__message" placeholder="Message" type="text"></textarea>
+              <button className="feedback-body__submit">SEND</button>
             </form>
           </div>
         </div>
       </div>
-    </>
-  )
+</>
+)
 }
 
 export default Contact

@@ -32,24 +32,23 @@ html.lenis body {
       letter-spacing:0;
       color:$primary-color;
     }
-  width: 100vw;
-  height: 100vh;
+gap: 30%;
   padding: 5% 25%;
-  display: inline-flex;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   overflow-x:auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: y mandatory;
   justify-content: flex-start;
-  gap:30%;
 
   .card-container {
     scroll-snap-align: center;
     border: solid aliceblue 5px;
-    border-radius: 5%;
     transform-origin: center;
-    height: 95vh;
-    min-width: 80vw;
+    height: 60vh;
+    min-width: 50vw;
     overflow: hidden;
+    margin-bottom: 50%;
+
   .card-content{
     display: flex;
     justify-content: space-around;
@@ -111,6 +110,9 @@ html.lenis body {
         }
       }
     }
+  }
+  .card-container:last-child {
+    margin-bottom: 0; // Enlève l'espace après la dernière carte
   }
 }
 
