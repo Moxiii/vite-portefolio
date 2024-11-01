@@ -101,6 +101,7 @@ textarea {
       height: 100vh;
       text-align: center;
       overflow: hidden;
+      padding-bottom: 10%;
       h1 {
         width: 100%;
         font-size: 75px;
@@ -115,7 +116,7 @@ textarea {
     .text-zone{
       margin:auto;
       width: 100vw;
-      padding: 0 10px;
+      padding: 10% 10px;
       left:0;
       height: 100vh;
     }
@@ -129,8 +130,6 @@ textarea {
       }
     }
 
-#cv>.container , .cv > .text-zone{
-  justify-content: space-between;
-}
+
   }
 }

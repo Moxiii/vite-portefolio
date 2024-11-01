@@ -33,7 +33,6 @@ const Layout = () => {
         </div>
       ) : (
         <div className="page">
-          {/* Directement le rendu mobile */}
           {loading ? (
             <Loader type="pacman" />
           ) : (

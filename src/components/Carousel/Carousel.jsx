@@ -46,7 +46,7 @@
     };
     const [selectedProject, setSelectedProject] = useState(null);
     const handleReadMore = (projet)=>{
-      selectedProject(projet);
+      setSelectedProject(projet);
     }
     const closeModal = () => {
       setSelectedProject(null);
@@ -77,7 +77,7 @@
           })}
         </div>
         ):(
-          <div className="projects">
+          <div className="projects" id='projects'>
       {projets.map((projet) => {
         return (
         <div key={projet.id} className="card-container">
