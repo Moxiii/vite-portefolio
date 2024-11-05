@@ -18,7 +18,6 @@ const About = () => {
   useEffect(() => {
     if(!lenis)return;
     lenis.on('scroll' , (e)=>{
-      console.log(e.scroll , window.scrollY  )
     })
   }, [lenis])
   return (

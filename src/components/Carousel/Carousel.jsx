@@ -6,6 +6,7 @@
   import { useStore } from '../../Hook/Scrolll/Store.js'
 
   export default function Carousel() {
+    const [flippedCards, setFlippedCards] = useState({});
     const [projets, setProjets] = useState([]);
     const navigate = useNavigate();
     const { setLoading } = useOutletContext() || {};
@@ -18,6 +19,10 @@
     }
     const closeModal = () => {
       setSelectedProject(null);
+    }
+
+    const handleFlipCard = (id) => {
+      setFlippedCards(prev =>({...prev , [id]: !prev[id]}))
     }
     const isDesktop = useMediaQuery({minWidth:769})
     const projectRefs = useRef([]);
@@ -127,35 +132,53 @@
           })}
         </div>
         ):(
-          <VisibilityProvider>
+        <VisibilityProvider>
           <div className="projects" id='projects'>
-      {projets.map((projet , index) => {
-        return (
-        <div
-          key={projet.id}
-          className={`card-container ${visibleProjects.includes(projet.id) ? 'active' : ''}`}
-          data-id = {projet.id}
-          ref={(el) => (projectRefs.current[index] = el || null )}
-        >
-      <div className="card">
-        <figure>
-          <img src={projet.mockup} alt={projet.title}  />
-        </figure>
-        <div className="card-content">
-        <h2>{projet.title}</h2>
-        <p>{projet.description}</p>
-        <a onClick={() => handleReadMore(projet)} className="read-more">
-          Read more
-        </a>
-        </div>
-      </div>
-      </div>
-    );
-  })}
-  </div>
-          </VisibilityProvider>
+            {projets.map((projet, index) => (
+              <div
+                key={projet.id}
+                className={`card-container ${visibleProjects.includes(projet.id) ? 'active' : ''}`}
+                data-id={projet.id}
+                ref={(el) => (projectRefs.current[index] = el || null)}
+                onClick={() => handleFlipCard(projet.id)} // On flip la carte
+              >
+                <div className={`card ${flippedCards[projet.id] ? 'is-switched' : ''}`}>
+                  <div className="card__wrapper">
+                    <div className={`card__side is-active`}>
+                      <figure>
+                        <img src={projet.mockup} alt={projet.title} />
+                      </figure>
+                      <div className="card-content">
+                        <h2>{projet.title}</h2>
+                        <p>{projet.description}</p>
+                        <a className="read-more">
+                          Read more
+                        </a>
+                      </div>
+                    </div>
+                    <div className={`card__side card__side--back`}>
+                      <div className="card-content">
+                        <h2>{projet.title}</h2>
+                        <p>{projet.presentation}</p>
+                        {projet&&projet.links.map((link, index) => (
+                          <div key={index}>
+
+                            <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
+                              {link.name}
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </VisibilityProvider>
+      )}
       )
-      }
+
       </>
         );
   }
