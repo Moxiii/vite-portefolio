@@ -10,8 +10,8 @@ const iconMap={
   Java:faJava,
   Python:faPython,
   Javascript:faJs,
-  sass:faSass,
-  angular:faAngular,
+  Sass:faSass,
+  Angular:faAngular,
 }
 const Projets = () => {
   const PARAGRAPH_LIMIT = 2;

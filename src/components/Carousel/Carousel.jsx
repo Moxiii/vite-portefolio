@@ -1,46 +1,14 @@
-  import { useEffect, useState } from 'react';
+  import { useEffect, useRef, useState } from 'react'
   import { useNavigate,useOutletContext } from 'react-router-dom';
   import './Carousel.scss'
   import { useMediaQuery } from 'react-responsive'
-  export default function Carousel({ lenisRef }) {
+  import { useVisibility, VisibilityProvider } from '../../Hook/VisibilityProvider/Visibilityprovider.jsx'
+  import { useStore } from '../../Hook/Scrolll/Store.js'
+
+  export default function Carousel() {
     const [projets, setProjets] = useState([]);
     const navigate = useNavigate();
     const { setLoading } = useOutletContext() || {};
-
-    useEffect(() => {
-      const fetchProjets = async () => {
-        try {
-          let response = await fetch('http://localhost:3000/api/projects').catch(() => null);
-          if (response && response.ok) {
-            // Si l'API est disponible et répond correctement
-            let data = await response.json();
-            setProjets(data);
-          } else {
-            // Si l'API est indisponible, basculer vers les données locales
-            console.warn("API non disponible, chargement des données locales...");
-
-            response = await fetch('/Json/projects.json');
-            if (response.ok) {
-              let data = await response.json();
-              const filteredData = data.map(projet => ({
-                ...projet,
-                img: projet.img.filter(image => image.isMock === true)
-              }));
-              setProjets(filteredData);
-            } else {
-              throw new Error("Erreur lors du chargement des données locales");
-            }
-          }
-        } catch (error) {
-          console.error("Erreur lors du chargement des projets:", error);
-        } finally {
-          setLoading(false); // Désactiver le chargement en toutes circonstances
-        }
-      };
-
-      fetchProjets();
-    }, []);
-
     const handleClick = (id) => {
       navigate(`/projet/${id}`);
     };
@@ -51,18 +19,100 @@
     const closeModal = () => {
       setSelectedProject(null);
     }
-  const isDesktop = useMediaQuery({minWidth:769})
+    const isDesktop = useMediaQuery({minWidth:769})
+    const projectRefs = useRef([]);
+    const { visibleProjects , setVisibleProjects } = useVisibility() ;
+    const lenis = useStore(state => state.lenis)
+
+    useEffect(() => {
+      const fetchProjets = async () => {
+        try {
+          let response = await fetch('http://localhost:3000/api/projects').catch(() => null);
+          if (response && response.ok) {
+            let data = await response.json();
+            const filteredData = data.map(projet => ({
+              ...projet,
+              img: projet.img.filter(image => image.isMock === true),
+              mockup: projet.img.length > 0 ? projet.img[0].src : '../../Project/nomockup.png'
+            }));
+            setProjets(filteredData);
+          } else {
+            // Si l'API est indisponible, basculer vers les données locales
+            console.warn("API non disponible, chargement des données locales...");
+
+            response = await fetch('/Json/projects.json');
+            if (response.ok) {
+              let data = await response.json();
+              const filteredData = data.map(projet => {
+                const isMockup = projet.img.filter(image => image.isMock === true);
+                return {
+                  ...projet,
+                  isMockup,
+                  mockup: isMockup.length > 0 ? isMockup[0].src : '/Project/nomockup.png',
+                };
+              });
+              setProjets(filteredData);
+              console.log(filteredData); // Affiche l'ensemble des projets filtrés
+            } else {
+              throw new Error("Erreur lors du chargement des données locales");
+            }
+          }
+        } catch (error) {
+          console.error("Erreur lors du chargement des projets:", error);
+        } finally {
+          setLoading(false); // Désactiver le chargement en toutes circonstances
+        }
+      };
+      fetchProjets();
+    }, []);
+
+    useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const projectId = entry.target.getAttribute('data-id');
+          if (entry.isIntersecting) {
+            setVisibleProjects((prev) =>
+              !prev.includes(projectId) ? [...prev, projectId] : prev
+            );
+          } else {
+            setVisibleProjects((prev) => prev.filter((id) => id !== projectId));
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    projectRefs.current.forEach((project) => {
+      if (project) observer.observe(project);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [setVisibleProjects]);
+
+    useEffect(()=>{
+      if(!lenis) return;
+      lenis.on('scroll' , ()=>{
+        const currentIndex = Math.floor(lenis.scrollY / window.innerHeight);
+        const projectId = projets[currentIndex]?.id;
+        setVisibleProjects([projectId]);
+        return ()=>{
+          lenis.off('scroll');
+        }
+      })
+},[lenis,projets,setVisibleProjects]);
     return (
       <>
       {isDesktop ? (
         <div className="carousel">
           {projets.map((projet) => {
-            const mockup = projet.img[0]?.src || '';
             return (
               <div
                 key={projet.id}
                 className="carousel-item"
-                style={{ backgroundImage: `url(${mockup})` }}
+                style={{ backgroundImage: `url(${projet.mockup})` }}
                 onClick={() => handleClick(projet.id)}
                 role="button"
                 tabIndex={0}
@@ -77,13 +127,19 @@
           })}
         </div>
         ):(
+          <VisibilityProvider>
           <div className="projects" id='projects'>
-      {projets.map((projet) => {
+      {projets.map((projet , index) => {
         return (
-        <div key={projet.id} className="card-container">
+        <div
+          key={projet.id}
+          className={`card-container ${visibleProjects.includes(projet.id) ? 'active' : ''}`}
+          data-id = {projet.id}
+          ref={(el) => (projectRefs.current[index] = el || null )}
+        >
       <div className="card">
         <figure>
-          <img src={projet.img[0]?.src || ''} alt=""  />
+          <img src={projet.mockup} alt={projet.title}  />
         </figure>
         <div className="card-content">
         <h2>{projet.title}</h2>
@@ -97,6 +153,7 @@
     );
   })}
   </div>
+          </VisibilityProvider>
       )
       }
       </>

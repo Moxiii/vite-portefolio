@@ -28,7 +28,6 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/nomockup.png" },
       { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
     ]
@@ -44,7 +43,7 @@
     "technologies": [
       { "name": "Python", "icon": "faPython" },
       { "name": "Java", "icon": "faJava" },
-      { "name": "React", "icon": "faReact" }
+      { "name": "Angular", "icon": "faAngular" }
     ],
     "fini": false,
     "deploy": false,
@@ -68,7 +67,6 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/nomockup.png" },
       { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Hera/hera2.jpg", "title": "Image 2" }
     ]

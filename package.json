@@ -20,7 +20,8 @@
     "react-ga": "^3.3.1",
     "react-pdf": "^9.1.1",
     "react-responsive": "^10.0.0",
-    "react-typed": "^2.0.12"
+    "react-typed": "^2.0.12",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@emailjs/browser": "^3.11.0",

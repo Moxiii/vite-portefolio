@@ -9,9 +9,18 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import './About.scss'
 import { useMediaQuery } from 'react-responsive'
+import { useStore } from '../../Hook/Scrolll/Store.js'
+import { useEffect } from 'react'
 
 const About = () => {
+  const lenis = useStore(state => state.lenis)
   const isDesktop = useMediaQuery({minWidth:769})
+  useEffect(() => {
+    if(!lenis)return;
+    lenis.on('scroll' , (e)=>{
+      console.log(e.scroll , window.scrollY  )
+    })
+  }, [lenis])
   return (
     <>
       <div className="container about-page">
@@ -28,6 +37,12 @@ const About = () => {
             temporibus, dicta, deleniti debitis repellat provident incidunt quae
             explicabo aspernatur totam non labore veniam quasi at eveniet. Totam
             quidem aut mollitia?
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia,
+            aspernatur cupiditate at quidem molestias voluptas debitis nobis
+            vero nemo sit dolores expedita voluptatem, obcaecati asperiores
+            architecto eos maxime sed reprehenderit.
           </p>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia,

@@ -22,10 +22,7 @@ export default function MobileView(){
     }
     const handleScroll = () => {
       const scrollPos = lenis.scroll; // Obtenez la position de défilement
-      console.log('Scroll position:', scrollPos);
-      if (scrollPos > 100) {
-        console.log('Vous avez défilé plus de 100 pixels');
-      }
+
     };
 
     lenis.on('scroll', handleScroll); // Ajoutez l'écouteur d'événement
