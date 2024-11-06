@@ -73,7 +73,10 @@ html.lenis body {
 
         &--back {
           transform: rotateY(180deg);
-          background-color: $background-color; // Arrière-plan du dos de la carte
+          background-color: $background-color;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
       }
 
@@ -82,7 +85,6 @@ html.lenis body {
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
-        height: 50%;
         width: 100%;
 
         h2 {

@@ -18,7 +18,7 @@ const Home = () => {
         var time="Bonjour"
       } else if (curHr>18 && curHr <24){
         var time = "Bonsoir"
-      } else{
+      } else if (curHr > 24) {
         var time = "Bonne nuit"
       }
       const strings = [`${time}!` , "Bienvenue"]

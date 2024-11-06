@@ -57,7 +57,6 @@
                 };
               });
               setProjets(filteredData);
-              console.log(filteredData); // Affiche l'ensemble des projets filtrés
             } else {
               throw new Error("Erreur lors du chargement des données locales");
             }
@@ -140,7 +139,7 @@
                 className={`card-container ${visibleProjects.includes(projet.id) ? 'active' : ''}`}
                 data-id={projet.id}
                 ref={(el) => (projectRefs.current[index] = el || null)}
-                onClick={() => handleFlipCard(projet.id)} // On flip la carte
+
               >
                 <div className={`card ${flippedCards[projet.id] ? 'is-switched' : ''}`}>
                   <div className="card__wrapper">
@@ -151,7 +150,8 @@
                       <div className="card-content">
                         <h2>{projet.title}</h2>
                         <p>{projet.description}</p>
-                        <a className="read-more">
+                        <a className="read-more"
+                           onClick={() => handleFlipCard(projet.id)} >
                           Read more
                         </a>
                       </div>
@@ -177,7 +177,7 @@
           </div>
         </VisibilityProvider>
       )}
-      )
+
 
       </>
         );
