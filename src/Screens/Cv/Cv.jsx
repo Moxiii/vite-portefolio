@@ -77,7 +77,7 @@ const Cv = () => {
   return (
     <div className="container cv">
       <div className="text-zone">
-        <h1>Mon CV trop bien</h1>
+        <h1>Mon CV </h1>
         <div className="cv-embed">
           <canvas ref={canvasRef} />
         </div>

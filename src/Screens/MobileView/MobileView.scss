@@ -1,34 +1,19 @@
 @import '../../const.scss';
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
+#home{
+  .container{
+    height: auto;
+  }
 }
 
 .projects {
-  gap: 50%;
+height: 80vh;
   padding: 5%;
-  display: flex;
-  flex-direction: column;
+
+
   overflow-x: auto;
   scroll-snap-type: y mandatory;
-  justify-content: flex-start;
+
 
   .card-container {
     scroll-snap-align: center;
