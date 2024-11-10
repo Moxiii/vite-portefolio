@@ -9,7 +9,7 @@
     ],
     "technologies": [
       { "name": "Java", "icon": "faJava" },
-      { "name": "React", "icon": "faReact" }
+      { "name": "React Native", "icon": "faReact" }
     ],
     "fini": false,
     "deploy": false,
@@ -28,6 +28,7 @@
       }
     ],
     "img": [
+      { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png"},
       { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
     ]

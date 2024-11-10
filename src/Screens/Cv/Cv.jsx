@@ -40,7 +40,6 @@ const Cv = () => {
       // Calcul du scale pour adapter le PDF au canvas
       const viewport = page.getViewport({ scale: 1 });
       const scale = Math.min(canvasWidth / viewport.width, canvasHeight / viewport.height);
-      console.log('scale:', scale);
 
       // Nouveau viewport avec le scale calculé
       const scaledViewport = page.getViewport({ scale });

@@ -74,9 +74,7 @@ html.lenis body {
         &--back {
           transform: rotateY(180deg);
           background-color: $background-color;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+      padding: 5%;
         }
       }
 

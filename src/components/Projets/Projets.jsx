@@ -7,6 +7,7 @@ import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 const iconMap={
   React:faReact,
+  "React Native":faReact,
   Java:faJava,
   Python:faPython,
   Javascript:faJs,
