@@ -6,6 +6,9 @@
   import { useStore } from '../../Hook/Scrolll/Store.js'
 
   export default function Carousel() {
+    const PARAGRAPH_LIMIT = 2;
+    const MAX_PARAGRAPH_LENGTH = 300;
+
     const [flippedCards, setFlippedCards] = useState({});
     const [projets, setProjets] = useState([]);
     const navigate = useNavigate();
@@ -107,6 +110,8 @@
         }
       })
 },[lenis,projets,setVisibleProjects]);
+
+
     return (
       <>
       {isDesktop ? (
@@ -159,7 +164,21 @@
                     <div className={`card__side card__side--back`}>
                       <div className="card-content">
                         <h2>{projet.title}</h2>
-                        <p>{projet.presentation}</p>
+
+                        {Array.isArray(projet.presentation) ? (
+                          projet.presentation
+                            .filter((item) => {
+                              // Filtrer les éléments qui sont des chaînes et ne contiennent pas de titre
+                              return typeof item === 'string' && item.length <= MAX_PARAGRAPH_LENGTH;
+                            })
+                            .slice(0, PARAGRAPH_LIMIT) // Limiter le nombre de paragraphes à afficher
+                            .map((para, index) => (
+                              <p key={index}>{para}</p>
+                            ))
+                        ) : (
+                          <p>La présentation n'est pas sous forme de tableau.</p>
+                        )}
+
                         {projet&&projet.links.map((link, index) => (
                           <div key={index}>
 
