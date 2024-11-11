@@ -64,11 +64,27 @@ height: 80vh;
       }
 
       .card-content {
+        >.card_links{
+          display: flex;
+          flex-wrap: wrap;
+          >a{
+            border-radius: 5%;
+            border:solid 2px $grey-error;
+            margin:5%;
+            padding: 5px;
+            text-decoration: none;
+            color: $accentuation-color;
+            &:hover{
+              border: solid 2px $primary-color;
+            }
+          }
+        }
         display: flex;
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
         width: 100%;
+        height: 100%;
 
         h2 {
           font-size: 35px;

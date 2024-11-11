@@ -176,17 +176,21 @@
                               <p key={index}>{para}</p>
                             ))
                         ) : (
-                          <p>La présentation n'est pas sous forme de tableau.</p>
+                          projet.presentation
+                            .split('\n')
+                            .filter((para) => para.length <= MAX_PARAGRAPH_LENGTH)
+                            .filter((para) => !para.startsWith('<h'))
+                            .slice(0, PARAGRAPH_LIMIT)
+                            .map((para, index) => (
+                              <p key={index}>{para}</p>
+                            ))
                         )}
-
-                        {projet&&projet.links.map((link, index) => (
-                          <div key={index}>
-
+                        <div className="card_links">
+                        {projet&&projet.links.map((link) => (
                             <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
                               {link.name}
                             </a>
-                          </div>
-                        ))}
+                        ))}</div>
                       </div>
                     </div>
                   </div>
