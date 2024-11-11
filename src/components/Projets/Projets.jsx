@@ -78,7 +78,6 @@ const Projets = () => {
     fetchProjet();
   }, [id, setLoading]);
 
-
   useEffect(() => {
     if (projet && typedElement.current) {
       const techNames = projet.technologies.map((tech) => tech.name);
@@ -100,6 +99,42 @@ const Projets = () => {
       };
     }
   }, [projet]);
+  const visibleItemRef = useRef(null);
+  const [carouselHeight, setCarouselHeight] = useState(500);
+
+  // Fonction pour mettre à jour la hauteur du carousel
+  const updateCarouselHeight = () => {
+    if (visibleItemRef.current) {
+      const visibleItemHeight = visibleItemRef.current.getBoundingClientRect().height;
+      setCarouselHeight(prevHeight => {
+        if (prevHeight !== visibleItemHeight) {
+          return visibleItemHeight;
+        }
+        return prevHeight;
+      });
+    }
+  };
+
+  useEffect(() => {
+    updateCarouselHeight();
+    const handleResize = () => {
+      updateCarouselHeight();
+    };
+    const observer = new ResizeObserver(()=>{
+      updateCarouselHeight();
+    });
+    if (visibleItemRef.current){observer.observe(visibleItemRef.current)}
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      if(visibleItemRef.current){observer.unobserve(visibleItemRef.current)}
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+
   const handleImageClick = (index) => {
     setCurrentImageIndex((index +1)% (projet.img.length || 1));
   };
@@ -111,6 +146,24 @@ const Projets = () => {
     .slice(initialParagraphs.length)
     .concat(projet.presentation.filter((para) => para.length > MAX_PARAGRAPH_LENGTH)) || [];
 
+const renderParagraphAndTitles = (presentation)=>{
+  let sections = [];
+  let currentSection = [];
+  presentation.forEach((element,index)=> {
+    if(typeof element === 'object' && element.titre){
+      if (currentSection.length > 0){
+        sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
+      }
+      currentSection = [<h2 key={index}>{element.titre}</h2>]
+    } else {
+      currentSection.push(<p key={index}>{element}</p>);
+    }
+  });
+    if(currentSection.length > 0){
+      sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
+    }
+    return sections;
+  };
   return (
     <>
       <div className="container projet">
@@ -144,11 +197,9 @@ const Projets = () => {
               </div>
             </div>
           )}
-          {initialParagraphs.map((para, index) => (
-            <p key={index}>{para}</p>
-          ))}
+          {renderParagraphAndTitles(initialParagraphs)}
         </div>
-        <div className="carouselProjet">
+        <div className="carouselProjet" style={{ height : carouselHeight  , marginBottom : '3%' }}>
           <div className="carousel__wrapper">
             {projet && projet.img.map((image, index) => {
               const isVisible = index === currentImageIndex;
@@ -158,6 +209,7 @@ const Projets = () => {
                 <div
                   className={`item ${isVisible ? 'visible' : ''} ${isNext ? 'next' : ''} ${isPrev ? 'prev' : ''}`}
                   key={index}
+                  ref = {isVisible? visibleItemRef : null}
                   onClick={() => handleImageClick(index)}
                 >
                   <img src={image.src} alt={image.title} />
@@ -165,14 +217,6 @@ const Projets = () => {
 
             })}
           </div>
-          {projet && projet.img.length > 0 && (
-            <div className="carousel-footer">
-              <div className="carousel-title-card">
-                <h4>{projet.img[currentImageIndex].title}</h4>
-              </div>
-
-            </div>
-          )}
         </div>
         <div className="links">
           <p>Liens utiles :</p>
@@ -187,9 +231,7 @@ const Projets = () => {
         </div>
         {remainingParagraphs.length > 0 && (
           <div className="remaining-presentation">
-            {remainingParagraphs.map((para, index) => (
-              <p key={index}>{para}</p>
-            ))}
+            {renderParagraphAndTitles(remainingParagraphs)}
           </div>
           )}
       </div>

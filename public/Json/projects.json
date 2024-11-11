@@ -4,8 +4,17 @@
     "title": "Georges",
     "description": "Le jarvis fr",
     "presentation": [
-      "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités.",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, asperiores culpa dignissimos."
+      "Georges est une application de gestion boosté avec de l'ia ",
+      "Le but premier de george est d'offrir une gestion amélioré des projets de groupes",
+      {
+        "titre" : "Comment cela fonctionne ? "
+      },
+      "Il sera possible de mettre des taches dans un calendrier mêlant vie pro et perso",
+      "Chaque tâche sera supervisé par l'IA en therme de temps et de difficulté",
+      {
+        "titre":"Pourquoi et pour qui ?"
+      },
+      "Pour toute personne individuelle et/ou entreprise"
     ],
     "technologies": [
       { "name": "Java", "icon": "faJava" },
