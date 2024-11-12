@@ -5,6 +5,8 @@ import './Projets.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { useStore } from '../../Hook/Scrolll/Store.js'
+import { motion } from 'framer-motion'
 const iconMap={
   React:faReact,
   "React Native":faReact,
@@ -14,6 +16,14 @@ const iconMap={
   Sass:faSass,
   Angular:faAngular,
 }
+const textVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' }
+  }
+};
 const Projets = () => {
   const PARAGRAPH_LIMIT = 2;
   const MAX_PARAGRAPH_LENGTH = 300;
@@ -24,6 +34,7 @@ const Projets = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {setLoading} = useOutletContext();
   const [currentIcon, setCurrentIcon] = useState(null);
+  const lenis = useStore(state => state.lenis)
   useEffect(() => {
     const fetchProjet = async () => {
       try {
@@ -164,6 +175,16 @@ const renderParagraphAndTitles = (presentation)=>{
     }
     return sections;
   };
+
+  useEffect(() => {
+    if(!lenis)return;
+    lenis.on('scroll', ({ scroll })=>{
+      // link lenis w/ framer motion for make scroll animation on project
+    })
+    return ()=>{
+      lenis.off('scroll')
+    }
+  }, [lenis])
   return (
     <>
       <div className="container projet">

@@ -2,7 +2,7 @@
   import { useNavigate,useOutletContext } from 'react-router-dom';
   import './Carousel.scss'
   import { useMediaQuery } from 'react-responsive'
-  import { useVisibility, VisibilityProvider } from '../../Hook/VisibilityProvider/Visibilityprovider.jsx'
+  import { useVisibility,VisibilityProvider } from '../../Hook/VisibilityProvider/Visibilityprovider.jsx'
   import { useStore } from '../../Hook/Scrolll/Store.js'
 
   export default function Carousel() {

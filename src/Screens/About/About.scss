@@ -7,7 +7,20 @@
     height: 100%;
     position: relative;
     left: 10%;
-
+    h1{
+      margin-top: 5%;
+    }
+    .scrollable-content{
+      max-height: 30%;
+      //overflow-y: auto;
+      padding-right: 1rem;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      p{
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+    }
   }
 
 }
