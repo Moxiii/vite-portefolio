@@ -31,6 +31,22 @@ This is for work on React + discover CI/CD on FTP server
 - - Nginx to serve my page to docker  
 - - Multi-containers Docker App with Front cont , Back cont and DB cont (need think about DB data persistence)
 - ### A bit of React with vite
+-  - First time with graphical lib
+- - Learn about Hooks / components / screen / store etc 
+- - Error boundary class for raise error on page instead of log (will be a custom 404)
+- - Learn about scss & media query for reponsive 
+- - Cry on responsive 
+- - Cry even more on this s***
+- - Learn css animation + Loading logic + make simple but efficient WebSite
+- - Unloading some parts for mobilViews 
+- - next is : 
+- - =>  FrameMotion on scroll 
+- - =>  allow scroll on About Section but stick the CUBE on Desk view
+- - =>  Make project appear / disapear on scroll on mobilViews 
+- - =>  FIX THE POSITION OF ALL BLOCK && LOADER ON MOBIL
+- - =>  Finally Complete the landing page for mobil && fix PDF view 
+- - => :before : Complete to coherent text and make THE linkedin post 
+- - => :after UX maybe work on color or some lil points for prod 
 - ### SQL
 - - Retrieve Project By Id and sort data for optimise SQL request 
 - - Retrieve Projet on Home Page and send back Mockup / Description / Title 

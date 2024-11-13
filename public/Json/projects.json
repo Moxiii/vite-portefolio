@@ -4,12 +4,21 @@
     "title": "Georges",
     "description": "Le jarvis fr",
     "presentation": [
-      "Voici une présentation détaillée du projet George, expliquant ses fonctionnalités.",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, asperiores culpa dignissimos."
+      "Georges est une application de gestion boosté avec de l'ia ",
+      "Le but premier de george est d'offrir une gestion amélioré des projets de groupes",
+      {
+        "titre" : "Comment cela fonctionne ? "
+      },
+      "Il sera possible de mettre des taches dans un calendrier mêlant vie pro et perso",
+      "Chaque tâche sera supervisé par l'IA en therme de temps et de difficulté",
+      {
+        "titre":"Pourquoi et pour qui ?"
+      },
+      "Pour toute personne individuelle et/ou entreprise"
     ],
     "technologies": [
       { "name": "Java", "icon": "faJava" },
-      { "name": "React", "icon": "faReact" }
+      { "name": "React Native", "icon": "faReact" }
     ],
     "fini": false,
     "deploy": false,
@@ -28,7 +37,7 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/nomockup.png" },
+      { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png"},
       { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
     ]
@@ -44,7 +53,7 @@
     "technologies": [
       { "name": "Python", "icon": "faPython" },
       { "name": "Java", "icon": "faJava" },
-      { "name": "React", "icon": "faReact" }
+      { "name": "Angular", "icon": "faAngular" }
     ],
     "fini": false,
     "deploy": false,
@@ -68,7 +77,6 @@
       }
     ],
     "img": [
-      { "isMock": true, "src": "/Project/nomockup.png" },
       { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
       { "isMock": false, "src": "/Project/Hera/hera2.jpg", "title": "Image 2" }
     ]

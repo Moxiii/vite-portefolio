@@ -1,8 +1,12 @@
 @import "../../const.scss";
 .projet {
+  overflow: auto;
+  flex-wrap: wrap;
+  & > *:not(:last-child) {
+    margin-bottom: 3%;
+  }
   .text-zone {
     span{color:$accentuation-color}
-  margin-bottom: 5%;
   .typed{
     p{font-size: 15px;}
     span{color:$accentuation-color;}
@@ -17,7 +21,6 @@
       align-items: center;
     }
 }
-  overflow-y: scroll;
   width: 100%;
   height: auto;
   padding: 5% 10px;
@@ -42,10 +45,21 @@ justify-content: space-between;
   }
 }
 
-
+.section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 10px;
+  >h2{
+    color: $primary-color;
+    padding : 10px 0;
+    font-size: 35px;
+  }
+}
 
 .carouselProjet {
-  padding: 10px;
+  flex-wrap: wrap;
   border-bottom: 2px solid #ddd;
   position: relative;
   width: 100%;
@@ -57,7 +71,7 @@ justify-content: space-between;
 
 .carousel__wrapper {
   margin-bottom: 10%;
-  margin-top: 10%;
+  margin-top: 5%;
   width: 80%;
   display: flex;
   justify-content: center;
@@ -112,21 +126,7 @@ justify-content: space-between;
 
 }
 
-.carousel-footer {
-  margin-top: 5%;
-  text-align: center;
 
-  .carousel-title-card {
-    background-color: #fff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    border-radius: 10px;
-  }
-
-  h4 {
-    color: #403d40;
-  }
-}
 .links {
   display: flex;
   justify-content: center;
@@ -141,7 +141,6 @@ p{
   border-width: .125em 0;
   box-shadow: -.375em 0 0 -.125em,
   .375em 0 0 -.125em;
-  margin: 5% .5em;
   padding: .5em 10%;
   position: relative;
   z-index: 1;

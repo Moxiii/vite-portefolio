@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name : Build and push API
         run : | 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:api -f api/Dockerfile ./api
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/portefolio:api -f api/JS/Dockerfile ./api
           docker push ${{ secrets.DOCKER_USERNAME }}/portefolio:api
 
       - name: Build and push Front
@@ -75,3 +75,4 @@ jobs:
           local-dir: dist/
           server-dir: www/
           dangerous-clean-slate: true
+

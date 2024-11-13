@@ -5,14 +5,25 @@ import './Projets.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { useStore } from '../../Hook/Scrolll/Store.js'
+import { motion } from 'framer-motion'
 const iconMap={
   React:faReact,
+  "React Native":faReact,
   Java:faJava,
   Python:faPython,
   Javascript:faJs,
-  sass:faSass,
-  angular:faAngular,
+  Sass:faSass,
+  Angular:faAngular,
 }
+const textVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' }
+  }
+};
 const Projets = () => {
   const PARAGRAPH_LIMIT = 2;
   const MAX_PARAGRAPH_LENGTH = 300;
@@ -23,6 +34,7 @@ const Projets = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {setLoading} = useOutletContext();
   const [currentIcon, setCurrentIcon] = useState(null);
+  const lenis = useStore(state => state.lenis)
   useEffect(() => {
     const fetchProjet = async () => {
       try {
@@ -77,16 +89,15 @@ const Projets = () => {
     fetchProjet();
   }, [id, setLoading]);
 
-
   useEffect(() => {
     if (projet && typedElement.current) {
       const techNames = projet.technologies.map((tech) => tech.name);
       const options = {
         strings: techNames,
-        typeSpeed: 100,
+        typeSpeed: 75,
         backSpeed: 100,
         loop: true,
-        backDelay: 900,
+        backDelay: 200,
         preStringTyped: (index) => {
           const tech = projet.technologies[index % techNames.length];
           setCurrentIcon(iconMap[tech.name]);
@@ -99,6 +110,42 @@ const Projets = () => {
       };
     }
   }, [projet]);
+  const visibleItemRef = useRef(null);
+  const [carouselHeight, setCarouselHeight] = useState(500);
+
+  // Fonction pour mettre à jour la hauteur du carousel
+  const updateCarouselHeight = () => {
+    if (visibleItemRef.current) {
+      const visibleItemHeight = visibleItemRef.current.getBoundingClientRect().height;
+      setCarouselHeight(prevHeight => {
+        if (prevHeight !== visibleItemHeight) {
+          return visibleItemHeight;
+        }
+        return prevHeight;
+      });
+    }
+  };
+
+  useEffect(() => {
+    updateCarouselHeight();
+    const handleResize = () => {
+      updateCarouselHeight();
+    };
+    const observer = new ResizeObserver(()=>{
+      updateCarouselHeight();
+    });
+    if (visibleItemRef.current){observer.observe(visibleItemRef.current)}
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      if(visibleItemRef.current){observer.unobserve(visibleItemRef.current)}
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+
   const handleImageClick = (index) => {
     setCurrentImageIndex((index +1)% (projet.img.length || 1));
   };
@@ -110,6 +157,34 @@ const Projets = () => {
     .slice(initialParagraphs.length)
     .concat(projet.presentation.filter((para) => para.length > MAX_PARAGRAPH_LENGTH)) || [];
 
+const renderParagraphAndTitles = (presentation)=>{
+  let sections = [];
+  let currentSection = [];
+  presentation.forEach((element,index)=> {
+    if(typeof element === 'object' && element.titre){
+      if (currentSection.length > 0){
+        sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
+      }
+      currentSection = [<h2 key={index}>{element.titre}</h2>]
+    } else {
+      currentSection.push(<p key={index}>{element}</p>);
+    }
+  });
+    if(currentSection.length > 0){
+      sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
+    }
+    return sections;
+  };
+
+  useEffect(() => {
+    if(!lenis)return;
+    lenis.on('scroll', ({ scroll })=>{
+      // link lenis w/ framer motion for make scroll animation on project
+    })
+    return ()=>{
+      lenis.off('scroll')
+    }
+  }, [lenis])
   return (
     <>
       <div className="container projet">
@@ -143,11 +218,9 @@ const Projets = () => {
               </div>
             </div>
           )}
-          {initialParagraphs.map((para, index) => (
-            <p key={index}>{para}</p>
-          ))}
+          {renderParagraphAndTitles(initialParagraphs)}
         </div>
-        <div className="carouselProjet">
+        <div className="carouselProjet" style={{ height : carouselHeight  , marginBottom : '3%' }}>
           <div className="carousel__wrapper">
             {projet && projet.img.map((image, index) => {
               const isVisible = index === currentImageIndex;
@@ -157,6 +230,7 @@ const Projets = () => {
                 <div
                   className={`item ${isVisible ? 'visible' : ''} ${isNext ? 'next' : ''} ${isPrev ? 'prev' : ''}`}
                   key={index}
+                  ref = {isVisible? visibleItemRef : null}
                   onClick={() => handleImageClick(index)}
                 >
                   <img src={image.src} alt={image.title} />
@@ -164,14 +238,6 @@ const Projets = () => {
 
             })}
           </div>
-          {projet && projet.img.length > 0 && (
-            <div className="carousel-footer">
-              <div className="carousel-title-card">
-                <h4>{projet.img[currentImageIndex].title}</h4>
-              </div>
-
-            </div>
-          )}
         </div>
         <div className="links">
           <p>Liens utiles :</p>
@@ -186,9 +252,7 @@ const Projets = () => {
         </div>
         {remainingParagraphs.length > 0 && (
           <div className="remaining-presentation">
-            {remainingParagraphs.map((para, index) => (
-              <p key={index}>{para}</p>
-            ))}
+            {renderParagraphAndTitles(remainingParagraphs)}
           </div>
           )}
       </div>

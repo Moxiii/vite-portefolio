@@ -18,36 +18,31 @@ textarea {
 .loader-hidden {
   display: none;
 }
-
+.loader{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .loader-active {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  width: 50px;
-  height: 50px;
+
   animation: fadeOut 1s 1s;
   animation-fill-mode: forwards;
 }
-nav-bar{
-  position: absolute;
-}
-.App {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+
+#root {
   position: relative;
   background: $background-color;
 }
-.page {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  overflow: auto;
+@media (min-width: 769px) {
+  .page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+
+
+  }
 }
 .container{
   flex-grow: 1;
@@ -71,56 +66,66 @@ nav-bar{
 
   }
 }
-@media screen and (min-width: 1000px) {
-  nav{
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    transition: all 0.3s ease;
-    &.menu-open{
+@media (max-width: 768px) {
+  .page{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    overflow: auto;
+  }
+  .container , .home {
+    height: auto;
+  }
+  #home {
+    h1,h2{
+      color:$primary-color;
+      > section{
+        justify-content: flex-start;
+      }
+    }
+    .text-zone {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      padding-bottom: 10%;
+      h1 {
+        width: 100%;
+        font-size: 75px;
+        margin: 0;
+        padding: 0;
+      }
     }
-    &.menu-closed{
-      display: none;
-    }
-    a{
-      display: none;
-    }
+
+
   }
-  .container {
-
-    &.contact,
-    &.about,
-    &.home
-    &.cv{
-      .text-zone {
-        position: initial;
-        transform: none;
-        width: 50%;
-        display: block;
-        padding: 20px;
-        box-sizing: border-box;
-        transform: translateX(-40%);
+  #about , #cv , #contact {
+    overflow: auto;
+    .text-zone{
+      margin:auto;
+      width: 100vw;
+      padding: 10% 10px;
+      left:0;
+      height: 100vh;
+    }
+    #about{
+      .about-page {
+        .text-zone{
+          display: flex;
+          flex-direction: column;
+          left:0;
+        }
       }
     }
 
-    &.portfolio-page {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
 
-      h1.page-title {
-        margin-left: 20px;
-        margin-top: 20px;
-      }
-
-      .image-box {
-        height: 200px;
-        max-width: calc(50% - 10px);
-      }
-    }
   }
-
-
 }
