@@ -23,28 +23,28 @@ const About = () => {
           <h1>A propos de moi</h1>
           <div className="scrollable-content">
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              aliquam iusto, voluptas exercitationem laborum maxime corporis atque
-              consequatur perferendis cupiditate a et rem autem alias, vel quidem
-              voluptatem ex non!
+              Passionné  d&apos;informatique depuis mon plus jeune âge aujourd&apos;hui cela devient mon métier !
             </p>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              aliquam iusto, voluptas exercitationem laborum maxime corporis atque
-              consequatur perferendis cupiditate a et rem autem alias, vel quidem
-              voluptatem ex non!
+              Toujours d&apos;une curiosité sans faille je m&apos;autoforme sur
+              <ol>
+                <li>React</li>
+                <li>Docker</li>
+                <li>Git</li>
+                <li>Le creative web (Lenis , gsap , framer motion)</li>
+                <li>Java - Spring</li>
+                <li>Python</li>
+                <li>Angular</li>
+                <li>Front-End (Scss)</li>
+              </ol>
             </p>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              aliquam iusto, voluptas exercitationem laborum maxime corporis atque
-              consequatur perferendis cupiditate a et rem autem alias, vel quidem
-              voluptatem ex non!
-            </p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              aliquam iusto, voluptas exercitationem laborum maxime corporis atque
-              consequatur perferendis cupiditate a et rem autem alias, vel quidem
-              voluptatem ex non!
+              Autant passionné par la mode que :
+              <ol>
+                <li>La mode de seconde main</li>
+                <li>La mécanique</li>
+                <li>La création de clavier custom</li>
+              </ol>
             </p>
           </div>
 

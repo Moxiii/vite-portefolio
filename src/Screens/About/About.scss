@@ -11,14 +11,18 @@
       margin-top: 5%;
     }
     .scrollable-content{
-      max-height: 30%;
+      max-height: 50%;
       //overflow-y: auto;
       padding-right: 1rem;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       p{
         margin-bottom: 2rem;
-        line-height: 1.6;
+        line-height: 1.3;
+        font-size: 15px;
+      }
+      ol>li{
+        padding: 2% 2%;
       }
     }
   }

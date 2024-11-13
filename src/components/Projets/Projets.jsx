@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { useStore } from '../../Hook/Scrolll/Store.js'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 const iconMap={
   React:faReact,
   "React Native":faReact,
@@ -157,24 +157,54 @@ const Projets = () => {
     .slice(initialParagraphs.length)
     .concat(projet.presentation.filter((para) => para.length > MAX_PARAGRAPH_LENGTH)) || [];
 
-const renderParagraphAndTitles = (presentation)=>{
-  let sections = [];
-  let currentSection = [];
-  presentation.forEach((element,index)=> {
-    if(typeof element === 'object' && element.titre){
-      if (currentSection.length > 0){
-        sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
+  const renderParagraphAndTitles = (presentation) => {
+    let sections = [];
+    let currentSection = [];
+
+    presentation.forEach((element, index) => {
+      // Vérifie si c'est un titre ou une liste
+      if (typeof element === 'object') {
+        if (element.titre) {
+          // Si la section courante contient des éléments, l'ajouter aux sections
+          if (currentSection.length > 0) {
+            sections.push(
+              <div key={`section-${sections.length}`} className="section">
+                {currentSection}
+              </div>
+            );
+          }
+          // Nouvelle section avec le titre
+          currentSection = [<h2 key={index}>{element.titre}</h2>];
+        }
+
+        // Vérifier et rendre la liste si elle est présente
+        if (element.liste) {
+          currentSection.push(
+            <ul key={`list-${index}`}>
+              {element.liste.map((item, itemIndex) => (
+                <li key={`list-item-${itemIndex}`}>{item}</li>
+              ))}
+            </ul>
+          );
+        }
+      } else {
+        // Ajouter l'élément de texte sous forme de paragraphe
+        currentSection.push(<p key={index}>{element}</p>);
       }
-      currentSection = [<h2 key={index}>{element.titre}</h2>]
-    } else {
-      currentSection.push(<p key={index}>{element}</p>);
+    });
+
+    // Ajouter la dernière section si elle contient des éléments
+    if (currentSection.length > 0) {
+      sections.push(
+        <div key={`section-${sections.length}`} className="section">
+          {currentSection}
+        </div>
+      );
     }
-  });
-    if(currentSection.length > 0){
-      sections.push(<div key={`section-${sections.length}`} className="section">{currentSection}</div>);
-    }
+
     return sections;
   };
+
 
   useEffect(() => {
     if(!lenis)return;
