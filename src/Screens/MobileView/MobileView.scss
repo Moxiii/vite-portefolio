@@ -25,7 +25,7 @@ height: 80vh;
     margin-bottom: 75%;
 
     &:last-child {
-      margin-bottom: 10%; // Enlève l'espace après la dernière carte
+      margin-bottom: 10%;
     }
 
     .card {
@@ -128,7 +128,14 @@ height: 80vh;
     }
   }
 }
-
+.about-page{
+  .text-zone{
+    >.scrollable-content{
+      height: auto;
+      max-height: unset;
+    }
+  }
+}
 .sr-only:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

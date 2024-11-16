@@ -11,8 +11,6 @@
       margin-top: 5%;
     }
     .scrollable-content{
-      max-height: 50%;
-      //overflow-y: auto;
       padding-right: 1rem;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
@@ -106,5 +104,14 @@
   }
   83% {
     transform: rotateX(90deg);
+  }
+}
+@media (min-width: 769px){
+  .container{
+    >.text-zone{
+      >.scrollable-content{
+        max-height: 50%;
+      }
+    }
   }
 }

@@ -21,13 +21,13 @@ export default function MobileView(){
       return;
     }
     const handleScroll = () => {
-      const scrollPos = lenis.scroll; // Obtenez la position de défilement
+      const scrollPos = lenis.scroll;
 
     };
 
-    lenis.on('scroll', handleScroll); // Ajoutez l'écouteur d'événement
+    lenis.on('scroll', handleScroll);
 
-    // Nettoyage à la destruction du composant
+
     return () => {
       lenis.off('scroll', handleScroll);
     };

@@ -39,11 +39,12 @@ const About = () => {
               </ol>
             </p>
             <p>
-              Autant passionné par la mode que :
+              Mais aussi passionnée par :
               <ol>
                 <li>La mode de seconde main</li>
                 <li>La mécanique</li>
                 <li>La création de clavier custom</li>
+                <li>La moto</li>
               </ol>
             </p>
           </div>

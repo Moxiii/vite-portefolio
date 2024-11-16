@@ -17,11 +17,17 @@ const iconMap={
   Angular:faAngular,
 }
 const textVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 200 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' }
+    transition: {
+      duration: 0.7,
+      ease: 'easeOut',
+      type : "spring",
+      bounce:0.2,
+
+    }
   }
 };
 const Projets = () => {
@@ -35,6 +41,13 @@ const Projets = () => {
   const {setLoading} = useOutletContext();
   const [currentIcon, setCurrentIcon] = useState(null);
   const lenis = useStore(state => state.lenis)
+  const [visibleIndex, setVisibleIndex] = useState(0);
+const scrollablePragraphs = ({lenis , projet})=>{
+  const initialParagraph = projet?.presentation.filter((para)=>para.length <= MAX_PARAGRAPH_LENGTH).slice(0,PARAGRAPH_LIMIT) || [];
+  const remainingParagraph = projet?.presentation.slice(initialParagraphs.length).concat(projet.presentation.filter((para)=> para.length > MAX_PARAGRAPH_LENGTH)) || []
+
+}
+
   useEffect(() => {
     const fetchProjet = async () => {
       try {
@@ -113,7 +126,6 @@ const Projets = () => {
   const visibleItemRef = useRef(null);
   const [carouselHeight, setCarouselHeight] = useState(500);
 
-  // Fonction pour mettre à jour la hauteur du carousel
   const updateCarouselHeight = () => {
     if (visibleItemRef.current) {
       const visibleItemHeight = visibleItemRef.current.getBoundingClientRect().height;
@@ -145,7 +157,6 @@ const Projets = () => {
   }, []);
 
 
-
   const handleImageClick = (index) => {
     setCurrentImageIndex((index +1)% (projet.img.length || 1));
   };
@@ -162,22 +173,24 @@ const Projets = () => {
     let currentSection = [];
 
     presentation.forEach((element, index) => {
-      // Vérifie si c'est un titre ou une liste
       if (typeof element === 'object') {
         if (element.titre) {
-          // Si la section courante contient des éléments, l'ajouter aux sections
           if (currentSection.length > 0) {
             sections.push(
-              <div key={`section-${sections.length}`} className="section">
+              <motion.div
+                key={`section-${sections.length}`}
+                className="section"
+                initial="hidden"
+                animate={index <= visibleIndex ? "visible" : "hidden"}
+                variants={textVariants}
+              >
                 {currentSection}
-              </div>
+              </motion.div>
             );
           }
-          // Nouvelle section avec le titre
           currentSection = [<h2 key={index}>{element.titre}</h2>];
         }
 
-        // Vérifier et rendre la liste si elle est présente
         if (element.liste) {
           currentSection.push(
             <ul key={`list-${index}`}>
@@ -188,17 +201,30 @@ const Projets = () => {
           );
         }
       } else {
-        // Ajouter l'élément de texte sous forme de paragraphe
-        currentSection.push(<p key={index}>{element}</p>);
+        currentSection.push(
+          <motion.p
+            key={index}
+            initial="hidden"
+            animate={index <= visibleIndex ? "visible" : "hidden"}
+            variants={textVariants}
+          >
+            {element}
+          </motion.p>
+        );
       }
     });
 
-    // Ajouter la dernière section si elle contient des éléments
     if (currentSection.length > 0) {
       sections.push(
-        <div key={`section-${sections.length}`} className="section">
+        <motion.div
+          key={`section-${sections.length}`}
+          className="section"
+          initial="hidden"
+          animate="visible"
+          variants={textVariants}
+        >
           {currentSection}
-        </div>
+        </motion.div>
       );
     }
 
@@ -206,10 +232,12 @@ const Projets = () => {
   };
 
 
+
   useEffect(() => {
     if(!lenis)return;
     lenis.on('scroll', ({ scroll })=>{
-      // link lenis w/ framer motion for make scroll animation on project
+      const scrollTriger = Math.floor(scroll / 100)
+      setVisibleIndex(scrollTriger)
     })
     return ()=>{
       lenis.off('scroll')
@@ -248,7 +276,16 @@ const Projets = () => {
               </div>
             </div>
           )}
-          {renderParagraphAndTitles(initialParagraphs)}
+          {initialParagraphs.map((para, index) => (
+            <motion.p
+              key={`initial-${index}`}
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+            >
+              {para}
+            </motion.p>
+          ))}
         </div>
         <div className="carouselProjet" style={{ height : carouselHeight  , marginBottom : '3%' }}>
           <div className="carousel__wrapper">
