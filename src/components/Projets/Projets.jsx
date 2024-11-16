@@ -42,11 +42,6 @@ const Projets = () => {
   const [currentIcon, setCurrentIcon] = useState(null);
   const lenis = useStore(state => state.lenis)
   const [visibleIndex, setVisibleIndex] = useState(0);
-const scrollablePragraphs = ({lenis , projet})=>{
-  const initialParagraph = projet?.presentation.filter((para)=>para.length <= MAX_PARAGRAPH_LENGTH).slice(0,PARAGRAPH_LIMIT) || [];
-  const remainingParagraph = projet?.presentation.slice(initialParagraphs.length).concat(projet.presentation.filter((para)=> para.length > MAX_PARAGRAPH_LENGTH)) || []
-
-}
 
   useEffect(() => {
     const fetchProjet = async () => {
