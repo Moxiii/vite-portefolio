@@ -3,6 +3,20 @@
 #home{
   .container{
     height: auto;
+    >.text-zone{
+      >h1{
+        >.animated-svg{
+          >.line{
+            stroke:#C39BD3;
+            fill: none;
+            stroke-width: 2;
+            font-size: 60px;
+            font-family: 'DM Sans', sans-serif;
+          }
+        }
+      }
+
+    }
   }
 }
 

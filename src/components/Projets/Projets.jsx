@@ -25,7 +25,7 @@ const textVariants = {
       duration: 0.7,
       ease: 'easeOut',
       type : "spring",
-      bounce:0.2,
+      bounce:0.3,
 
     }
   }

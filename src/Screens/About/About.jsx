@@ -9,10 +9,23 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import './About.scss'
 import { useMediaQuery } from 'react-responsive'
-
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react'
+import { useStore } from '../../Hook/Scrolll/Store.js'
+gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
-
+  const lenis = useStore(state => state.lenis)
+  useEffect(() => {
+    if(!lenis)return;
+    lenis.on('scroll', ({ scroll })=>{
+      const scrollTriger = Math.floor(scroll / 100)
+    })
+    return ()=>{
+      lenis.off('scroll')
+    }
+  }, [lenis])
   const isDesktop = useMediaQuery({minWidth:769})
 
 
