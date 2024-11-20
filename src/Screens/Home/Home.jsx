@@ -33,14 +33,20 @@ const Home = () => {
     }
   }, [isDesktop]);
   useEffect(() => {
-    anime({
-      targets: '.line',
-      strokeDashoffset: [anime.setDashoffset, 0],
-      easing: 'easeInOutSine',
-      duration: 1500,
-      direction: 'alternate',
-      loop: true,
-    });
+    const lineElement = document.querySelector('.animated-svg .line');
+    if (lineElement) {
+      anime({
+        targets: lineElement,
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1500,
+        direction: 'alternate',
+        loop: true,
+        delay: function(el, i) { return i * 250 },
+      });
+    } else {
+      console.error('Element with class "line" not found');
+    }
   }, []);
   return (
     <>
@@ -61,6 +67,7 @@ const Home = () => {
                   textAnchor="middle"
                   dy=".5em"
                   className="line"
+                  strokeDashoffset={200}
                 >
                   Bienvenue !
                 </text>

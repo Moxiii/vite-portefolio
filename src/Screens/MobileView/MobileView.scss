@@ -9,9 +9,11 @@
           >.line{
             stroke:#C39BD3;
             fill: none;
-            stroke-width: 2;
-            font-size: 60px;
+            stroke-width:2;
+            font-size: 65px;
             font-family: 'DM Sans', sans-serif;
+            stroke-dasharray: 150;
+            stroke-dashoffset: 500;
           }
         }
       }
