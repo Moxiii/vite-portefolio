@@ -11,7 +11,7 @@ const Cv = () => {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
   const isDesktop = useMediaQuery({ minWidth: 769 });
   const canvasRef = useRef(null);
-  const isRendering = useRef(false); // Référence pour indiquer si un rendu est en cours
+  const isRendering = useRef(false);
 
   const handleResize = () => {
     setWidthScreen(window.innerWidth);
@@ -19,8 +19,8 @@ const Cv = () => {
   };
 
   const loadPDF = async () => {
-    if (isRendering.current) return; // Empêcher un nouveau rendu si un rendu est déjà en cours
-    isRendering.current = true; // Marquer le rendu comme en cours
+    if (isRendering.current) return;
+    isRendering.current = true;
 
     try {
       const loadingTask = pdfjs.getDocument(cvPdf);
@@ -33,22 +33,22 @@ const Cv = () => {
         return;
       }
 
-      // Récupération des dimensions du canvas
+
       const canvasWidth = widthScreen * 0.8;
       const canvasHeight = isDesktop ? Math.min(heightScreen * 0.9, 700) : heightScreen * 0.7;
 
-      // Calcul du scale pour adapter le PDF au canvas
+
       const viewport = page.getViewport({ scale: 1 });
       const scale = Math.min(canvasWidth / viewport.width, canvasHeight / viewport.height);
 
-      // Nouveau viewport avec le scale calculé
+
       const scaledViewport = page.getViewport({ scale });
 
-      // Ajuster la taille du canvas
+
       canvas.height = scaledViewport.height;
       canvas.width = scaledViewport.width;
 
-      // Rendu de la page
+
       const renderContext = {
         canvasContext: context,
         viewport: scaledViewport,
@@ -58,21 +58,21 @@ const Cv = () => {
     } catch (error) {
       console.error('Error loading PDF: ', error);
     } finally {
-      isRendering.current = false; // Le rendu est terminé
+      isRendering.current = false;
     }
   };
 
   useEffect(() => {
     loadPDF();
 
-    // Ajout d'un listener pour redimensionner
+
     window.addEventListener('resize', handleResize);
 
-    // Nettoyage
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [widthScreen, heightScreen]); // Déclenche le rechargement du PDF en cas de redimensionnement
+  }, [widthScreen, heightScreen]);
 
   return (
     <div className="container cv">

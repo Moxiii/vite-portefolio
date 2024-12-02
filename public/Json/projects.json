@@ -51,7 +51,8 @@
     "img": [
       { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png"},
       { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
-      { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" }
+      { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" },
+      { "isMock": false, "src": "/Project/Georges/georges3.png", "title": "Image 3" }
     ]
   },
   {
@@ -112,7 +113,7 @@
     ],
     "img": [
       { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
-      { "isMock": false, "src": "/Project/Hera/hera2.jpg", "title": "Image 2" }
+      { "isMock": false, "src": "/Project/Hera/hera2.png", "title": "Image 2" }
     ]
   },
   {
@@ -120,7 +121,7 @@
   "title": "Portefolio",
   "description": "Vite Portefolio",
   "presentation": [
-  "Issus d'une discution avec Marina notre chargé de placement en entreprise",
+  "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
   "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",
     {
       "titre":"Pourquoi et pour qui ?"
@@ -134,7 +135,6 @@
         "Mise en production sur mon serveur local",
         "Amélioration de l'UI/UX avec Framer Motion et Lenis ",
         "Mise a jour des projets en cours",
-        "Un système de paire du moment / actualité ",
         "Toujours aller plus loin dans l'apprentissage du Front-End et proposer un site vitrine de qualité"
       ]
     }
@@ -155,7 +155,8 @@
   { "isMock": true, "src": "/Project/Portefolio/Mockup/portefolioMock.png" },
   { "isMock": false, "src": "/Project/Portefolio/portefolio1.png", "title": "Présentation des projets" },
   { "isMock": false, "src": "/Project/Portefolio/portefolio2.png", "title": "La page présentation" },
-    { "isMock": false, "src": "/Project/Portefolio/portefolio3.png", "title": "Page Contact permettant d'envoyer des mail" }
+    { "isMock": false, "src": "/Project/Portefolio/portefolio3.png", "title": "Page Contact permettant d'envoyer des mail" },
+    { "isMock": false, "src": "/Project/Portefolio/portefolio4.png", "title": "Page CV" }
 ]
   }
 ]

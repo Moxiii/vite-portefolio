@@ -80,9 +80,9 @@ const Projets = () => {
         }
         let filteredImages = foundProjet.img.filter(image=>image.isMock===false)
         const remainder = filteredImages.length%3;
-        if(remainder !==0){
-          const lastImage = filteredImages[filteredImages.length-1];
-          for(let i=0;i<3 -remainder;i++){
+        if(remainder !==0 && filteredImages.length <= 3 ){
+          const lastImage = filteredImages[filteredImages.length - 1 ];
+          for(let i=0;i<3 - remainder ;i++){
             filteredImages.push(lastImage);
           }
         }
@@ -288,9 +288,16 @@ const Projets = () => {
               const isVisible = index === currentImageIndex;
               const isNext = index === (currentImageIndex + 1) % projet.img.length;
               const isPrev = index === (currentImageIndex - 1 + projet.img.length) % projet.img.length;
+              const classes = `
+      item 
+      ${isVisible ? 'visible' : ''} 
+      ${isNext ? 'next' : ''} 
+      ${isPrev ? 'prev' : ''} 
+      ${!(isVisible || isNext || isPrev) ? 'outside' : ''}
+    `.trim();
               return (
                 <div
-                  className={`item ${isVisible ? 'visible' : ''} ${isNext ? 'next' : ''} ${isPrev ? 'prev' : ''}`}
+                  className={classes}
                   key={index}
                   ref = {isVisible? visibleItemRef : null}
                   onClick={() => handleImageClick(index)}

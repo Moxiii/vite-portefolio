@@ -66,7 +66,7 @@ justify-content: space-between;
       text-decoration: none;
       list-style-type: none;
       color: $accentuation-color;
-      font-size: 14px;
+      font-size: 16px;
 
     }
   }
@@ -106,6 +106,8 @@ justify-content: space-between;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 
+
+
   img {
     width: 600px;
     height: 400px;
@@ -132,6 +134,12 @@ justify-content: space-between;
     transform: translateX(-40%) scale(0.8);
     opacity: 0.4;
     z-index: 0;
+  }
+  &.outside {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    display: none;
   }
   &:not(.visible):not(.next):not(prev){
   transform: translateX(-40%) scale(.8);
