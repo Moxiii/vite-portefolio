@@ -50,9 +50,10 @@
     ],
     "img": [
       { "isMock": true, "src": "/Project/Georges/Mock/mockGeorges.png"},
-      { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Image 1" },
-      { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Image 2" },
-      { "isMock": false, "src": "/Project/Georges/georges3.png", "title": "Image 3" }
+      { "isMock": false, "src": "/Project/Georges/georges1.png", "title": "Page de connexion de georges" },
+      { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Page d'acceuil de georges" },
+      { "isMock": false, "src": "/Project/Georges/georges3.png", "title": "Réponse IA " },
+      { "isMock": false, "src": "/Project/Georges/georges4.png", "title": "Parametre généraux" }
     ]
   },
   {
@@ -112,8 +113,8 @@
       }
     ],
     "img": [
-      { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Image 1" },
-      { "isMock": false, "src": "/Project/Hera/hera2.png", "title": "Image 2" }
+      { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Structure du backend" },
+      { "isMock": false, "src": "/Project/Hera/hera2.png", "title": "Structure du code de scrapping" }
     ]
   },
   {
