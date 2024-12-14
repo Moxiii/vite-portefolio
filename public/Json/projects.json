@@ -119,8 +119,8 @@
   },
   {
   "id": 3,
-  "title": "Portefolio",
-  "description": "Vite Portefolio",
+  "title": "Portfolio",
+  "description": "Portfolio réaliser avec Vite (react)",
   "presentation": [
   "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
   "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",

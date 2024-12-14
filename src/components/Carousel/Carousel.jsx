@@ -45,9 +45,7 @@
             }));
             setProjets(filteredData);
           } else {
-            // Si l'API est indisponible, basculer vers les données locales
             console.warn("API non disponible, chargement des données locales...");
-
             response = await fetch('/Json/projects.json');
             if (response.ok) {
               let data = await response.json();
@@ -67,7 +65,7 @@
         } catch (error) {
           console.error("Erreur lors du chargement des projets:", error);
         } finally {
-          setLoading(false); // Désactiver le chargement en toutes circonstances
+          setLoading(false);
         }
       };
       fetchProjets();

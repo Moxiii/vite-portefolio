@@ -52,7 +52,7 @@ const About = () => {
               </ol>
             </p>
             <p>
-              Mais aussi passionnée par :
+              Mais aussi passionné par :
               <ol>
                 <li>La mode de seconde main</li>
                 <li>La mécanique</li>
