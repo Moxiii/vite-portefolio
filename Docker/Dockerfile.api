@@ -10,6 +10,6 @@ WORKDIR /app/api
 COPY ./api/package.json ./
 RUN npm install
 RUN npm install -g
-COPY ../api .
+COPY ./api .
 EXPOSE 3000
 CMD ["nodemon" , "./server.js" , "rs"]

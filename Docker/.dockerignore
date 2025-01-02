@@ -1,7 +1,10 @@
 node_modules
 ./.git/
-*/public/
-./src/fonts/
 .prettierrc
 .README.md
-./api/
+node_modules
+**/node_modules/
+.dockerignore
+.git
+npm-debug.log
+**/dist/

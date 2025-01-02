@@ -8,9 +8,9 @@ RUN apk add --no-cache \
     py3-pip \
     build-base
 RUN npm install
-COPY ./src ./src
-COPY ./public ./public
-COPY ./index.html ./index.html
-COPY ./vite.config.js ./vite.config.js
+COPY ./src .
+COPY ./public .
+COPY ./index.html .
+COPY ./vite.config.js .
 EXPOSE 5173
 CMD ["npm" , "run" , "dev","--host" , "0.0.0.0"]
