@@ -1,16 +1,12 @@
-FROM node:23-alpine
+FROM node:23
 WORKDIR /app
 COPY package.json ./
-RUN npm install -g npm@latest
-RUN npm install -g esbuild@0.18.20
-RUN apk add --no-cache \
-    python3 \
-    py3-pip \
-    build-base
 RUN npm install
-COPY ./src .
-COPY ./public .
-COPY ./index.html .
-COPY ./vite.config.js .
+COPY ./src ./src
+COPY ./public ./public
+COPY ./index.html ./index.html
+COPY ./vite.config.js ./vite.config.js
+COPY ./Docker/entry.sh /entry.sh
+RUN chmod +x /entry.sh
 EXPOSE 5173
-CMD ["npm" , "run" , "dev","--host" , "0.0.0.0"]
+CMD ["/entry.sh", "frontend"]

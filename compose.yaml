@@ -3,7 +3,7 @@ services:
   front:
     container_name: portefolio-front
     build:
-        context: ..
+        context: .
         dockerfile: Docker/Dockerfile.front
     restart: unless-stopped
     ports:
@@ -13,17 +13,17 @@ services:
     networks:
       - portfolio_net
     volumes:
-      - ../src:/app/src
-      - ../public:/app/public
+      - ./src:/app/src
+      - ./public:/app/public
 
   api:
     container_name: portefolio-back
     build:
-      context: ..
+      context: .
       dockerfile: Docker/Dockerfile.api
     restart: unless-stopped
     volumes:
-      - ../api:/app/api
+      - ./api:/app/api
     ports:
       - "3000:3000"
     networks:
