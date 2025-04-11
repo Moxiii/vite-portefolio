@@ -1,26 +1,21 @@
-import { Link, NavLink } from 'react-router-dom'
+import {  NavLink } from 'react-router-dom'
 import './Sidebar.scss'
-import Logo from '../../assets/profile1.jpg'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUser,
   faHome,
   faEnvelope,
   faFile,
-  faTimes,
-  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { useEffect, useState } from 'react'
+
 const Sidebar=({ isMobile }) => {
 
 
   return (
     <>
       <div className="nav-bar">
-        <Link className="Logo" to="/">
-          <img src={Logo}></img>
-        </Link>
         <nav>
           {isMobile?(
             <>

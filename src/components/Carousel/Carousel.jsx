@@ -3,7 +3,7 @@
   import './Carousel.scss'
   import { useMediaQuery } from 'react-responsive'
   import { useVisibility,VisibilityProvider } from '../../Hook/VisibilityProvider/Visibilityprovider.jsx'
-  import { useStore } from '../../Hook/Scrolll/Store.js'
+
 
   export default function Carousel() {
     const PARAGRAPH_LIMIT = 2;
@@ -16,13 +16,8 @@
     const handleClick = (id) => {
       navigate(`/projet/${id}`);
     };
-    const [selectedProject, setSelectedProject] = useState(null);
-    const handleReadMore = (projet)=>{
-      setSelectedProject(projet);
-    }
-    const closeModal = () => {
-      setSelectedProject(null);
-    }
+
+
 
     const handleFlipCard = (id) => {
       setFlippedCards(prev =>({...prev , [id]: !prev[id]}))
@@ -30,7 +25,7 @@
     const isDesktop = useMediaQuery({minWidth:769})
     const projectRefs = useRef([]);
     const { visibleProjects , setVisibleProjects } = useVisibility() ;
-    const lenis = useStore(state => state.lenis)
+
 
     useEffect(() => {
       const fetchProjets = async () => {
@@ -97,17 +92,7 @@
     };
   }, [setVisibleProjects]);
 
-    useEffect(()=>{
-      if(!lenis) return;
-      lenis.on('scroll' , ()=>{
-        const currentIndex = Math.floor(lenis.scrollY / window.innerHeight);
-        const projectId = projets[currentIndex]?.id;
-        setVisibleProjects([projectId]);
-        return ()=>{
-          lenis.off('scroll');
-        }
-      })
-},[lenis,projets,setVisibleProjects]);
+
 
 
     return (

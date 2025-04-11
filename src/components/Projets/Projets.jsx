@@ -1,11 +1,10 @@
 import { useState, useEffect ,useRef} from 'react';
-import { useParams, useOutletContext } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Typed } from 'react-typed'
 import './Projets.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
-import { useStore } from '../../Hook/Scrolll/Store.js'
+
 import { motion } from 'motion/react'
 const iconMap={
   React:faReact,
@@ -38,42 +37,19 @@ const Projets = () => {
   const { id } = useParams();
   const [projet, setProjet] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const {setLoading} = useOutletContext();
+
   const [currentIcon, setCurrentIcon] = useState(null);
-  const lenis = useStore(state => state.lenis)
   const [visibleIndex, setVisibleIndex] = useState(0);
 
   useEffect(() => {
     const fetchProjet = async () => {
       try {
-        let response;
-        let data;
-        try {
-          response = await fetch(`http://localhost:3000/api/projects/${id}`);
-          if (!response.ok) {
-            throw new Error('Erreur lors de la récupération de l\'API');
-          }
-          data = await response.json();
-          const filteredImages = data.img;
-          const remainder = data.img.length%3;
-          if(remainder !==0){
-            const lastImage = filteredImages[filteredImages.length-1];
-            for(let i=0;i<3 -remainder;i++){
-              filteredImages.push(lastImage);
-            }
-          }
-          setProjet(data);
-          return;
-        } catch (error) {
-          console.warn('L\'API ne répond pas, tentative de récupération du JSON', error);
-        }
-
-        response = await fetch('/Json/projects.json');
+        const response = await fetch('/Json/projects.json');
         if (!response.ok) {
           throw new Error('Erreur lors du chargement des données JSON locales');
         }
 
-        data = await response.json();
+         const data = await response.json();
         const foundProjet = data.find((p) => p.id === parseInt(id));
         if (!foundProjet) {
           throw new Error('Projet introuvable dans les données JSON');
@@ -89,13 +65,11 @@ const Projets = () => {
         setProjet({ ...foundProjet, img: filteredImages });
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchProjet();
-  }, [id, setLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (projet && typedElement.current) {
@@ -228,16 +202,6 @@ const Projets = () => {
 
 
 
-  useEffect(() => {
-    if(!lenis)return;
-    lenis.on('scroll', ({ scroll })=>{
-      const scrollTriger = Math.floor(scroll / 100)
-      setVisibleIndex(scrollTriger)
-    })
-    return ()=>{
-      lenis.off('scroll')
-    }
-  }, [lenis])
   return (
     <>
       <div className="container projet">
@@ -247,30 +211,7 @@ const Projets = () => {
             <p> Développé en <span ref={typedElement} style={{ fontWeight: 'bold' }} />
               {currentIcon && <FontAwesomeIcon icon={currentIcon} style={{ marginLeft: '5px', fontSize: '150%' }} />}</p>
           </div>
-          {projet && (
-            <div className="project-status">
-              <div className="status-item">
-                <span>Fini: </span>
-                <FontAwesomeIcon
-                  icon={projet.fini ? faCheckCircle : faTimesCircle}
-                  style={{
-                    color: projet.fini ? '#1ee11e' : 'red',
-                    marginLeft: '5px'
-                  }}
-                />
-              </div>
-              <div className="status-item">
-                <span>Déployé: </span>
-                <FontAwesomeIcon
-                  icon={projet.deploy ? faCheckCircle : faTimesCircle}
-                  style={{
-                    color: projet.deploy ? '#1ee11e' : 'red',
-                    marginLeft: '5px'
-                  }}
-                />
-              </div>
-            </div>
-          )}
+
           {initialParagraphs.map((para, index) => (
             <motion.p
               key={`initial-${index}`}

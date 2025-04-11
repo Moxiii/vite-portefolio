@@ -34,43 +34,8 @@ textarea {
   position: relative;
   background: $background-color;
 }
-@media (min-width: 769px) {
-  .page {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-
-
-  }
-}
-.container{
-  flex-grow: 1;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  h1{
-  color : $primary-color;
-    font-family: 'DM Sans', sans-serif;
-  }
-  h2, p {
-    color : $accentuation-color;
-  }
-  .text-zone{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-  }
-}
 @media (max-width: 768px) {
-  .page{
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
+
   section{
     display: flex;
     justify-content: center;
@@ -78,9 +43,7 @@ textarea {
     margin:0;
     overflow: auto;
   }
-  .container , .home {
-    height: auto;
-  }
+
   #home {
     h1,h2{
       color:$primary-color;
@@ -113,8 +76,7 @@ textarea {
       margin:auto;
       width: 100vw;
       padding: 10% 10px;
-      left:0;
-      height: 100vh;
+      min-height: 100vh;
     }
     #about{
       .about-page {

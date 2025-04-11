@@ -34,7 +34,6 @@ const Contact = () => {
       )
   }
   return (
-    <>
       <div className="container contact-page">
         <div className="text-zone">
           <div className="header">
@@ -55,7 +54,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-</>
 )
 }
 

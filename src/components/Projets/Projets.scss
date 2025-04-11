@@ -10,16 +10,11 @@
   .typed{
     p{font-size: 15px;}
     span{color:$accentuation-color;}
+    min-height: 100px;
   }
-    .project-status {
-      display: flex;
-      gap: 20px;
-    }
-
-    .status-item {
-      display: flex;
-      align-items: center;
-    }
+  p{
+    margin: 2% 0;
+  }
 }
   width: 100%;
   height: auto;
@@ -27,9 +22,7 @@
   transition: background .4s ease-in;
 
 justify-content: space-between;
-  &.blue {
-    background-color: #428aa6;
-  }
+
   .remaining-presentation {
     flex-direction: column;
     display: flex;
@@ -39,7 +32,6 @@ justify-content: space-between;
     width: 100%;
     height: auto;
     padding: 10px;
-    border-top: 2px solid #ddd;
     position: relative;
 
   }
@@ -74,13 +66,13 @@ justify-content: space-between;
 
 .carouselProjet {
   flex-wrap: wrap;
-  border-bottom: 2px solid #ddd;
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
+  margin:5% 0;
 }
 
 .carousel__wrapper {
@@ -159,27 +151,7 @@ p{
   font-size: 15px;
   color:$primary-color;
 }
-  border-style: solid;
-  border-width: .125em 0;
-  box-shadow: -.375em 0 0 -.125em,
-  .375em 0 0 -.125em;
-  padding: .5em 10%;
-  position: relative;
-  z-index: 1;
 
-  &:before {
-    background-color: inherit;
-    border: inherit;
-    border-width: 0 .125em;
-    bottom: .375em;
-    content: '';
-    left: -.5em;
-    pointer-events: none;
-    position: absolute;
-    top: .375em;
-    right: -.5em;
-    z-index: -1;
-  }
 div{
   margin:10px 0;
 }

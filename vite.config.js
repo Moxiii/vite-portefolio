@@ -9,4 +9,14 @@ export default defineConfig({
     sourcemap: true,
   },
   plugins: [react(),],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData:` 
+            @import "/src/const.scss";
+        `
+
+      },
+    },
+  },
 })
