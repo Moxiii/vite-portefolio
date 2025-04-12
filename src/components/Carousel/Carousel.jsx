@@ -1,5 +1,5 @@
   import { useEffect, useRef, useState } from 'react'
-  import { useNavigate,useOutletContext } from 'react-router-dom';
+  import { useNavigate } from 'react-router-dom';
   import './Carousel.scss'
   import { useMediaQuery } from 'react-responsive'
   import { useVisibility,VisibilityProvider } from '../../Hook/VisibilityProvider/Visibilityprovider.jsx'
@@ -12,7 +12,7 @@
     const [flippedCards, setFlippedCards] = useState({});
     const [projets, setProjets] = useState([]);
     const navigate = useNavigate();
-    const { setLoading } = useOutletContext() || {};
+
     const handleClick = (id) => {
       navigate(`/projet/${id}`);
     };
@@ -30,18 +30,7 @@
     useEffect(() => {
       const fetchProjets = async () => {
         try {
-          let response = await fetch('http://localhost:3000/api/projects').catch(() => null);
-          if (response && response.ok) {
-            let data = await response.json();
-            const filteredData = data.map(projet => ({
-              ...projet,
-              img: projet.img.filter(image => image.isMock === true),
-              mockup: projet.img.length > 0 ? projet.img[0].src : '../../Project/nomockup.png'
-            }));
-            setProjets(filteredData);
-          } else {
-            console.warn("API non disponible, chargement des données locales...");
-            response = await fetch('/Json/projects.json');
+            const response = await fetch('/Json/projects.json');
             if (response.ok) {
               let data = await response.json();
               const filteredData = data.map(projet => {
@@ -56,11 +45,8 @@
             } else {
               throw new Error("Erreur lors du chargement des données locales");
             }
-          }
         } catch (error) {
           console.error("Erreur lors du chargement des projets:", error);
-        } finally {
-          setLoading(false);
         }
       };
       fetchProjets();
@@ -151,10 +137,10 @@
                         {Array.isArray(projet.presentation) ? (
                           projet.presentation
                             .filter((item) => {
-                              // Filtrer les éléments qui sont des chaînes et ne contiennent pas de titre
+
                               return typeof item === 'string' && item.length <= MAX_PARAGRAPH_LENGTH;
                             })
-                            .slice(0, PARAGRAPH_LIMIT) // Limiter le nombre de paragraphes à afficher
+                            .slice(0, PARAGRAPH_LIMIT)
                             .map((para, index) => (
                               <p key={index}>{para}</p>
                             ))

@@ -1,10 +1,9 @@
-@import "../../const.scss";
+
 .projet {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x:hidden;
   flex-wrap: wrap;
-  & > *:not(:last-child) {
-    margin-bottom: 3%;
-  }
+
   .text-zone {
     span{color:$accentuation-color}
   .typed{
@@ -18,7 +17,6 @@
 }
   width: 100%;
   height: auto;
-  padding: 5% 10px;
   transition: background .4s ease-in;
 
 justify-content: space-between;
@@ -76,8 +74,7 @@ justify-content: space-between;
 }
 
 .carousel__wrapper {
-  margin-bottom: 10%;
-  margin-top: 5%;
+ margin:10% 0;
   width: 80%;
   display: flex;
   justify-content: center;
@@ -147,14 +144,17 @@ justify-content: space-between;
   align-items: center;
   align-content: center;
   flex-direction: column;
-p{
-  font-size: 15px;
+  width: 100%;
+h3{
+  font-size: x-large;
   color:$primary-color;
 }
-
-div{
-  margin:10px 0;
-}
+  ul{
+  list-style: none;
+    li{
+      margin:5% 0;
+      font-size: large;
+  }}
   a{
     text-decoration: none;
     color:$accentuation-color;
@@ -162,16 +162,5 @@ div{
       text-decoration: underline;
     }
   }
-  &:after {
-    background-color: inherit;
-    border: inherit;
-    border-width: 0 .125em;
-    bottom: .125em;
-    content: '';
-    left: -.375em;
-    position: absolute;
-    top: .125em;
-    right: -.375em;
-    z-index: -2;
-  }
+
 }

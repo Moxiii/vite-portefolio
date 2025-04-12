@@ -16,7 +16,7 @@ import {
 import './About.scss'
 import { useMediaQuery } from 'react-responsive'
 import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
-
+import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
 
 
 const About = () => {
@@ -46,9 +46,10 @@ const About = () => {
       <div className="container about-page">
         <div className="text-zone">
           <h1>A propos de moi</h1>
-            <p> Jeune homme passionné d&apos;informatique une manette de NES dans les mains des le plus jeune age </p>
-            <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
-            <p>Toujours en cours de formation !</p>
+          <p> Jeune homme passionné d&apos;informatique depuis petit , j&apos;ai grandi avec une manette de NES dans les
+            mains . </p>
+          <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
+          <p>D&apos;une curiositée sans faille je continue de m&apos;auto-former sur les technologies suivantes : </p>
           {isDesktop && (<div className="stage-cube-cont">
               <div className="cubespinner">
                 <div className="face1">
@@ -72,7 +73,13 @@ const About = () => {
               </div>
             </div>
           )}
-            <h2>Mais aussi passionné par :</h2>
+          <h3>Sans oublier :</h3>
+          <p>Three.js , lenis , gsap pour les librairy front . </p>
+          <p>Angular et React . </p>
+          <h3>Aussi du coté réseaux : </h3>
+          <p>je surveille la disponibilité de serveur OVH kimsufi pour m&apos;entrainer a la CI/CD et au déploiment
+            d&apos;application Javascript / Java </p>
+          <h2>Mais aussi passionné par :</h2>
           <div className="card-container">
             {interests.map((interest, index) => (
               <TiltCard
@@ -82,10 +89,11 @@ const About = () => {
               />
             ))}
           </div>
-
+          <h2> Qu&apos;est-il prévu pour le futur ? </h2>
+          <QuestionMark3D text="Apprentissage de THREE JS pour proposer un portfolio interractif" />
         </div>
-
       </div>
+
     </>
   )
 }

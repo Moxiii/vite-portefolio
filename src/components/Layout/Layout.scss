@@ -18,9 +18,13 @@
     font-size: xxx-large;
     font-family: 'DM Sans', sans-serif;
   }
-  h2, p {
+  h2 {
     color : $accentuation-color;
     font-size: xx-large;
+  }
+  h3{
+    color : $accentuation-color;
+    font-size: x-large;
   }
   .text-zone{
     display: flex;

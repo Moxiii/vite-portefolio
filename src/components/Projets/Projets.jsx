@@ -4,7 +4,7 @@ import { Typed } from 'react-typed'
 import './Projets.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faJava,faReact,faPython, faJs,faSass, faAngular} from '@fortawesome/free-brands-svg-icons'
-
+import ScrollReveal from '../Scroll/ScrollReveal.jsx'
 import { motion } from 'motion/react'
 const iconMap={
   React:faReact,
@@ -70,15 +70,18 @@ const Projets = () => {
 
     fetchProjet();
   }, [id]);
-
+let shouldLoop= true;
   useEffect(() => {
     if (projet && typedElement.current) {
       const techNames = projet.technologies.map((tech) => tech.name);
+      if (techNames.length <= 1) {
+        shouldLoop = false;
+      }
       const options = {
         strings: techNames,
         typeSpeed: 75,
         backSpeed: 100,
-        loop: true,
+        loop: shouldLoop,
         backDelay: 200,
         preStringTyped: (index) => {
           const tech = projet.technologies[index % techNames.length];
@@ -146,15 +149,11 @@ const Projets = () => {
         if (element.titre) {
           if (currentSection.length > 0) {
             sections.push(
-              <motion.div
-                key={`section-${sections.length}`}
-                className="section"
-                initial="hidden"
-                animate={index <= visibleIndex ? "visible" : "hidden"}
-                variants={textVariants}
-              >
-                {currentSection}
-              </motion.div>
+              <ScrollReveal key={`section-${sections.length}`}>
+                <div className="section">
+                  {currentSection}
+                </div>
+              </ScrollReveal>
             );
           }
           currentSection = [<h2 key={index}>{element.titre}</h2>];
@@ -171,29 +170,20 @@ const Projets = () => {
         }
       } else {
         currentSection.push(
-          <motion.p
-            key={index}
-            initial="hidden"
-            animate={index <= visibleIndex ? "visible" : "hidden"}
-            variants={textVariants}
-          >
-            {element}
-          </motion.p>
+          <ScrollReveal key={index}>
+            <p>{element}</p>
+          </ScrollReveal>
         );
       }
     });
 
     if (currentSection.length > 0) {
       sections.push(
-        <motion.div
-          key={`section-${sections.length}`}
-          className="section"
-          initial="hidden"
-          animate="visible"
-          variants={textVariants}
-        >
-          {currentSection}
-        </motion.div>
+        <ScrollReveal key={`section-${sections.length}`}>
+          <div className="section">
+            {currentSection}
+          </div>
+        </ScrollReveal>
       );
     }
 
@@ -250,15 +240,17 @@ const Projets = () => {
           </div>
         </div>
         <div className="links">
-          <p>Liens utiles :</p>
+          <h3>Liens utiles :</h3>
+          <ul>
           {projet&&projet.links.map((link, index) => (
-            <div key={index}>
+            <li key={index}>
 
               <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
                 {link.name}
               </a>
-            </div>
+            </li>
           ))}
+          </ul>
         </div>
         {remainingParagraphs.length > 0 && (
           <div className="remaining-presentation">
