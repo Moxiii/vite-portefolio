@@ -1,4 +1,7 @@
 .mobile-view{
+  h1{
+    font-size: 4rem;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,5 +32,23 @@
   }
   #cv{
     width:95%;
+  }
+  @include tinyDevice{
+    p{
+      font-size: larger;
+    }
+    h1, h2, h3 {
+      margin: 4% 0;
+      padding: 2% 1%;
+    }
+    h1{
+      font-size: xx-large;
+    }
+    h2{
+      font-size: x-large;
+    }
+    h3{
+      font-size: x-large;
+    }
   }
 }

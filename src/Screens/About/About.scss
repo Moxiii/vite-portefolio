@@ -20,7 +20,15 @@
       gap: 3%;
       margin: 2% 0;
     }
-
+    .mobile-tech-icons{
+      .tech-item{
+        color:$primary-color;
+        font-size: xx-large;
+        p{
+          font-size: small;
+        }
+      }
+    }
     .mobile-card-container {
       .interest-row {
         display: flex;
@@ -88,21 +96,7 @@
         }
       }
     }
-    @include tinyDevice{
-      h1, h2, h3 {
-        margin: 4% 0;
-        padding: 2% 1%;
-      }
-      h1{
-        font-size: xx-large;
-      }
-      h2{
-        font-size: x-large;
-      }
-      h3{
-        font-size: larger;
-      }
-    }
+
   }
 
 }

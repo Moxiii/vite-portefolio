@@ -95,27 +95,27 @@ export default function About() {
           ) : (
             <div className="mobile-tech-icons">
             <div className="tech-item">
-            <FontAwesomeIcon icon={faJava} color={monoChromaticIcon} size="2x" />
+            <FontAwesomeIcon icon={faJava}  />
         <p>Java</p>
       </div>
       <div className="tech-item">
-        <FontAwesomeIcon icon={faDocker} color={monoChromaticIcon} size="2x" />
+        <FontAwesomeIcon icon={faDocker}  />
         <p>Docker</p>
       </div>
       <div className="tech-item">
-        <FontAwesomeIcon icon={faReact} color={monoChromaticIcon} size="2x" />
+        <FontAwesomeIcon icon={faReact}  />
         <p>React</p>
       </div>
       <div className="tech-item">
-        <FontAwesomeIcon icon={faPython} color={monoChromaticIcon} size="2x" />
+        <FontAwesomeIcon icon={faPython}  />
         <p>Python</p>
       </div>
       <div className="tech-item">
-        <FontAwesomeIcon icon={faJsSquare} color={monoChromaticIcon} size="2x" />
+        <FontAwesomeIcon icon={faJsSquare}  />
         <p>JavaScript</p>
       </div>
       <div className="tech-item">
-        <FontAwesomeIcon icon={faGitAlt} color={monoChromaticIcon} size="2x" />
+        <FontAwesomeIcon icon={faGitAlt}  />
         <p>Git</p>
       </div>
     </div>
