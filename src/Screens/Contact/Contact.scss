@@ -74,4 +74,28 @@ $shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
     box-shadow: $shadow;
   }
 }
+  .contact-links-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10% 0 4% 0;
+    width: 100%;
+    background-color: rgba($accentuation-color , .85);
+    border-radius: 15px;
+    margin-bottom: 10%;
+
+    a{text-decoration: none;}
+    .contact-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column-reverse;
+      p{
+        font-size: large;
+        color: $background-color;
+      }
+
+    }
+  }
 }

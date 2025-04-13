@@ -15,14 +15,12 @@ import {
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import './About.scss'
-import { useMediaQuery } from 'react-responsive'
 import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
 import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
-
+import useIsDesktop from '../../Utils/isDesktop.js'
 
 export default function About() {
-
-  const isDesktop = useMediaQuery({minWidth:769})
+  const isDesktop = useIsDesktop();
   const monoChromaticIcon = "#FFC300"
   const interests = [
     {
