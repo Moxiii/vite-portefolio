@@ -63,7 +63,6 @@ export default function QuestionMark3D({ text }) {
           style={{
             height: "100%",
             width: "100%",
-            margin: "2% 0",
             position: "relative",
             display: "flex",
             justifyContent: "center",
@@ -73,7 +72,7 @@ export default function QuestionMark3D({ text }) {
             zIndex: 10,
           }}
         >
-          <p style={{marginTop:"5%"}}>{text}</p>
+          <p style={{marginTop:"10%" , fontSize:"1rem"}}>{text}</p>
         </div>
       )}
     </div>

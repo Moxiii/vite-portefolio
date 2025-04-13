@@ -83,7 +83,7 @@ export default function ZoomText({title1, text, title2}: ZoomTextProps) {
                         <h1 className={cn(s.contrast, "h1")}>{title1}</h1>
                         <h2>{title2}</h2>
                     </div>
-                    <h2 className={cn(s.center, "h3 vh")}>
+                    <h2 className={cn(s.center ,s.contrast, "h3 vh")}>
                         {" "}
                         {text.split("\n").map((line, index) => (
                             <React.Fragment key={index}>
@@ -93,8 +93,8 @@ export default function ZoomText({title1, text, title2}: ZoomTextProps) {
                         ))}
                     </h2>
                     <div className={s.second}>
-                        <MouseScrollAnimation color={"#3a2172"}/>
-                        <h2 className={cn("h1 vh")}>Scroll Down</h2>
+                        <MouseScrollAnimation color={"#ff06b5"} />
+                        <h2 className={cn(s.contrast , "h1 vh")}>Scroll Down</h2>
                     </div>
 
                 </div>

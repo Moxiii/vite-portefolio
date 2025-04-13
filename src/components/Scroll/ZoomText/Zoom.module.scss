@@ -1,4 +1,7 @@
 .solution {
+  h1{
+    color:$primary-color;
+  }
   @include desktop{
     height: 500vh;
     h1,
@@ -32,10 +35,10 @@
     font-size: 300%;
   }
   .center{
-    font-size: 20%;
+    font-size:25%;
   }
   .second{
-    padding-bottom: 10%;
+    padding-bottom: 20%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -77,6 +80,9 @@
     }
     .first {
       transform: translateY(calc(var(--progress1) * -100%));
+      h2{
+        color:$primary-color;
+      }
       h1,
       h2 {
         padding-top: 5%;

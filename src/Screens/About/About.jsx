@@ -12,6 +12,7 @@ import {
   faMotorcycle,
   faCar,
   faShirt,
+  faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import './About.scss'
 import { useMediaQuery } from 'react-responsive'
@@ -44,14 +45,20 @@ const About = () => {
   title: "Mode de seconde main",
     content:
       <div>
-        <p>Fan de vetement vintage</p>
-        <p>Utilisation de Vinted et passage en fripperie</p>
-        <p>Ce qui a motiver la creation de "Hera" pour faire un
-        outils de recherche pour vetements de
-        'collection'</p>
+        <p>Fan de vêtement vintage.</p>
+        <p>Utilisation de Vinted et passage en friperie</p>
       </div>
   ,
   icon: faShirt,
+},
+    {
+  title: "Musique",
+    content:
+      <div>
+        <p>Ecoute et découverte de multiple style musicaux</p>
+      </div>
+  ,
+  icon: faMusic,
 },
   ];
 
@@ -63,7 +70,7 @@ const About = () => {
           <p> Jeune homme passionné d&apos;informatique depuis petit , j&apos;ai grandi avec une manette de NES dans les
             mains . </p>
           <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
-          <p>D&apos;une curiositée sans faille je continue de m&apos;auto-former sur les technologies suivantes : </p>
+          <p>D&apos;une curiosité sans faille,je continue de m&apos;auto-former sur les technologies suivantes : </p>
           {isDesktop ? (
             <div className="stage-cube-cont">
               <div className="cubespinner">
@@ -115,11 +122,12 @@ const About = () => {
       </div>
     </div>
   )}
+          <p>Technologies utilisé pour les projets Georges et Hera</p>
           <h3>Sans oublier :</h3>
-          <p> Lenis , Gsap , Framer Motion  pour les library front . </p>
-          <h3>Aussi du coté réseaux : </h3>
-          <p>je surveille la disponibilité de serveur OVH kimsufi pour m&apos;entrainer a la CI/CD et au déploiment
-            d&apos;application Javascript / Java </p>
+          <p> Lenis , Gsap , Framer Motion pour les bibliothèques front. </p>
+          <p>Spring Boot et .Net pour les Framework Backend. </p>
+          <h3>Aussi du coté réseau : </h3>
+          <p>Je surveille la disponibilité de serveur OVH kimsufi pour m&apos;entraîner à la CI/CD et au déploiement d&apos;application Javascript/Java </p>
           <h2>Mais aussi passionné par :</h2>
           {isDesktop ? (
             <div className="card-container">
@@ -143,15 +151,28 @@ const About = () => {
                  </div>
                   <div className="card">
                     <div className="header">
-                      <FontAwesomeIcon icon={interest.icon}/>
+                      <FontAwesomeIcon className="card-icon" icon={interest.icon}/>
                     </div>
                   </div>
                 </div>
               ))}
           </div>)}
+          <div className="sub-interest">
+            <p>Passion qui motive a la création d'outils.</p>
+            <ul>
+              <li>
+                Hera pour la vente de vêtements/objets de collection.
+              </li>
+              <li>
+                Un outil de configuration/aide a la création de clavier custom est prévu.
+              </li>
+            </ul>
+          </div>
 
           <h2> Qu&apos;est-il prévu pour le futur ? </h2>
-          {isDesktop ? (<QuestionMark3D text="Apprentissage de THREE JS pour proposer un portfolio interractif" />):(<p>Apprentissage de THREE JS pour proposer un portfolio interractif</p>) }
+          {isDesktop ? (<QuestionMark3D text="Apprentissage de Three.js pour proposer un portfolio interactif" />) : (
+            <p>Apprentissage de Three.js pour proposer un portfolio interactif</p>)}
+          <p>Actuellement entrain de suivre la formation three.js journey afin d'améliorer ma comprehension de l'outil et du WebGL en regle générale</p>
         </div>
       </div>
 

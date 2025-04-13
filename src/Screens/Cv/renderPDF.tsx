@@ -15,13 +15,13 @@ export default function PDFRenderer({pdfUrl}:PDFRendererprops):React.JSX.Element
       const loadingTask = pdfjsLib.getDocument(pdfUrl);
       const pdf = await loadingTask.promise;
       const page = await pdf.getPage(1);
-      const scale = isDesktop ?  1.2 : 0.9;
+      const scale = isDesktop ?  1.2 : 0.65;
       const viewport = page.getViewport({ scale });
       const canvas = canvasRef.current;
       if (!canvas) return;
       const context = canvas.getContext("2d");
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+      canvas.width =  viewport.width ;
+      canvas.height =  viewport.height ;
       const renderContext = {
         canvasContext: context!,
         viewport,
