@@ -1,6 +1,6 @@
 import {  NavLink } from 'react-router-dom'
 import './Sidebar.scss'
-
+import links from "../../Utils/_const.js"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUser,
@@ -10,23 +10,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-const Sidebar=({ isMobile }) => {
-
+export default function Sidebar() {
 
   return (
     <>
       <div className="nav-bar">
-        <nav>
-          {isMobile?(
-            <>
-              <a href='#home'></a>
-              <a href="#about">About</a>
-              <a href="#cv">CV</a>
-              <a href="#contact">Contact</a>
-            </>
-          ):(
-            <>
-              <NavLink exact="true" activeclassname="active" to="/" data-title="Home">
+            <nav>
+              <NavLink exact="true" activeclassname="active" to={links.home} data-title="Home">
               <FontAwesomeIcon icon={faHome} className="icon-color" />
             </NavLink>
               <NavLink
@@ -34,7 +24,7 @@ const Sidebar=({ isMobile }) => {
                 activeclassname="active"
                 className="about-link"
                 data-title="About"
-                to="/about"
+                to={links.about}
 
               >
                 <FontAwesomeIcon icon={faUser} className="icon-color" />
@@ -45,7 +35,7 @@ const Sidebar=({ isMobile }) => {
                 data-title="Cv"
                 activeclassname="active"
                 className="cv-link"
-                to="/cv"
+                to={links.cv}
 
               >
                 <FontAwesomeIcon icon={faFile} className="icon-color" />
@@ -55,22 +45,19 @@ const Sidebar=({ isMobile }) => {
                 activeclassname="active"
                 className="contact-link"
                 data-title="Contact"
-                to="/contact"
+                to={links.contact}
 
               >
                 <FontAwesomeIcon icon={faEnvelope} className="icon-color" />
               </NavLink>
-            </>
-          )}
-
-        </nav>
+            </nav>
         <ul>
           <li>
             <a
               data-title="Linkedin"
               target="_blank"
               rel="noreferrer"
-              href="https://www.linkedin.com/in/maxime-lapouge-1a0970207/"
+              href={links.externalLinks.linkedin}
             >
               <FontAwesomeIcon icon={faLinkedin} className="icon-color" />
             </a>
@@ -80,7 +67,7 @@ const Sidebar=({ isMobile }) => {
               data-title="Github"
               target="_blank"
               rel="noreferrer"
-              href="https://github.com/Moxiii"
+              href={links.externalLinks.github}
             >
               <FontAwesomeIcon icon={faGithub} className="icon-color" />
             </a>
@@ -92,4 +79,4 @@ const Sidebar=({ isMobile }) => {
     </>
   )
 }
-export default Sidebar
+

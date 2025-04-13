@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
-const TiltCard = ({ title, icon }) => {
+export default function TiltCard({ title, icon })  {
     const ref = useRef(null);
 
     const x = useMotionValue(0);
@@ -60,5 +60,3 @@ const TiltCard = ({ title, icon }) => {
       </motion.div>
     );
 };
-
-export default TiltCard;

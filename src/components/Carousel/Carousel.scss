@@ -51,7 +51,7 @@ height: 500px;
 
     &:hover {
       flex: 0 0 250px;
-      box-shadow: 1px 3px 15px #7645d8;
+      box-shadow: 1px 3px 15px $cp-color;
       transform: translateY(-30px);
     }
 

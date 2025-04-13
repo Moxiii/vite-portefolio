@@ -4,7 +4,7 @@ import Carousel from '../../components/Carousel/Carousel.jsx'
 
 import { useEffect, useState } from 'react'
 
-const Home = () => {
+export default function Home() {
 
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
   const handleResize = () => {
@@ -28,4 +28,3 @@ const Home = () => {
   );
 };
 
-export default Home;

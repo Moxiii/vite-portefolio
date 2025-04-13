@@ -4,74 +4,73 @@ $shadow: -0.6rem 0.6rem 0 rgba(29, 30, 28, 0.26);
 
 .contact-page {
   display: flex;
-  justify-content: center; // Centre horizontalement
-  align-items: center; // Centre verticalement
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  padding: 20px; // Ajout d'un padding
+  padding: 20px;
 
 
 .text-zone {
-  max-width: 600px; // Limite la largeur de la zone de texte
-  width: 100%; // Prend toute la largeur disponible
-  border-radius: 8px; // Arrondir les coins
-  padding: 20px; // Ajout de l'espace autour du contenu
+  max-width: 600px;
+  width: 100%;
+  border-radius: 8px;
+
 }
 .header{
   margin-bottom: 5%;
 }
 .header h1 {
-  text-align: center; // Centre le titre
-  margin-bottom: 20px; // Espacement sous le titre
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .contact-form {
-  width: 100%; // Assure que le formulaire prend toute la largeur disponible
+  width: 100%;
 
   input.feedback-body__email,
   textarea.feedback-body__message {
-    width: 100%; // Prend toute la largeur
-    border: 2px solid rgba(0, 0, 0, 0.6); // Bordure définie
-    background-color: #115173; // Couleur de fond
-    color: #fff; // Couleur du texte
-    padding: 10px; // Padding interne
-    box-sizing: border-box; // Inclut le padding dans la largeur
-    margin-bottom: 10px; // Espacement entre les éléments
-    border-radius: 4px; // Arrondir les coins
-    transition: border-color 0.3s; // Transition pour la bordure
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    background-color: #115173;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: border-color 0.3s;
 
     &:focus {
-      outline: none; // Enlève le contour par défaut
-      border-color: $primary-color; // Change la couleur de bordure au focus
+      outline: none;
+      border-color: $primary-color;
     }
   }
 
   textarea.feedback-body__message {
-    min-height: 100px; // Hauteur minimale pour le textarea
-    resize: vertical; // Permet le redimensionnement vertical
+    min-height: 100px;
+    resize: vertical;
   }
 
   button.feedback-body__submit {
-    width: 100%; // Prend toute la largeur
-    background-color: $primary-color; // Couleur de fond du bouton
-    color: #fff; // Couleur du texte
-    padding: 10px; // Padding interne
-    border: none; // Pas de bordure
-    border-radius: 4px; // Arrondir les coins
-    cursor: pointer; // Changer le curseur en pointeur
+    width: 100%;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 
     &:hover {
-      background-color: darken($primary-color, 10%); // Assombrir au survol
+      background-color: darken($primary-color, 10%);
     }
   }
 }
 
-// Styles de feedback pour la carte si nécessaire
 .feedback {
   &-card {
     border: 1px solid black;
     max-width: 980px;
     background-color: #fff;
-    margin: 20px auto; // Ajoute un espacement vertical
+    margin: 20px auto;
     box-shadow: $shadow;
   }
 }

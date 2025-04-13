@@ -4,8 +4,7 @@ import './Contact.scss'
 import ReactGA from 'react-ga'
 const TRACK_ID = "GTM-MQXDT7ZH"
 ReactGA.initialize(TRACK_ID);
-const Contact = () => {
-
+export default function Contact() {
 
   const refForm = useRef()
   const clearInput = () => {
@@ -39,7 +38,9 @@ const Contact = () => {
           <div className="header">
             <h1>Contactez-moi</h1>
           </div>
+          <div className="contact-links">
 
+          </div>
           <div className="contact-form">
             <form ref={refForm} onSubmit={(e) => {
               e.preventDefault();
@@ -56,5 +57,3 @@ const Contact = () => {
       </div>
 )
 }
-
-export default Contact

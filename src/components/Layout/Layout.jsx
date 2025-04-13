@@ -5,7 +5,7 @@ import Loader from 'react-loaders'
 import { lazy, Suspense } from 'react'
 const MobileView = lazy(() => import('../../Screens/MobileView/MobileView.jsx'))
 import {  useMediaQuery } from 'react-responsive'
-const Layout = () => {
+export default function Layout() {
   const isDesktop = useMediaQuery({minWidth:769})
 
 
@@ -24,4 +24,4 @@ const Layout = () => {
     </>
   )
 }
-export default Layout
+

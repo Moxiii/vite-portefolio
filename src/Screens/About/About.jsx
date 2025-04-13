@@ -20,7 +20,7 @@ import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
 import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
 
 
-const About = () => {
+export default function About() {
 
   const isDesktop = useMediaQuery({minWidth:769})
   const monoChromaticIcon = "#FFC300"
@@ -179,5 +179,3 @@ const About = () => {
     </>
   )
 }
-
-export default About

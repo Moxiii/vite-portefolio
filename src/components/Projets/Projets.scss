@@ -1,5 +1,7 @@
 
 .projet {
+  position: relative;
+  left:5%;
   overflow-y: auto;
   overflow-x:hidden;
   flex-wrap: wrap;
@@ -15,7 +17,7 @@
     margin: 2% 0;
   }
 }
-  width: 100%;
+  width: 95%;
   height: auto;
   transition: background .4s ease-in;
 
@@ -62,80 +64,9 @@ justify-content: space-between;
   }
 }
 
-.carouselProjet {
-  flex-wrap: wrap;
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  margin:5% 0;
-}
-
-.carousel__wrapper {
- margin:10% 0;
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  perspective: 1000px;
-  cursor: pointer;
-  flex-grow: 1;
-  align-items: center;
-  left: 5%;
-}
-
-.item {
-  position: absolute;
-  width: 60%;
-  height: auto;
-  opacity: 0.3;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
 
 
 
-  img {
-    width: 600px;
-    height: 400px;
-    object-fit: cover;
-    max-height: 400px;
-    border-radius: 10px;
-  }
-
-  &.visible {
-    transform: translateX(0) scale(1.1);
-    opacity: 1;
-    z-index: 1;
-
-    img {
-      box-shadow: 0px 0px 5px rgba(81, 81, 81, 0.47);
-      border-radius: 10px;
-    }
-  }
-&.next{
-   transform: translateX(40%) scale(0.8);
-  opacity: .4;
-  z-index: 0;
-} &.prev {
-    transform: translateX(-40%) scale(0.8);
-    opacity: 0.4;
-    z-index: 0;
-  }
-  &.outside {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
-    display: none;
-  }
-  &:not(.visible):not(.next):not(prev){
-  transform: translateX(-40%) scale(.8);
-    z-index: -1;
-}
-
-}
 
 
 .links {

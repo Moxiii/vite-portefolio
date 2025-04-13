@@ -12,13 +12,11 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Vous pouvez enregistrer l'erreur ici
     console.error("Une erreur a été capturée dans ErrorBoundary:", error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // Vous pouvez afficher n'importe quel message d'erreur personnalisé
       return (
         <>
           <h1>oops</h1>
