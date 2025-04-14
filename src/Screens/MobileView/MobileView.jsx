@@ -6,7 +6,7 @@ import Contact from '../Contact/Contact.jsx'
 import { ReactLenis } from 'lenis/react'
 import { useEffect, useState } from 'react'
 import FetchProject from '../../Utils/FetchProject.js'
-
+import SharedLayout from '../../components/SharedLayout/SharedLayout.jsx'
 
 export default function MobileView(){
   const [projets, setProjets] = useState([]);
@@ -34,6 +34,11 @@ export default function MobileView(){
           text={`Étudiant\nDéveloppeur\nIPI ${new Date().getFullYear()}`}/>
 
         <section id="about"><About/></section>
+        <section className="projets">
+          <h1>Mes Projets:</h1>
+          <SharedLayout projects={projets}/>
+        </section>
+
         <section id="cv"><Cv/></section>
         <section id="contact"><Contact/></section>
       </div>

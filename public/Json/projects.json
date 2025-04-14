@@ -53,6 +53,9 @@
       { "isMock": false, "src": "/Project/Georges/georges2.png", "title": "Page d'acceuil de georges" },
       { "isMock": false, "src": "/Project/Georges/georges3.png", "title": "Réponse IA " },
       { "isMock": false, "src": "/Project/Georges/georges4.png", "title": "Parametre généraux" }
+    ],
+    "category": [
+      "fullstack" , "mobile"
     ]
   },
   {
@@ -113,6 +116,9 @@
     "img": [
       { "isMock": false, "src": "/Project/Hera/hera1.png", "title": "Structure du backend" },
       { "isMock": false, "src": "/Project/Hera/hera2.png", "title": "Structure du code de scrapping" }
+    ],
+    "category": [
+      "fullstack"
     ]
   },
   {
@@ -153,6 +159,9 @@
   { "isMock": false, "src": "/Project/Portefolio/portefolio2.png", "title": "La page présentation" },
     { "isMock": false, "src": "/Project/Portefolio/portefolio3.png", "title": "Page Contact permettant d'envoyer des mail" },
     { "isMock": false, "src": "/Project/Portefolio/portefolio4.png", "title": "Page CV" }
-]
+],
+    "category": [
+      "frontend"
+    ]
   }
 ]

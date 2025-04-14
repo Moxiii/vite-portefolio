@@ -1,7 +1,4 @@
 .mobile-view{
-  h1{
-    font-size: 4rem;
-  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +29,17 @@
   }
   #cv{
     width:95%;
+  }
+  .projets{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1{
+      color: $primary-color;
+    }
   }
   @include tinyDevice{
     p{
