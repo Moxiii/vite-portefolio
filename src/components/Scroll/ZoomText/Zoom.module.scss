@@ -35,7 +35,7 @@
     font-size: 300%;
   }
   .center{
-    font-size:25%;
+    font-size:xx-small;
   }
   .second{
     padding-bottom: 20%;
@@ -73,7 +73,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 19)));
+      transform: translate(-54.2%, -50%) scale(calc((var(--progress1) * 7)));
       transform-origin: 50% calc(50% - (var(--progress1) * 27%));
       opacity: calc(var(--progress1) * 4);
       text-align: center;

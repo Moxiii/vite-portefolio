@@ -31,7 +31,6 @@ export default function SharedLayout({ projects }) {
   const handleClickButton = (projet) => {
     setDrawerOpen(true)
     setSelectedProject(projet)
-    console.log(projet)
   }
   const renderMobilePresentation = (presentation) => {
     let sections = [];
