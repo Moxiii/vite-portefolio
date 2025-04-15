@@ -5,13 +5,14 @@ import {motion} from "framer-motion";
 
 export default function slideCarousel({images}){
   const [currentIndex, setCurrentIndex] = useState(0);
+  const filteredImages = images.filter(image => image.isMock !== true);
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredImages.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1
     );
   };
 
@@ -26,9 +27,9 @@ export default function slideCarousel({images}){
         transition={{ duration: 0.5 }}
       >
         <div className={s.SlideText}>
-          <h2>{images[currentIndex].title}</h2>
+          <h2>{filteredImages[currentIndex].title}</h2>
         </div>
-        <div className={s.SlideImage} style={{ backgroundImage: `url(${images[currentIndex].src})` }} />
+        <div className={s.SlideImage} style={{ backgroundImage: `url(${filteredImages[currentIndex].src})` }} />
       </motion.div>
       <button className={s.PrevButton} onClick={prevSlide} aria-label="Image précédente">
         <FaChevronLeft />

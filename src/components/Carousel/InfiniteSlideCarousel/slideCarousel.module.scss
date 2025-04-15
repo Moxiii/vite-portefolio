@@ -3,12 +3,12 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 80%;
+  width: 95%;
 
   box-shadow: 0px 5px 30px rgba($cp-color, 0.4);
   border-radius: 10px;
   padding: 3%;
-  margin: 5% 0;
+  margin: 5% 2%;
 
 }
 
@@ -32,11 +32,15 @@
 }
 
 .SlideImage {
-  width: 500px;
-  height: 500px;
+aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 500px;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
+  @include mobile(){
+    width:200px;
+  }
 }
 
 .PrevButton,

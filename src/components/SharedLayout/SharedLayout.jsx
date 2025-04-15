@@ -2,6 +2,7 @@ import s from "./SharedLayout.module.scss"
 import {AnimatePresence, motion} from "framer-motion";
 import React, {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import InfiniteSlideCarousel  from "../Carousel/InfiniteSlideCarousel/slideCarousel.jsx"
 import {
   faAngular,
   faJava,
@@ -10,7 +11,8 @@ import {
   faReact,
   faSass,
 } from "@fortawesome/free-brands-svg-icons";
-export default function SharedLayout({ projects , setOpen , setOpenedProject }) {
+import InfoDrawer from "../../components/DragCloseDrawer/infoDrawer.jsx"
+export default function SharedLayout({ projects }) {
   const iconMap = {
     faReact: faReact,
     faJava: faJava,
@@ -19,17 +21,59 @@ export default function SharedLayout({ projects , setOpen , setOpenedProject }) 
     faPython: faPython,
     faSass: faSass,
   };
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
   const categories = ["Tous", "Frontend", "Mobile", "Fullstack"];
-
+  const [selectedProject, setSelectedProject] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
   const filteredProjects = selectedCategory === "Tous"
     ? projects
     : projects.filter((p) => p.category.includes(selectedCategory.toLowerCase()));
-  const [selectedTab, setSelectedTab] = useState(projects.length > 0 ? projects[0] : null);
-  const handleClickButton = (selectedTab) => {
-    setOpen(true);
-    setOpenedProject(selectedTab);
+  const handleClickButton = (projet) => {
+    setDrawerOpen(true)
+    setSelectedProject(projet)
+    console.log(projet)
   }
+  const renderMobilePresentation = (presentation) => {
+    let sections = [];
+    let currentSection = [];
+
+    presentation.forEach((element, index) => {
+      if (typeof element === 'object') {
+        if (element.titre) {
+          if (currentSection.length > 0) {
+            sections.push(
+              <div key={`section-${sections.length}`} className="section">
+                {currentSection}
+              </div>
+            );
+          }
+          currentSection = [<h2 key={index}>{element.titre}</h2>];
+        }
+
+        if (element.liste) {
+          currentSection.push(
+            <ul key={`list-${index}`}>
+              {element.liste.map((item, i) => (
+                <li key={`item-${i}`}>{item}</li>
+              ))}
+            </ul>
+          );
+        }
+      } else {
+        currentSection.push(<p key={index}>{element}</p>);
+      }
+    });
+
+    if (currentSection.length > 0) {
+      sections.push(
+        <div key={`section-${sections.length}`} className="section">
+          {currentSection}
+        </div>
+      );
+    }
+
+    return sections;
+  };
   return (
     <div className={s.SharedLayoutContainer}>
       <nav className={s.SharedLayoutNav}>
@@ -57,7 +101,7 @@ export default function SharedLayout({ projects , setOpen , setOpenedProject }) 
       <main className={s.SharedLayoutMain}>
         <AnimatePresence mode="wait">
           <motion.div
-            key={selectedTab ? selectedTab.title : "empty"}
+            key={selectedProject ? selectedProject.title : "empty"}
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
@@ -92,7 +136,7 @@ export default function SharedLayout({ projects , setOpen , setOpenedProject }) 
                     </span>))}
                   </div>
 
-                  <motion.div className={s.button} onClick={() => handleClickButton(selectedTab)}>En
+                  <motion.div className={s.button} onClick={() => handleClickButton(item)}>En
                     savoir plus
                   </motion.div>
                 </motion.div>
@@ -103,6 +147,16 @@ export default function SharedLayout({ projects , setOpen , setOpenedProject }) 
           </motion.div>
         </AnimatePresence>
       </main>
+      <InfoDrawer isOpen={isDrawerOpen} onClose={()=>setDrawerOpen(false)}
+      >
+        {selectedProject && (
+          <>
+          <h3 className={s.projectTitle}>{selectedProject.title}</h3>
+            {selectedProject && <InfiniteSlideCarousel images={selectedProject.img} />}
+            {renderMobilePresentation(selectedProject.presentation)}
+          </>
+        )}
+      </InfoDrawer>
     </div>
   )
 }

@@ -61,7 +61,7 @@
   {
     "id": 2,
     "title": "Hera",
-    "description": "Le chercheur de baskettes de collection par excellence",
+    "description": "Le chercheur de baskets de collection par excellence",
     "presentation": [
       "L'outil de recherche par excellence",
       "Hera est un application Web pour la recherche d'objets de collections et ou série limité",
@@ -124,7 +124,7 @@
   {
   "id": 3,
   "title": "Portfolio",
-  "description": "Portfolio réaliser avec Vite (react)",
+  "description": "Portfolio",
   "presentation": [
   "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
   "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",
@@ -134,7 +134,7 @@
     "Dans le but d'améliorer mes compétence en Front-End avec React ",
     "Pour appuyer de potentiel future candidature",
     {"titre" : "Le futur ? "},
-    "pour le moment mon portefolio est encore en développement mais dans le futur plusieurs chose sont prévu",
+    "pour le moment mon portefolio est encore en développement mais dans le futur plusieurs chose sont prévu : ",
     {
       "liste": [
         "Mise en production sur mon serveur local",
