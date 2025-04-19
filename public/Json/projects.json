@@ -6,6 +6,9 @@
     "presentation": [
       "Georges est une application de gestion boosté avec de l'ia ",
       "Le but premier de george est d'offrir une gestion amélioré des projets de groupes",
+      {"titre" :  "L'idée de George"},
+      "Issue d'une discution de groupe lors d'un projet MESI , la mise en place d'un outil de gestion est né ",
+      "Le but étant de centraliser et optimiser le flux de travail et la communication dans l'équipe",
       {
         "titre" : "Comment cela fonctionne ? "
       },
@@ -13,10 +16,13 @@
       "Chaque tâche sera supervisé par l'IA en terme de temps et de difficulté",
       "L'intelligence de Georges permettra de gérer votre précieux temps ! ",
       {
-        "titre":"Pourquoi et pour qui ?"
+        "titre":"Pourquoi ?"
       },
-      "Pour toute personne individuelle et/ou entreprise",
       "Le but de georges est de proposer un service d'aide a la personne personalisé pour vos besoin!",
+      {
+        "titre":" Pour qui ?"
+      },
+      "Le but de georges est de proposer un service d'aide a la personne personalisé pour vos besoin !",
       {"titre" : "Le futur de Georges ? "},
       "pour le moment Georges est encore en développement mais dans le futur plusieurs chose sont prévu",
       {

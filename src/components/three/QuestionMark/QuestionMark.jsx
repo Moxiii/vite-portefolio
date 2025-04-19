@@ -1,6 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Text3D } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
+import * as THREE from 'three';
 
 
 function RotatingQuestionMark() {
@@ -13,10 +14,11 @@ function RotatingQuestionMark() {
       setPosition([-(width / 2), 0, 3]);
     }
   }, []);
-
+const clock = new THREE.Clock();
   useFrame(() => {
+    const elapsedTime = clock.getElapsedTime();
     if (questionMarkRef.current) {
-      questionMarkRef.current.rotation.y += 0.005;
+      questionMarkRef.current.rotation.y = elapsedTime;
     }
   });
 
