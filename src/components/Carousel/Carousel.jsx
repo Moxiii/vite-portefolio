@@ -16,7 +16,8 @@ import FetchProject from "../../Utils/FetchProject.js"
     useEffect(() => {
       const getData = async () =>{
         const projects = await FetchProject();
-        setProjets(projects)
+        const showingProjects = projects.filter(project => project.visible !== false);
+        setProjets(showingProjects)
       }
       getData();
     }, []);

@@ -25,9 +25,13 @@ export default function SharedLayout({ projects }) {
   const categories = ["Tous", "Frontend", "Mobile", "Fullstack"];
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
-  const filteredProjects = selectedCategory === "Tous"
-    ? projects
-    : projects.filter((p) => p.category.includes(selectedCategory.toLowerCase()));
+  const filteredProjects = projects
+    .filter((p) => p.visible !== false)
+    .filter((p) =>
+      selectedCategory === "Tous"
+        ? true
+        : p.category.includes(selectedCategory.toLowerCase())
+    );
   const handleClickButton = (projet) => {
     setDrawerOpen(true)
     setSelectedProject(projet)
@@ -150,9 +154,21 @@ export default function SharedLayout({ projects }) {
       >
         {selectedProject && (
           <>
-          <h3 className={s.projectTitle}>{selectedProject.title}</h3>
+            <h3 className={s.projectTitle}>{selectedProject.title}</h3>
             {selectedProject && <InfiniteSlideCarousel images={selectedProject.img} />}
+            <div className={s.ProjectLinks}>
+              <h3>Lien utiles :</h3>
+              <ul>
+                {selectedProject && selectedProject.links.map((link, index) => (
+                  <li key={index}>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>{link.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {renderMobilePresentation(selectedProject.presentation)}
+
           </>
         )}
       </InfoDrawer>

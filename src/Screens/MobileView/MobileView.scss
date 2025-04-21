@@ -3,12 +3,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  #projets, #cv ,#about, #contact{
+    margin:5% 0 ;
+  }
   #about{
   .about-page{
     margin: 1% 5%;
   }
     width:100vw;
-    margin:1% 4%;
     .mobile-tech-icons{
       display: flex;
       justify-content: space-evenly;
@@ -31,6 +33,7 @@
     width:95%;
   }
   .projets{
+    margin:5% 0;
     width: 100%;
     height: auto;
     display: flex;
@@ -47,10 +50,11 @@
     }
     h1, h2, h3 {
       margin: 4% 0;
-      padding: 2% 1%;
+
     }
     h1{
       font-size: xx-large;
+      padding: 5% 1%;
     }
     h2{
       font-size: x-large;

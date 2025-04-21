@@ -22,7 +22,7 @@
       {
         "titre":" Pour qui ?"
       },
-      "Le but de georges est de proposer un service d'aide a la personne personalisé pour vos besoin !",
+      "Pour toute personne physique ou moral , l'idée étant de le rendre disponible pour le maximum de personnes possible",
       {"titre" : "Le futur de Georges ? "},
       "pour le moment Georges est encore en développement mais dans le futur plusieurs chose sont prévu",
       {
@@ -125,12 +125,13 @@
     ],
     "category": [
       "fullstack"
-    ]
+    ],
+    "visible": false
   },
   {
   "id": 3,
   "title": "Portfolio",
-  "description": "Portfolio",
+  "description": "Site vitrine pour mon CV ",
   "presentation": [
   "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
   "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",
