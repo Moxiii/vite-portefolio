@@ -93,7 +93,7 @@ export default function ZoomText({title1, text, title2}: ZoomTextProps) {
                         ))}
                     </h2>
                     <div className={s.second}>
-                        <MouseScrollAnimation color={"#ff06b5"} />
+                        <MouseScrollAnimation color={"#E7DFC6"} />
                         <h2 className={cn(s.contrast , "h1 vh")}>Scroll Down</h2>
                     </div>
 

@@ -24,7 +24,7 @@
       },
       "Pour toute personne physique ou moral , l'idée étant de le rendre disponible pour le maximum de personnes possible",
       {"titre" : "Le futur de Georges ? "},
-      "pour le moment Georges est encore en développement mais dans le futur plusieurs chose sont prévu",
+      "pour le moment Georges est encore en développement mais dans le futur plusieurs chose sont  :",
       {
         "liste": [
           "Mise en production sur mon serveur local",
@@ -136,16 +136,19 @@
   "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
   "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",
     {
-      "titre":"Pourquoi et pour qui ?"
+      "titre":"Pourquoi  ?"
     },
-    "Dans le but d'améliorer mes compétence en Front-End avec React ",
-    "Pour appuyer de potentiel future candidature",
+    "Dans le but d'améliorer mes compétences en Front-End avec React ",
+    "Le but étant de m'autoformer au design WEB et appréhender des outils comme GSAP / THREE etc",
+    {
+      "titre":"pour qui ?"
+    },
+    "Pour appuyer de potentiel future candidature au pres d'entreprise",
     {"titre" : "Le futur ? "},
     "pour le moment mon portefolio est encore en développement mais dans le futur plusieurs chose sont prévu : ",
     {
       "liste": [
-        "Mise en production sur mon serveur local",
-        "Amélioration de l'UI/UX avec Framer Motion et Lenis ",
+        "Amélioration de l'UI/UX ",
         "Mise a jour des projets en cours",
         "Toujours aller plus loin dans l'apprentissage du Front-End et proposer un site vitrine de qualité"
       ]

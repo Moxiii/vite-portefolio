@@ -61,11 +61,12 @@ export default function About() {
   ];
 
   return (
-    <>
-      <div className="container about-page">
+    <div className="container about-page">
+      <section className="about-me">
         <div className="text-zone">
           <h1>A propos de moi</h1>
-          <p> Jeune homme passionné d&apos;informatique depuis petit , j&apos;ai grandi avec une manette de NES dans les
+          <p> Jeune homme passionné d&apos;informatique depuis petit , j&apos;ai grandi avec une manette de NES dans
+            les
             mains . </p>
           <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
           <p>D&apos;une curiosité sans faille,je continue de m&apos;auto-former sur les technologies suivantes : </p>
@@ -94,69 +95,79 @@ export default function About() {
             </div>
           ) : (
             <div className="mobile-tech-icons">
-            <div className="tech-item">
-            <FontAwesomeIcon icon={faJava}  />
-        <p>Java</p>
-      </div>
-      <div className="tech-item">
-        <FontAwesomeIcon icon={faDocker}  />
-        <p>Docker</p>
-      </div>
-      <div className="tech-item">
-        <FontAwesomeIcon icon={faReact}  />
-        <p>React</p>
-      </div>
-      <div className="tech-item">
-        <FontAwesomeIcon icon={faPython}  />
-        <p>Python</p>
-      </div>
-      <div className="tech-item">
-        <FontAwesomeIcon icon={faJsSquare}  />
-        <p>JavaScript</p>
-      </div>
-      <div className="tech-item">
-        <FontAwesomeIcon icon={faGitAlt}  />
-        <p>Git</p>
-      </div>
-    </div>
-  )}
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faJava} />
+                <p>Java</p>
+              </div>
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faDocker} />
+                <p>Docker</p>
+              </div>
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faReact} />
+                <p>React</p>
+              </div>
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faPython} />
+                <p>Python</p>
+              </div>
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faJsSquare} />
+                <p>JavaScript</p>
+              </div>
+              <div className="tech-item">
+                <FontAwesomeIcon icon={faGitAlt} />
+                <p>Git</p>
+              </div>
+            </div>
+          )}
           <p>Technologies utilisé pour les projets Georges et Hera</p>
+        </div>
+      </section>
+      <section className="formation">
+        <div className="text-zone">
           <h3>Sans oublier :</h3>
           <p> Lenis , Gsap , Framer Motion pour les bibliothèques front. </p>
           <p>Spring Boot et .Net pour les Framework Backend. </p>
           <h3>Aussi du coté réseau : </h3>
-          <p>Je surveille la disponibilité de serveur OVH kimsufi pour m&apos;entraîner à la CI/CD et au déploiement d&apos;application Javascript/Java </p>
+          <p>Je surveille la disponibilité de serveur OVH kimsufi pour m&apos;entraîner à la CI/CD et au déploiement
+            d&apos;application Javascript/Java </p>
+        </div>
+
+      </section>
+      <section className="passion">
+        <div className="text-zone">
           <h2>Mais aussi passionné par :</h2>
           {isDesktop ? (
             <div className="card-container">
-            {interests.map((interest, index) => (
-              <TiltCard
-                key={index}
-                title={interest.title}
-                icon={interest.icon}
-              />
-            ))}
-          </div>) : (
+              {interests.map((interest, index) => (
+                <TiltCard
+                  key={index}
+                  title={interest.title}
+                  icon={interest.icon}
+                />
+              ))}
+            </div>) : (
             <div className="mobile-card-container">
               {interests.map((interest, index) => (
                 <div
-                key={index}
-                className={`interest-row ${index % 2 === 0 ? "right" : "left"}`}
+                  key={index}
+                  className={`interest-row ${index % 2 === 0 ? 'right' : 'left'}`}
                 >
-                 <div className="interest-text">
-                   <h3>{interest.title}</h3>
-                   <p>{interest.content}</p>
-                 </div>
+                  <div className="interest-text">
+                    <h3>{interest.title}</h3>
+                    <p>{interest.content}</p>
+                  </div>
                   <div className="card">
                     <div className="header">
-                      <FontAwesomeIcon className="card-icon" icon={interest.icon}/>
+                      <FontAwesomeIcon className="card-icon" icon={interest.icon} />
                     </div>
                   </div>
                 </div>
               ))}
-          </div>)}
+            </div>)}
           <div className="sub-interest">
-            <p>Passion qui motive a la création d'outils.</p>
+            <h3>Passion qui motive a la création d'outils.</h3>
             <ul>
               <li>
                 Hera pour la vente de vêtements/objets de collection.
@@ -166,14 +177,22 @@ export default function About() {
               </li>
             </ul>
           </div>
+        </div>
 
+      </section>
+      <section className="futur">
+        <div className="text-zone">
           <h2> Qu&apos;est-il prévu pour le futur ? </h2>
           {isDesktop ? (<QuestionMark3D text="Apprentissage de Three.js pour proposer un portfolio interactif" />) : (
             <p>Apprentissage de Three.js pour proposer un portfolio interactif</p>)}
-          <p>Actuellement entrain de suivre la formation three.js journey afin d'améliorer ma comprehension de l'outil et du WebGL en regle générale</p>
+          <p>Actuellement entrain de suivre la formation three.js journey afin d'améliorer ma comprehension de l'outil
+            et
+            du WebGL en regle générale</p>
         </div>
-      </div>
+      </section>
 
-    </>
+    </div>
+
+
   )
 }

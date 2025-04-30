@@ -11,7 +11,7 @@ function RotatingQuestionMark() {
   useEffect(() => {
     if (questionMarkRef.current) {
       const width = questionMarkRef.current.geometry.boundingBox?.max.x || 0;
-      setPosition([-(width / 2), 0, 3]);
+      setPosition([-(width / 2), -3, 3]);
     }
   }, []);
 const clock = new THREE.Clock();
@@ -26,7 +26,7 @@ const clock = new THREE.Clock();
     <Text3D
       ref={questionMarkRef}
       font="/fonts/DM_Sans_Regular.json"
-      size={3}
+      size={4}
       height={.2}
       curveSegments={12}
       bevelEnabled
@@ -48,12 +48,8 @@ export default function QuestionMark3D({ text }) {
       <Canvas
         camera={{ position: [0, 0, -3], fov: 70 }}
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
           width: "100%",
           height: "100%",
-          zIndex: 0,
         }}
       >
         <directionalLight intensity={1.2} position={[0, 0, 5]} />
@@ -74,7 +70,7 @@ export default function QuestionMark3D({ text }) {
             zIndex: 10,
           }}
         >
-          <p style={{marginTop:"10%" , fontSize:"1rem"}}>{text}</p>
+          <p style={{marginTop:"5%"}}>{text}</p>
         </div>
       )}
     </div>
