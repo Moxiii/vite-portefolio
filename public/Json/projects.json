@@ -2,29 +2,23 @@
   {
     "id": 1,
     "title": "Georges",
-    "description": "Le jarvis fr",
+    "description": "Le Jarvis français",
     "presentation": [
-      "Georges est une application de gestion boosté avec de l'ia ",
-      "Le but premier de george est d'offrir une gestion amélioré des projets de groupes",
-      {"titre" :  "L'idée de George"},
-      "Issue d'une discution de groupe lors d'un projet MESI , la mise en place d'un outil de gestion est né ",
-      "Le but étant de centraliser et optimiser le flux de travail et la communication dans l'équipe",
-      {
-        "titre" : "Comment cela fonctionne ? "
-      },
-      "Il sera possible de mettre des taches dans un calendrier mêlant vie pro et perso",
-      "Chaque tâche sera supervisé par l'IA en terme de temps et de difficulté",
-      "L'intelligence de Georges permettra de gérer votre précieux temps ! ",
-      {
-        "titre":"Pourquoi ?"
-      },
-      "Le but de georges est de proposer un service d'aide a la personne personalisé pour vos besoin!",
-      {
-        "titre":" Pour qui ?"
-      },
-      "Pour toute personne physique ou moral , l'idée étant de le rendre disponible pour le maximum de personnes possible",
-      {"titre" : "Le futur de Georges ? "},
-      "pour le moment Georges est encore en développement mais dans le futur plusieurs chose sont  :",
+      "Georges est une application de gestion boostée avec de l'IA.",
+      "Le but premier de Georges est d'offrir une gestion améliorée des projets de groupe.",
+      { "titre": "L'idée de Georges" },
+      "Issue d'une discussion de groupe lors d'un projet MESI, la mise en place d'un outil de gestion est née.",
+      "L'objectif est de centraliser et d'optimiser le flux de travail et la communication dans l'équipe.",
+      { "titre": "Comment cela fonctionne ?" },
+      "Il sera possible d'ajouter des tâches dans un calendrier mêlant vie pro et perso.",
+      "Chaque tâche sera supervisée par l'IA en termes de temps et de difficulté.",
+      "L'intelligence de Georges permettra de gérer votre précieux temps !",
+      { "titre": "Pourquoi ?" },
+      "Le but de Georges est de proposer un service d'aide à la personne personnalisé pour vos besoins.",
+      { "titre": "Pour qui ?" },
+      "Pour toute personne physique ou morale, l'idée étant de le rendre disponible au plus grand nombre.",
+      { "titre": "Le futur de Georges ?" },
+      "Pour le moment, Georges est encore en développement, mais plusieurs choses sont prévues :",
       {
         "liste": [
           "Mise en production sur mon serveur local",
@@ -67,30 +61,26 @@
   {
     "id": 2,
     "title": "Hera",
-    "description": "Le chercheur de baskets de collection par excellence",
+    "description": "Le moteur de recherche de baskets de collection par excellence",
     "presentation": [
-      "L'outil de recherche par excellence",
-      "Hera est un application Web pour la recherche d'objets de collections et ou série limité",
-      {
-        "titre" : "Comment cela fonctionne ? "
-      },
-      "Un algorithme de Scrapping est appelé en Python avec Playwrith",
-      "Les résultat de tout les sites sortes trié en fonction du prix d'achat par exemple",
-
-      {
-        "titre":"Pourquoi et pour qui ?"
-      },
-      "Pour toute personne individuelle et/ou entreprise",
-      "Le but de Hera est de proposé un service afin de gagner du temps dans la recherche d'objets de collections",
-      {"titre" : "Le futur de Hera ? "},
-      "pour le moment hera est encore en développement mais dans le futur plusieurs chose sont prévu",
+      "L'outil de recherche par excellence.",
+      "Hera est une application web pour la recherche d'objets de collection ou en série limitée.",
+      { "titre": "Comment cela fonctionne ?" },
+      "Un algorithme de scraping est appelé en Python avec Playwright.",
+      "Les résultats de tous les sites sortent triés en fonction du prix d'achat, par exemple.",
+      { "titre": "Pourquoi ?" },
+      "Le but de Hera est de proposer un service permettant de gagner du temps dans la recherche d'objets de collection.",
+      { "titre": "Pour qui ?" },
+      "Pour toute personne individuelle et/ou entreprise.",
+      { "titre": "Le futur de Hera ?" },
+      "Pour le moment, Hera est encore en développement, mais plusieurs choses sont prévues :",
       {
         "liste": [
           "Mise en production sur mon serveur local",
           "Site de présentation",
-          "Algo de scrapping améliorer pour économiser de la ressource serveur",
-          "Un système de paire du moment / actualité ",
-          "Mise en place d'un système de recommandation de site fiable et trier avec l'api TrustPilot"
+          "Algorithme de scraping amélioré pour économiser les ressources serveur",
+          "Un système de 'paire du moment' / actualités",
+          "Mise en place d'un système de recommandation de sites fiables triés avec l'API TrustPilot"
         ]
       }
     ],
@@ -131,29 +121,25 @@
   {
   "id": 3,
   "title": "Portfolio",
-  "description": "Site vitrine pour mon CV ",
-  "presentation": [
-  "L'idée est issue d'une discution avec Marina notre chargé de placement en entreprise",
-  "En effet , les recruteurs regarde le portefolio m'a t'elle dit donc je me suis lancé dans la construction d'un portefolio en react",
-    {
-      "titre":"Pourquoi  ?"
-    },
-    "Dans le but d'améliorer mes compétences en Front-End avec React ",
-    "Le but étant de m'autoformer au design WEB et appréhender des outils comme GSAP / THREE etc",
-    {
-      "titre":"pour qui ?"
-    },
-    "Pour appuyer de potentiel future candidature au pres d'entreprise",
-    {"titre" : "Le futur ? "},
-    "pour le moment mon portefolio est encore en développement mais dans le futur plusieurs chose sont prévu : ",
-    {
-      "liste": [
-        "Amélioration de l'UI/UX ",
-        "Mise a jour des projets en cours",
-        "Toujours aller plus loin dans l'apprentissage du Front-End et proposer un site vitrine de qualité"
-      ]
-    }
-],
+    "description": "Site vitrine pour mon CV",
+    "presentation": [
+      "L'idée est issue d'une discussion avec Marina, notre chargée de placement en entreprise.",
+      "En effet, les recruteurs regardent le portfolio, m’a-t-elle dit, donc je me suis lancé dans la construction d’un portfolio en React.",
+      { "titre": "Pourquoi ?" },
+      "Dans le but d'améliorer mes compétences en Front-End avec React.",
+      "L’objectif étant de m’auto-former au design web et d’appréhender des outils comme GSAP, THREE, etc.",
+      { "titre": "Pour qui ?" },
+      "Pour appuyer de potentielles futures candidatures auprès d'entreprises.",
+      { "titre": "Le futur ?" },
+      "Pour le moment, mon portfolio est encore en développement, mais plusieurs choses sont prévues :",
+      {
+        "liste": [
+          "Amélioration de l'UI/UX",
+          "Mise à jour des projets en cours",
+          "Continuer à progresser en Front-End pour proposer un site vitrine de qualité"
+        ]
+      }
+    ],
   "technologies": [
   { "name": "React", "icon": "faReact" }
 ],
