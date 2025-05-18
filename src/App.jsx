@@ -1,6 +1,6 @@
 
 import './App.scss'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 import Layout from './components/Layout/Layout.jsx'
@@ -13,6 +13,7 @@ import ErrorBoundary from './Hook/ErrorBoundary/ErrorBoundary.jsx'
 import { ReactLenis } from "lenis/react";
 
 import ReactGA from 'react-ga'
+import NotFound from './Screens/NotFound/NotFound.jsx'
 
 const TRACK_ID = "G-QFY45Q5VPP"
 ReactGA.initialize(TRACK_ID);
@@ -49,6 +50,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/cv" element={<Cv />} />
           <Route path="/projet/:id" element={<Projets />} />
+          <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
       </ErrorBoundary>

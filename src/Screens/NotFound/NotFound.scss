@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+.not-found{
+  .Wrap{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    h2{
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      margin-top: 150px;
+      font-size: 32px;
+      text-transform: uppercase;
+      transform: translate(-50%, -50%);
+      display: block;
+      color: $grey-error;
+      font-weight: 300;
+      font-family: Audiowide;
+      text-shadow: 0px 0px 4px #12000a;
+    }
+    .svgWrap_1{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 70%;
+      path{
+        fill: $grey-error;
+        animation: flickerFill 10s infinite, hueShift 8s infinite alternate;
+      }
+      .error-msg {
+        color: #f44336;
+        font-weight: 500;
+        margin-top: 1rem;
+        text-align: center;
+      }
+    }
+}
+
+
+  @keyframes flickerGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 2px #ff005d) drop-shadow(0 0 10px #ff005d);
+    }
+    30% {
+      filter: none;
+    }
+    32% {
+      filter: drop-shadow(0 0 2px #ff005d);
+
+    }
+    37% {
+      filter: none;
+    }
+    42% {
+      filter: drop-shadow(0 0 5px #ff005d) drop-shadow(0 0 15px #ff005d);
+
+    }
+    85% {
+      filter: drop-shadow(0 0 5px #ff005d);
+
+    }
+    95% {
+      filter: none;
+    }
+  }
+  @keyframes flickerFill{
+    0%, 100% {
+      fill:$cp-color;
+    }
+    30% {
+      fill: $accentuation-color;
+    }
+    32% {
+      fill:$cp-color;
+    }
+    37% {
+      fill: $accentuation-color;
+    }
+    42% {
+      fill:$cp-color;
+    }
+    85% {
+      fill:$cp-color;
+    }
+    95% {
+      fill: $accentuation-color;
+    }
+  }
+  @keyframes hueShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  .neon-svg {
+    animation: flickerGlow 4s infinite ease-in-out;
+  }
+}

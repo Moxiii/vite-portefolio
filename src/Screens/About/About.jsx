@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import PythonLogo from '../../assets/Logo/Python-logo-notext.svg'
 import {
   faDocker,
   faGitAlt,
@@ -22,7 +21,6 @@ import useIsDesktop from '../../Hook/IsDesktop/isDesktop.ts'
 
 export default function About() {
   const isDesktop = useIsDesktop();
-  const monoChromaticIcon = "#FFC300"
   const interests = [
     {
     title: "Clavier custom",
@@ -147,7 +145,7 @@ export default function About() {
               ))}
             </div>)}
           <div className="sub-interest">
-            <h3>Passion qui motive a la création d'outils.</h3>
+            <h3>Passion qui motive a la création d&#39;outils.</h3>
             <ul>
               <li>
                 Hera pour la vente de vêtements/objets de collection.
