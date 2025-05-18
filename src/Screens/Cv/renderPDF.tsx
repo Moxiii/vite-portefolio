@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState} from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import "pdfjs-dist/build/pdf.worker.min.mjs";
-import useIsDesktop from '../../Utils/isDesktop'
+import useIsDesktop from '../../Hook/IsDesktop/isDesktop'
 interface PDFRendererprops{
   pdfUrl:string;
 }

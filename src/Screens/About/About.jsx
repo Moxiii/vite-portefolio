@@ -7,6 +7,7 @@ import {
   faJsSquare, faPython,
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
+import CubeSpinner from "./CubeSpinner/CubeSpinner.jsx"
 import {
   faKeyboard,
   faMotorcycle,
@@ -17,7 +18,7 @@ import {
 import './About.scss'
 import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
 import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
-import useIsDesktop from '../../Utils/isDesktop.js'
+import useIsDesktop from '../../Hook/IsDesktop/isDesktop.ts'
 
 export default function About() {
   const isDesktop = useIsDesktop();
@@ -71,28 +72,7 @@ export default function About() {
           <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
           <p>D&apos;une curiosité sans faille,je continue de m&apos;auto-former sur les technologies suivantes : </p>
           {isDesktop ? (
-            <div className="stage-cube-cont">
-              <div className="cubespinner">
-                <div className="face1">
-                  <FontAwesomeIcon icon={faJava} color="#007396" />
-                </div>
-                <div className="face2">
-                  <FontAwesomeIcon icon={faDocker} color="#2496ED" />
-                </div>
-                <div className="face3">
-                  <FontAwesomeIcon icon={faReact} color="#61DAFB" />
-                </div>
-                <div className="face4">
-                  <img src={PythonLogo} />
-                </div>
-                <div className="face5">
-                  <FontAwesomeIcon icon={faJsSquare} color="#F7DF1E" />
-                </div>
-                <div className="face6">
-                  <FontAwesomeIcon icon={faGitAlt} color="#F05032" />
-                </div>
-              </div>
-            </div>
+            <CubeSpinner isDesktop={isDesktop} />
           ) : (
             <div className="mobile-tech-icons">
               <div className="tech-item">
@@ -183,9 +163,9 @@ export default function About() {
       <section className="futur">
         <div className="text-zone">
           <h2> Qu&apos;est-il prévu pour le futur ? </h2>
-          {isDesktop ? (<QuestionMark3D text="Apprentissage de Three.js pour proposer un portfolio interactif" />) : (
-            <p>Apprentissage de Three.js pour proposer un portfolio interactif</p>)}
-          <p>Actuellement entrain de suivre la formation three.js journey afin d'améliorer ma comprehension de l'outil
+          {isDesktop && (<QuestionMark3D />)}
+          <p>Apprentissage de Three.js pour proposer un portfolio interactif</p>
+          <p>Actuellement entrain de suivre la formation three.js journey afin d&#39;améliorer ma comprehension de l&#39;outil
             et
             du WebGL en regle générale</p>
         </div>

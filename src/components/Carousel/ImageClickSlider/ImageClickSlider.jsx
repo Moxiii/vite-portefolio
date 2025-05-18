@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+
 import './ImageClickSlider.scss'
-import { useVisibility } from '../../../Hook/VisibilityProvider/Visibilityprovider.jsx'
-import FetchProject from "../../../Utils/FetchProject.js"
+
+
 
 export default function ImageClickSlider({projet}) {
 
-  const navigate = useNavigate();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const visibleItemRef = useRef(null);
   const [carouselHeight, setCarouselHeight] = useState(500);
@@ -46,36 +46,10 @@ export default function ImageClickSlider({projet}) {
     setCurrentImageIndex((index +1)% (projet.img.length || 1));
   };
 
-  const projectRefs = useRef([]);
-  const { visibleProjects , setVisibleProjects } = useVisibility() ;
 
 
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const projectId = entry.target.getAttribute('data-id');
-          if (entry.isIntersecting) {
-            setVisibleProjects((prev) =>
-              !prev.includes(projectId) ? [...prev, projectId] : prev
-            );
-          } else {
-            setVisibleProjects((prev) => prev.filter((id) => id !== projectId));
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
 
-    projectRefs.current.forEach((project) => {
-      if (project) observer.observe(project);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [setVisibleProjects]);
 
 
 

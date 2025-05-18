@@ -1,6 +1,6 @@
 
 import './Cv.scss';
-import links from '../../Utils/_const.js'
+import links from '../../const/_const.ts'
 import RenderPDF from './renderPDF.tsx';
 
 const Cv = () => {

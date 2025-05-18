@@ -21,6 +21,9 @@
     height: auto;
     align-items: center;
     overflow-y: scroll;
+    .section{
+      width:90%
+    }
   }
   .drawer-header{
     border-top-left-radius: 20px;

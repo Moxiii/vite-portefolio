@@ -42,7 +42,7 @@ const clock = new THREE.Clock();
   );
 }
 
-export default function QuestionMark3D({ text }) {
+export default function QuestionMark3D({text}) {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <Canvas
@@ -70,7 +70,7 @@ export default function QuestionMark3D({ text }) {
             zIndex: 10,
           }}
         >
-          <p style={{marginTop:"5%"}}>{text}</p>
+
         </div>
       )}
     </div>

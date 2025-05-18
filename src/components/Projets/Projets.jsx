@@ -1,12 +1,12 @@
-import { useState, useEffect ,useRef} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import TypedText from '../../Utils/TypedText.js'
+import TypedText from './TypedText.tsx'
 import './Projets.scss'
-import FetchProject from '../../Utils/FetchProject.js'
+import FetchProject from '../../Hook/Fetch/FetchProject.js'
 import SlideCarousel from '../Carousel/InfiniteSlideCarousel/slideCarousel.jsx'
 import ScrollReveal from '../Scroll/ScrollReveal.jsx'
 import { motion } from 'motion/react'
-
+import LinksItems from "../LinksItems/LinksItems.jsx"
 const textVariants = {
   hidden: { opacity: 0, y: 200 },
   visible: {
@@ -144,10 +144,7 @@ export default function Projets(){
           <ul>
           {projet&&projet.links.map((link, index) => (
             <li key={index}>
-
-              <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>
-                {link.name}
-              </a>
+              <LinksItems to={link.url} key={index} label={link.name} />
             </li>
           ))}
           </ul>

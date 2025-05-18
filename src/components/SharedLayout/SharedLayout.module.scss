@@ -69,6 +69,7 @@
         .ProjectDescription {
           h3{
             font-size: xx-large;
+            color:$violet-accent;
           }
           display: flex;
           justify-content: center;
@@ -89,7 +90,7 @@
             width: 70%;
             .techBadge{
               font-size: larger;
-              color:$violet-accent;
+              color:$background-color;
             }
           }
         }
@@ -109,7 +110,7 @@
         display: flex;
         justify-content: flex-end;
         position: relative;
-        color: $background-color;
+        color: $violet-accent;
       }
     }
   }
@@ -131,13 +132,17 @@
   }
   ul{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
-    width: 100vw;
+    width: 100%;
     text-align: center;
     padding-left:0px;
+    gap:5%;
     li{
+      outline: 1px solid $primary-color;
+      padding: 2%;
+      border-radius: 15px;
       text-decoration:none;
       width: 100%;
       a{

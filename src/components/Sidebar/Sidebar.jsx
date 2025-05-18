@@ -1,6 +1,6 @@
 import {  NavLink } from 'react-router-dom'
 import './Sidebar.scss'
-import links from "../../Utils/_const.js"
+import links from "../../const/_const.ts"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUser,

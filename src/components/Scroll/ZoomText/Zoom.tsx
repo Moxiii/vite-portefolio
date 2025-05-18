@@ -36,10 +36,15 @@ export default function ZoomText({title1, text, title2}: ZoomTextProps) {
             ((input - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
         );
     }
+    const [locked, setLocked] = useState(false);
+    const [hasScrollAfterLock, setHasScrollAfterLock] = useState(false);
+    const lenis = useLenis();
+    useLenis(({scroll , direction}) => {
+        if (locked) return;
 
-    useLenis(({scroll}) => {
         if (containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect();
+            const centerY =  containerRef.current.offsetHeight / 2;
             const scrollHeight = containerRef.current.clientHeight;
             const start = rect.top + windowHeight * 0.5;
             const end = rect.top + scrollHeight - windowHeight;
@@ -52,8 +57,28 @@ export default function ZoomText({title1, text, title2}: ZoomTextProps) {
                 mapRange(center - 0.055, 1, progress, 0, 1),
                 1
             );
+            if(centerY > windowHeight *.4 && centerY < windowHeight * .6 && !locked) {
+                setLocked(true);
+                lenis?.stop();
+                lenis?.scrollTo(containerRef.current,{
+                    offset: -windowHeight * 0.5,
+                    duration:1.2,
+                    immediate:false,
+                });
+                console.warn("Scroll Locked")
+            }
+            const onWheel = () => {
+                if(!hasScrollAfterLock) {
+                    setHasScrollAfterLock(true);
+                    lenis?.start();
+                    setLocked(false);
+                    window.removeEventListener("wheel", onWheel);
+                };
+            }
+            window.addEventListener("wheel", onWheel , {once: true});
             // @ts-ignore
             containerRef.current.style.setProperty("--progress1", progress1);
+
             // @ts-ignore
             containerRef.current.style.setProperty("--progress2", progress2);
             const maxScrollInside = scrollHeight - window.innerHeight;

@@ -5,7 +5,7 @@ import ZoomText from "../../components/Scroll/ZoomText/Zoom.js"
 import Contact from '../Contact/Contact.jsx'
 import { ReactLenis } from 'lenis/react'
 import { useEffect, useState } from 'react'
-import FetchProject from '../../Utils/FetchProject.js'
+import FetchProject from '../../Hook/Fetch/FetchProject.js'
 import SharedLayout from '../../components/SharedLayout/SharedLayout.jsx'
 
 export default function MobileView(){

@@ -3,11 +3,11 @@ import { useRef } from 'react'
 import './Contact.scss'
 import ReactGA from 'react-ga'
 const TRACK_ID = "GTM-MQXDT7ZH"
-import useIsDesktop from '../../Utils/isDesktop.js'
+import useIsDesktop from '../../Hook/IsDesktop/isDesktop.ts'
 ReactGA.initialize(TRACK_ID);
 import {faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import links from '../../Utils/_const.js'
+import links from '../../const/_const.ts'
 export default function Contact() {
 const isDesktop = useIsDesktop();
   const refForm = useRef()
