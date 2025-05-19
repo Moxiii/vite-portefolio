@@ -49,7 +49,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cv" element={<Cv />} />
-          <Route path="/projet/:id" element={<Projets />} />
+          <Route path="/project/:id" element={<Projets />} />
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>

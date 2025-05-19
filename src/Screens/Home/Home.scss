@@ -1,12 +1,11 @@
-@import "../../const/const";
 .home {
   overflow: hidden;
+  margin-left:5%;
   .text-zone {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 100%;
   }
   h2 {
     color: $accentuation-color;

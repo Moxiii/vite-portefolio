@@ -12,7 +12,11 @@ import {
   faSass,
 } from "@fortawesome/free-brands-svg-icons";
 import InfoDrawer from "../../components/DragCloseDrawer/infoDrawer.jsx"
+import isDesktop from '../../Hook/IsDesktop/isDesktop.ts'
+import { useNavigate } from 'react-router-dom';
 export default function SharedLayout({ projects }) {
+  const useIsDesktop = isDesktop()
+  const navigate = useNavigate();
   const iconMap = {
     faReact: faReact,
     faJava: faJava,
@@ -33,8 +37,14 @@ export default function SharedLayout({ projects }) {
         : p.category.includes(selectedCategory.toLowerCase())
     );
   const handleClickButton = (projet) => {
-    setDrawerOpen(true)
-    setSelectedProject(projet)
+    if(useIsDesktop) {
+      navigate(`/project/${projet.id}`)
+    }
+    else{
+      setDrawerOpen(true)
+      setSelectedProject(projet)
+    }
+
   }
   const renderMobilePresentation = (presentation) => {
     let sections = [];
@@ -150,7 +160,9 @@ export default function SharedLayout({ projects }) {
           </motion.div>
         </AnimatePresence>
       </main>
-      <InfoDrawer isOpen={isDrawerOpen} onClose={()=>setDrawerOpen(false)}
+     <InfoDrawer isOpen={isDrawerOpen} onClose={()=>setDrawerOpen(false)}
+
+
       >
         {selectedProject && (
           <>
