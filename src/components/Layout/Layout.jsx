@@ -3,15 +3,16 @@ import Sidebar from '../Sidebar/Sidebar'
 import { Outlet } from 'react-router-dom'
 import Loader from 'react-loaders'
 import { lazy, Suspense } from 'react'
+import IsDesktop from "../../Hook/IsDesktop/isDesktop.ts"
 const MobileView = lazy(() => import('../../Screens/MobileView/MobileView.jsx'))
-import {  useMediaQuery } from 'react-responsive'
+
 export default function Layout() {
-  const isDesktop = useMediaQuery({minWidth:769})
+const useIsDesktop = IsDesktop()
 
 
   return (
     <>
-      {isDesktop ? (
+      {useIsDesktop ? (
           <Suspense fallback={<Loader type="pacman" />}>
             <Sidebar />
             <Outlet />

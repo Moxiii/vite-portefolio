@@ -10,7 +10,7 @@ $violet-accent:#7645d8;
 
 /* Breakpoints */
 $mobile-breakpoint: 800px;
-
+$tinyDesktop-breakpoint:1250px;
 // Viewport Sizes
 $desktop-width: 1440px;
 $desktop-height: 850px;
@@ -26,6 +26,11 @@ $mobile-height: 650px;
 
 @mixin desktop {
   @media (min-width: #{$mobile-breakpoint}) {
+    @content;
+  }
+}
+@mixin tinyDesktop {
+  @media (max-width: #{$tinyDesktop-breakpoint}) {
     @content;
   }
 }
