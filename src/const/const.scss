@@ -25,12 +25,12 @@ $mobile-height: 650px;
 }
 
 @mixin desktop {
-  @media (min-width: #{$mobile-breakpoint}) {
+  @media (min-width: #{$tinyDesktop-breakpoint}) {
     @content;
   }
 }
 @mixin tinyDesktop {
-  @media (max-width: #{$tinyDesktop-breakpoint}) {
+  @media (min-width:#{$mobile-breakpoint}) and (max-width:#{$tinyDesktop-breakpoint} ) {
     @content;
   }
 }

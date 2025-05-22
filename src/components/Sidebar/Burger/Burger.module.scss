@@ -1,0 +1,39 @@
+
+  .burgerSvg{
+    cursor: pointer;
+    position:fixed;
+    top:1%;
+    right:1%;
+    z-index: 10000;
+  }
+
+
+.fullScreenMenu {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  nav ul {
+    list-style: none;
+    text-align: center;
+
+    li {
+      margin: 2rem 0;
+
+      a {
+        font-size: 2rem;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          color: #ccc;
+        }
+      }
+    }
+  }
+}
+

@@ -3,18 +3,26 @@ import Sidebar from '../Sidebar/Sidebar'
 import { Outlet } from 'react-router-dom'
 import Loader from 'react-loaders'
 import { lazy, Suspense } from 'react'
-import IsDesktop from "../../Hook/IsDesktop/isDesktop.ts"
+import { useBreakPoint } from "../../Hook/IsDesktop/useBreakPoint.ts"
+import BurgerMenu from '../../components/Sidebar/Burger/BurgerMenu.tsx'
 const MobileView = lazy(() => import('../../Screens/MobileView/MobileView.jsx'))
 
 export default function Layout() {
-const useIsDesktop = IsDesktop()
+const { isDesktop , isTinyDesktop } = useBreakPoint()
 
 
   return (
     <>
-      {useIsDesktop ? (
+      {isDesktop ? (
           <Suspense fallback={<Loader type="pacman" />}>
-            <Sidebar />
+            {isTinyDesktop ? (<BurgerMenu
+              strokeWidth="5"
+              color="#FFC300"
+              lineProps={{ strokeLinecap: "round" }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              width="40"
+              height="40"
+            />):(<Sidebar />)}
             <Outlet />
           </Suspense>
       ) : (

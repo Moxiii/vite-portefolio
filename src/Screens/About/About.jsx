@@ -17,10 +17,10 @@ import {
 import './About.scss'
 import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
 import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
-import useIsDesktop from '../../Hook/IsDesktop/isDesktop.ts'
+import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
 
 export default function About() {
-  const isDesktop = useIsDesktop();
+  const { isDesktop } = useBreakPoint();
   const interests = [
     {
     title: "Clavier custom",
@@ -69,7 +69,7 @@ export default function About() {
             mains . </p>
           <p>Aujourd&apos;hui je suis en voie d&apos;en faire mon métier ! </p>
           <p>D&apos;une curiosité sans faille,je continue de m&apos;auto-former sur les technologies suivantes : </p>
-          {isDesktop ? (
+          {isDesktop  ? (
             <CubeSpinner isDesktop={isDesktop} />
           ) : (
             <div className="mobile-tech-icons">

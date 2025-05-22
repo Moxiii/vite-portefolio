@@ -13,7 +13,6 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 export default function Sidebar() {
 
   return (
-    <>
       <div className="nav-bar">
             <nav>
               <NavLink exact="true" activeclassname="active" to={links.home} data-title="Home">
@@ -74,9 +73,6 @@ export default function Sidebar() {
           </li>
         </ul>
       </div>
-
-
-    </>
   )
 }
 

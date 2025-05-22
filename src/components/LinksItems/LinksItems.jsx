@@ -4,6 +4,7 @@ import {useEffect, useRef} from "react";
 
 // eslint-disable-next-line react/prop-types
 export default function LinksItm({to,label}) {
+  const isExternal = to.startsWith("http");
   const underlineRef = useRef(null)
   const hoverRef = useRef(null)
   const duration = .7
@@ -32,8 +33,8 @@ export default function LinksItm({to,label}) {
   return (
     <a
       href={to}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={isExternal ? "_blank" : "_self"}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       ref={hoverRef}
     >
       <span>{label}</span>

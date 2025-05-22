@@ -12,10 +12,10 @@ import {
   faSass,
 } from "@fortawesome/free-brands-svg-icons";
 import InfoDrawer from "../../components/DragCloseDrawer/infoDrawer.jsx"
-import isDesktop from '../../Hook/IsDesktop/isDesktop.ts'
+import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
 import { useNavigate } from 'react-router-dom';
 export default function SharedLayout({ projects }) {
-  const useIsDesktop = isDesktop()
+  const {  isDesktop } = useBreakPoint();
   const navigate = useNavigate();
   const iconMap = {
     faReact: faReact,
@@ -37,7 +37,7 @@ export default function SharedLayout({ projects }) {
         : p.category.includes(selectedCategory.toLowerCase())
     );
   const handleClickButton = (projet) => {
-    if(useIsDesktop) {
+    if(isDesktop) {
       navigate(`/project/${projet.id}`)
     }
     else{

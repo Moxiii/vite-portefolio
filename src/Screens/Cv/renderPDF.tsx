@@ -2,12 +2,12 @@
 import React, { useEffect, useRef, useState} from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import "pdfjs-dist/build/pdf.worker.min.mjs";
-import useIsDesktop from '../../Hook/IsDesktop/isDesktop'
+import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint'
 interface PDFRendererprops{
   pdfUrl:string;
 }
 export default function PDFRenderer({pdfUrl}:PDFRendererprops):React.JSX.Element{
-const isDesktop = useIsDesktop();
+const { isDesktop } = useBreakPoint();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [pdfLoaded, setPdfLoaded] = useState(false);
   useEffect(() => {
