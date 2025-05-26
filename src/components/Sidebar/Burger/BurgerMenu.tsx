@@ -1,9 +1,7 @@
 import s from "./Burger.module.scss"
 import {JSX, useState} from "react";
 import {motion, Transition, SVGMotionProps} from "framer-motion";
-import {  NavLink } from 'react-router-dom'
 import links from "../../../const/_const.ts"
-import linksItems from "../../LinksItems/LinksItems.jsx"
 import LinksItems from '../../LinksItems/LinksItems'
 // @ts-ignore
 interface BurgerMenusProps extends SVGMotionProps {
@@ -113,7 +111,6 @@ export default function BurgerMenus(
           </motion.svg>
     {isOpen && (
       <div className={s.fullScreenMenu}>
-          <nav>
               <ul>
                   {simpleLinks.map((link) => (
                     <li key={link.to}>
@@ -121,7 +118,6 @@ export default function BurgerMenus(
                     </li>
                   ))}
               </ul>
-          </nav>
       </div>
     )}</>
         )

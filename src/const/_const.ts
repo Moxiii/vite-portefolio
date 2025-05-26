@@ -4,8 +4,8 @@ import CV from "../assets/Cv/CV LAPOUGE Maxime-1.pdf"
 const links = {
   home : "/",
   about : "/about",
-  contact:"/contact",
   cv:"/cv",
+  contact:"/contact",
   download:{
     cv:CV,
   },

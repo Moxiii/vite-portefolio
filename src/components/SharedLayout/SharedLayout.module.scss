@@ -50,7 +50,7 @@
     max-height: 50vh;
     width: 70vw;
     .SharedLayoutMain{
-      padding: 0;
+      padding:0 5%;
       .content{
         .projectCard {
           gap: 20%;
@@ -103,38 +103,44 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        .projectPreview{
-          img{
-            width:100%;
+        margin: auto 5%;
+        .projectCard {
+          width: 100%;
+          .projectPreview{
+            img{
+              max-width:250px;
+              width: 100%;
+            }
+          }
+          .ProjectDescription{
+            justify-content: center;
+            h3{
+              font-size: xx-large;
+            }
+            p{
+              text-align:center;
+              margin:2% 1%;
+              padding: 0 2%;
+              width: auto;
+              font-size: large;
+            }
+            .techBadges{
+              justify-content: space-around;
+              width:70%;
+              .techBadge{
+                font-size: x-large;
+              }
+            }
           }
         }
-        .ProjectDescription{
-          justify-content: center;
-          h3{
-            font-size: xx-large;
-          }
-          p{
-            text-align:center;
-            margin:2% 1%;
-            padding: 0 2%;
-            width: auto;
-            font-size: large;
-          }
-        .techBadges{
-          justify-content: space-around;
-          width:70%;
-          .techBadge{
-            font-size: x-large;
-          }
-        }
-        }
+
       }
 
     }
   }
   width: 95%;
   min-height: 60vh;
-  border-radius: 20px;
+  border-radius: 15px;
   background: $accentuation-color;
   box-shadow: 0 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
   0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
@@ -174,7 +180,6 @@
 
   .SharedLayoutMain {
     flex: 1;
-    padding: 20px;
     overflow-y: auto;
 
     .content {
@@ -203,7 +208,10 @@
           flex-direction: column;
           width: 100%;
 
-    p{color:black}
+    p{
+      color:black;
+      margin-left:3%;
+    }
           .techBadges{
             display: flex;
             flex-direction: row;

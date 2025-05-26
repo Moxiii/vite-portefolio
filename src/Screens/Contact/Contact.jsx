@@ -9,8 +9,8 @@ import {faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import links from '../../const/_const.ts'
 export default function Contact() {
-const { isDesktop } = useBreakPoint();
-  const refForm = useRef()
+const { isMobile } = useBreakPoint();
+  const refForm = useRef(null)
   const clearInput = () => {
     var form = document.querySelectorAll('form')
     form.reset()
@@ -42,7 +42,7 @@ const { isDesktop } = useBreakPoint();
           <div className="header">
             <h1>Contactez-moi</h1>
           </div>
-          {!isDesktop && (
+          {isMobile && (
             <div className="contact-links-container">
               <a href={links.externalLinks.linkedin}>
                 <div className="contact-item">
@@ -70,8 +70,8 @@ const { isDesktop } = useBreakPoint();
           <div className="contact-form">
             <form ref={refForm} onSubmit={(e) => {
               e.preventDefault()
-              sendEmail()
-              clearInput()
+              sendEmail(e)
+              //clearInput()
             }}>
               <input className="feedback-body__email" type="email" placeholder="Email" />
               <input className="feedback-body__email" type="text" placeholder="Subject" />

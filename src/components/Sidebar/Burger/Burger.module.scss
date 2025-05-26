@@ -2,8 +2,8 @@
   .burgerSvg{
     cursor: pointer;
     position:fixed;
-    top:1%;
-    right:1%;
+    top:2%;
+    right:2%;
     z-index: 10000;
   }
 
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
 
-  nav ul {
+  ul {
     list-style: none;
     text-align: center;
 
