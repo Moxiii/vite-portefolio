@@ -1,7 +1,7 @@
 import emailjs from '@emailjs/browser'
 import { useRef } from 'react'
 import './Contact.scss'
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 const TRACK_ID = "GTM-MQXDT7ZH"
 import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
 ReactGA.initialize(TRACK_ID);
