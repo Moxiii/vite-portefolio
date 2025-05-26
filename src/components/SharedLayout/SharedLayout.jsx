@@ -15,7 +15,7 @@ import InfoDrawer from "../../components/DragCloseDrawer/infoDrawer.jsx"
 import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
 import { useNavigate } from 'react-router-dom';
 export default function SharedLayout({ projects }) {
-  const {  isDesktop } = useBreakPoint();
+  const {  isMobile } = useBreakPoint();
   const navigate = useNavigate();
   const iconMap = {
     faReact: faReact,
@@ -37,12 +37,12 @@ export default function SharedLayout({ projects }) {
         : p.category.includes(selectedCategory.toLowerCase())
     );
   const handleClickButton = (projet) => {
-    if(isDesktop) {
-      navigate(`/project/${projet.id}`)
-    }
-    else{
+    if(isMobile) {
       setDrawerOpen(true)
       setSelectedProject(projet)
+    }
+    else{
+     navigate(`/project/${projet.id}`)
     }
 
   }
