@@ -1,72 +1,39 @@
 version: '3.8'
 services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - --entrypoints.web.address=:80
+      - --providers.docker=true
+      - --api.dashboard=true
+      - --providers.docker.exposedbydefault=false
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - portfolio_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=web"
   front:
     container_name: portefolio-front
     build:
         context: .
         dockerfile: Docker/Dockerfile.front
     restart: unless-stopped
-    ports:
-      - "5173:5173"
-    depends_on:
-      - api
     networks:
       - portfolio_net
     volumes:
       - ./src:/app/src
       - ./public:/app/public
-
-  api:
-    container_name: portefolio-back
-    build:
-      context: .
-      dockerfile: Docker/Dockerfile.api
-    restart: unless-stopped
-    volumes:
-      - ./api:/app/api
-    ports:
-      - "3000:3000"
-    networks:
-      - portfolio_net
-    environment:
-      - MYSQL_DATABASE=portefolio
-      - MYSQL_USER=portefolio
-      - MYSQL_PASSWORD=portefolio
-      - MYSQL_HOST=db
-      - DATABASE_URL=mysql://portefolio:portefolio@db:3306/portefolio
-    depends_on:
-      - db
-  db:
-    container_name: portefolio-db
-    image: mysql:latest
-    restart: unless-stopped
-    networks:
-      - portfolio_net
-    healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent" ]
-      interval: 3s
-      retries: 5
-      start_period: 30s
-    ports :
-      - "3317:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    environment:
-       MYSQL_DATABASE: portefolio
-       MYSQL_USER: portefolio
-       MYSQL_ROOT_PASSWORD: portefolio
-       MY_SQL_PASSWORD: root
-  phpmyadmin:
-    container_name: portefolio-phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    restart: unless-stopped
-    ports:
-      - "2003:80"
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-    networks:
-      - portfolio_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.localhost`)"
+      - "traefik.http.routers.portfolio.entrypoints=web"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
 
 
 volumes:
