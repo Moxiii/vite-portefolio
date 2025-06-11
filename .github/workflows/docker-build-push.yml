@@ -26,7 +26,7 @@ jobs:
           
       - name  : Rsync project to server
         run : | 
-          sshpass -p "${{ SSH_PSWD }}" rsync -avz -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/portfolio/
+          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/portfolio/
           
 
       - name : Deploy with docker-compose
