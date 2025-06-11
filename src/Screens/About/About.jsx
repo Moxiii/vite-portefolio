@@ -15,9 +15,12 @@ import {
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import './About.scss'
-import TiltCard from '../../components/Card/TiltCard/TiltCard.jsx'
-import QuestionMark3D from '../../components/three/QuestionMark/QuestionMark.jsx'
-import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
+import { lazy } from 'react'
+
+const TiltCard = lazy(() => import('@components/Card/TiltCard/TiltCard.jsx'));
+const QuestionMark3D = lazy(()=>import('@components/three/QuestionMark/QuestionMark.jsx'))
+
+import { useBreakPoint } from '@hook/IsDesktop/useBreakPoint.js'
 
 export default function About() {
   const { isMobile } = useBreakPoint();

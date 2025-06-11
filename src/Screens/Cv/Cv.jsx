@@ -1,7 +1,9 @@
 
 import './Cv.scss';
-import links from '../../const/_const.ts'
-import RenderPDF from './renderPDF.tsx';
+import links from '@const/_const.ts'
+import { lazy } from 'react'
+const RenderPDF = lazy(()=>import('./renderPDF.tsx'))
+
 
 const Cv = () => {
 

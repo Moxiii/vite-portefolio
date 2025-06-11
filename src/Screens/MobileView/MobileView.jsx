@@ -1,12 +1,15 @@
 import './MobileView.scss'
-import Cv from '../Cv/Cv.jsx'
-import About from '../About/About.jsx'
-import ZoomText from "../../components/Scroll/ZoomText/Zoom.js"
-import Contact from '../Contact/Contact.jsx'
+import { lazy } from 'react'
+const Cv = lazy(()=>import('@screen/Cv/Cv.jsx'))
+const About = lazy(()=>import('@screen/About/About.jsx'))
+const ZoomText = lazy(()=>import('@components/Scroll/ZoomText/Zoom'))
+const Contact = lazy(()=>import('@screen/Contact/Contact.jsx'))
+const SharedLayout = lazy(()=>import('@components/SharedLayout/SharedLayout.jsx'))
+
 import { ReactLenis } from 'lenis/react'
 import { useEffect, useState } from 'react'
 import FetchProject from '../../Hook/Fetch/FetchProject.js'
-import SharedLayout from '../../components/SharedLayout/SharedLayout.jsx'
+
 
 export default function MobileView(){
   const [projets, setProjets] = useState([]);

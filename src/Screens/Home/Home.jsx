@@ -1,8 +1,9 @@
 
 import './Home.scss'
-import SharedLayout from '../../components/SharedLayout/SharedLayout.jsx'
+import { lazy, useEffect, useState } from 'react'
+const SharedLayout = lazy(() => import('@components/SharedLayout/SharedLayout.jsx'));
 
-import { useEffect, useState } from 'react'
+
 import FetchProject from '../../Hook/Fetch/FetchProject.js'
 
 export default function Home() {
