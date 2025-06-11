@@ -39,8 +39,6 @@ services:
       - "traefik.http.routers.front.tls.certresolver=myresolver"
 
 
-volumes:
-  db_data:
 
 networks:
   portfolio_net:
