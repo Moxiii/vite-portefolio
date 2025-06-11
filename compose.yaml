@@ -5,19 +5,20 @@ services:
     command:
       - --entrypoints.web.address=:80
       - --providers.docker=true
-      - --api.dashboard=true
+      - --api.dashboard=false
       - --providers.docker.exposedbydefault=false
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.email=you@example.com
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
     ports:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - portfolio_net
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
-      - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.entrypoints=web"
+
+
   front:
     container_name: portefolio-front
     build:
@@ -31,9 +32,11 @@ services:
       - ./public:/app/public
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`portfolio.localhost`)"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.dev.maximelapouge.fr`)"
       - "traefik.http.routers.portfolio.entrypoints=web"
       - "traefik.http.services.portfolio.loadbalancer.server.port=80"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.routers.portfolio.tls.certresolver=myresolver"
 
 
 volumes:
