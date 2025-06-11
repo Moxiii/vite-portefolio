@@ -27,9 +27,6 @@ services:
     restart: unless-stopped
     networks:
       - portfolio_net
-    volumes:
-      - ./src:/app/src
-      - ./public:/app/public
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portfolio.rule=Host(`portfolio.dev.maximelapouge.fr`)"
