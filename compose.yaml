@@ -29,6 +29,11 @@ services:
     restart: unless-stopped
     networks:
       - portfolio_net
+    healthcheck:
+      test: ["CMD" , "curl" , "-f" , "http://localhost" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
     labels:
       - "traefik.enable=true"
 

@@ -26,20 +26,13 @@ jobs:
           
       - name  : Rsync project to server
         run : | 
-          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/portfolio/
+          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/web/portfolio/
           
-      - name: Clean Docker environment
-        run: |
-          docker compose down --remove-orphans
-          docker system prune --all --volumes -f
 
-      - name : Deploy with docker-compose
+      - name : Deploy with server script
         run: |
-          ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-          cd /home/ubuntu/portfolio
-          docker-compose pull 
-          docker-compose up -d --build
-          EOF
+          ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} "/home/ubuntu/web/deploy.sh /home/ubuntu/web/portfolio"
+        
 
       - name : cleanup
         run: | 
