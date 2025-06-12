@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import './Contact.scss'
 import ReactGA from 'react-ga4'
 const TRACK_ID = "GTM-MQXDT7ZH"
-import { useBreakPoint } from '@hook/IsDesktop/useBreakPoint.js'
+import { useBreakPoint } from '@hook/IsDesktop/useBreakPoint'
 ReactGA.initialize(TRACK_ID);
 import {faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

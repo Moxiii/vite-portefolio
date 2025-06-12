@@ -1,21 +1,25 @@
+
 // @ts-ignore
 import React, { useEffect, useRef, useState} from "react";
-import * as pdfjsLib from "pdfjs-dist";
-import "pdfjs-dist/build/pdf.worker.min.mjs";
-import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint'
+
+// @ts-ignore
+import { useBreakPoint } from '@hook/IsDesktop/useBreakPoint'
+
 interface PDFRendererprops{
   pdfUrl:string;
 }
 export default function PDFRenderer({pdfUrl}:PDFRendererprops):React.JSX.Element{
-const { isDesktop } = useBreakPoint();
+const { isMobile } = useBreakPoint();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [pdfLoaded, setPdfLoaded] = useState(false);
   useEffect(() => {
     const renderPDF = async () => {
+      const pdfjsLib = await import("pdfjs-dist");
+      await import("pdfjs-dist/build/pdf.worker.min.mjs");
       const loadingTask = pdfjsLib.getDocument(pdfUrl);
       const pdf = await loadingTask.promise;
       const page = await pdf.getPage(1);
-      const scale = isDesktop ?  1.2 : 1;
+      const scale = isMobile ?  1 : 1.2;
       const viewport = page.getViewport({ scale });
       const canvas = canvasRef.current;
       if (!canvas) return;
