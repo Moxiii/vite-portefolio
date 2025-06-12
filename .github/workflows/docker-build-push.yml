@@ -31,7 +31,7 @@ jobs:
       - name: Clean Docker environment
         run: |
           docker compose down --remove-orphans
-          docker system prune -f
+          docker system prune --all --volumes -f
 
       - name : Deploy with docker-compose
         run: |
