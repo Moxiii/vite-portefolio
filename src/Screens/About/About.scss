@@ -18,6 +18,7 @@
   .text-zone {
     @include mobile{
       margin: 0 2%;
+
     }
     @include tinyDesktop{
       p{
@@ -26,16 +27,20 @@
 
     }
     height: 100%;
-    width: auto;
+    width: 90%;
     position: relative;
-
+    left:5dvw;
     h1, h2, h3 {
       margin: 3% 0;
     }
-
+    p{
+      max-width: 80%;
+      padding-left: 5%;
+    }
     .card-container {
       @include tinyDesktop{
         padding-right: 5%;
+        font-size:large;
       }
       @include desktop{
         margin-left: 5%;

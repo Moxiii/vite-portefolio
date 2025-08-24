@@ -38,7 +38,7 @@ jobs:
         run: | 
           rm -rf $HOME/.ssh/id_rsa
   deploy_ftp:
-    if:  false
+    if:  true
     environment: SECRET
     name : 🎉 Deploy
     runs-on: ubuntu-latest
