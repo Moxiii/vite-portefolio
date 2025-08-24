@@ -22,7 +22,7 @@
     }
     @include tinyDesktop{
       p{
-        font-size: 120%;
+        font-size: larger;
       }
 
     }
@@ -38,10 +38,21 @@
       padding-left: 5%;
     }
     .card-container {
-      @include tinyDesktop{
-        padding-right: 5%;
-        font-size:large;
+      .tilt-card{
+        .card-content{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          @include tinyDesktop{
+            font-size:initial;
+          }
+          @include desktop{
+            font-size:large;
+          }
+        }
       }
+
       @include desktop{
         margin-left: 5%;
       }
