@@ -1,28 +1,28 @@
-@import "../../const/const";
+@import '../../const/const';
 .download-btn {
   display: inline-flex;
   padding: 4% 5%;
-  background-color: $accentuation-color ;
+  background-color: $accentuation-color;
   color: $background-color;
   text-decoration: none;
   border-radius: 5px;
   font-size: 16px;
   margin: 5%;
-  @include tinyDevice{
+  @include tinyDevice {
     color: $background-color;
     background-color: $accentuation-color;
-    outline: solid 1px $cp-color;
+    outline: solid 1px $border-color;
   }
 }
 
 .download-btn:hover {
   background-color: $background-color;
   color: $accentuation-color;
-  outline: 1px solid $primary-color;
+  outline: 1px solid $border-color;
 }
-.cv-embed{
+.cv-embed {
   margin-bottom: 10px;
-  .pdfContainer{
+  .pdfContainer {
     width: 100%;
   }
 }

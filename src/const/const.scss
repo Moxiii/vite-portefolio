@@ -1,16 +1,31 @@
-$primary-color:#FFC300;
-$background-color:#2274A5;
-$accentuation-color:#E7DFC6;
-$cp-color:#ff06b5;
-$grey-error: #aaaaaa;
-$violet-accent:#7645d8;
+$primary-color: #ffc300;
+// $background-color:#2274A5;
+// $accentuation-color:#E7DFC6;
+//$cp-color:#ff06b5;
+// $grey-error: #aaaaaa;
+// $violet-accent:#7645d8;
+$background-color: #faf0ca;
 
+$accentuation-color: #0d3b66;
+$secondary-accentuation-color: #C4B95A;
+
+$text-color: #171717;
+$secondary-text-color: #665c55;
+
+$border-color: #e2d0bc;
+
+$success-color: #3f7657;
+$error-color: #a64b3c;
+
+// i like this one but idk
+// $background-color: #f3d98f;
+// $accentuation-color: #fe6f61;
 @use 'sass:math';
 @use 'sass:map';
 
 /* Breakpoints */
 $mobile-breakpoint: 800px;
-$tinyDesktop-breakpoint:1250px;
+$tinyDesktop-breakpoint: 1250px;
 // Viewport Sizes
 $desktop-width: 1440px;
 $desktop-height: 850px;
@@ -53,8 +68,8 @@ $mobile-height: 650px;
 
 @function columns($columns) {
   @return calc(
-          (#{$columns} * var(--layout-column-width)) +
-          ((#{$columns} - 1) * var(--layout-columns-gap))
+    (#{$columns} * var(--layout-column-width)) +
+      ((#{$columns} - 1) * var(--layout-columns-gap))
   );
 }
 
@@ -68,6 +83,3 @@ $mobile-height: 650px;
     @content;
   }
 }
-
-
-

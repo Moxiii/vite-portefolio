@@ -1,6 +1,6 @@
 .container {
   @include tinyDesktop {
-      margin-left:5%;
+    margin-left: 5%;
   }
   will-change: contents;
   height: 100%;
@@ -13,20 +13,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  h1{
-    color : $primary-color;
+  h1 {
+    color: $accentuation-color;
     font-size: xxx-large;
     font-family: 'DM Sans', sans-serif;
   }
   h2 {
-    color : $accentuation-color;
+    color: $text-color;
     font-size: xx-large;
   }
-  h3{
-    color : $accentuation-color;
+  h3 {
+    color: $text-color;
     font-size: x-large;
   }
-  .text-zone{
+  .text-zone {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,10 +35,8 @@
 
   p {
     font-size: large;
-    color: $accentuation-color;
+    color: $text-color;
     font-family: sans-serif;
     font-weight: 300;
   }
 }
-
-

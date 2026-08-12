@@ -1,6 +1,6 @@
 .home {
   overflow: hidden;
-  margin-left:5%;
+  margin-left: 5%;
   .text-zone {
     display: flex;
     justify-content: flex-start;
@@ -8,7 +8,6 @@
     flex-direction: column;
   }
   h2 {
-    color: $accentuation-color;
     margin-top: 20px;
     margin-bottom: 50px;
     font-weight: 400;
@@ -18,19 +17,19 @@
     white-space: nowrap;
   }
   .flat-button {
-    color: $primary-color;
+    color: $accentuation-color;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 4px;
     text-decoration: none;
     padding: 10px 18px;
-    border: 1px solid $primary-color;
+    border: 1px solid $border-color;
     margin-top: 25px;
     float: left;
     animation: fadeIn 1s 1.8s backwards;
     white-space: nowrap;
     &:hover {
-      background: $primary-color;
+      background: $secondary-accentuation-color;
       color: $background-color;
     }
   }

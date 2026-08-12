@@ -1,8 +1,10 @@
-import s from "./SharedLayout.module.scss"
-import {AnimatePresence, motion} from "framer-motion";
-import React, {useState} from "react";
+import s from './SharedLayout.module.scss'
+
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState } from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import InfiniteSlideCarousel  from "../Carousel/InfiniteSlideCarousel/slideCarousel.jsx"
+
 import {
   faAngular,
   faJava,
@@ -10,180 +12,296 @@ import {
   faPython,
   faReact,
   faSass,
-} from "@fortawesome/free-brands-svg-icons";
-import InfoDrawer from "../../components/DragCloseDrawer/infoDrawer.jsx"
+} from '@fortawesome/free-brands-svg-icons'
+
+import InfiniteSlideCarousel from '../Carousel/InfiniteSlideCarousel/slideCarousel.jsx'
+import InfoDrawer from '../../components/DragCloseDrawer/infoDrawer.jsx'
+
 import { useBreakPoint } from '../../Hook/IsDesktop/useBreakPoint.ts'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+
 export default function SharedLayout({ projects }) {
-  const {  isMobile } = useBreakPoint();
-  const navigate = useNavigate();
+  const { isMobile } = useBreakPoint()
+  const navigate = useNavigate()
+
+  const [isDrawerOpen, setDrawerOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState('Tous')
+
+  const categories = ['Tous', 'Frontend', 'Mobile', 'Fullstack']
+
   const iconMap = {
-    faReact: faReact,
-    faJava: faJava,
-    faAngular: faAngular,
-    faJs: faJs,
-    faPython: faPython,
-    faSass: faSass,
-  };
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const categories = ["Tous", "Frontend", "Mobile", "Fullstack"];
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("Tous");
+    faReact,
+    faJava,
+    faAngular,
+    faJs,
+    faPython,
+    faSass,
+  }
+
   const filteredProjects = projects
-    .filter((p) => p.visible !== false)
-    .filter((p) =>
-      selectedCategory === "Tous"
+    .filter((project) => project.visible !== false)
+    .filter((project) =>
+      selectedCategory === 'Tous'
         ? true
-        : p.category.includes(selectedCategory.toLowerCase())
-    );
-  const handleClickButton = (projet) => {
-    if(isMobile) {
+        : project.category?.includes(selectedCategory.toLowerCase())
+    )
+
+  const handleProjectClick = (project) => {
+    if (isMobile) {
+      setSelectedProject(project)
       setDrawerOpen(true)
-      setSelectedProject(projet)
-    }
-    else{
-     navigate(`/project/${projet.id}`)
+
+      return
     }
 
+    navigate(`/project/${project.id}`)
   }
+
+  const getProjectImage = (project) => {
+    const mockup = project.img?.find((img) => img.isMock)
+
+    if (mockup) {
+      return {
+        src: mockup.src,
+        alt: `Mockup de ${project.title}`,
+      }
+    }
+
+    if (project.category?.includes('mobile')) {
+      return {
+        src: '../../assets/Logo/mobile-placeholder.svg',
+        alt: 'Mobile placeholder',
+      }
+    }
+
+    return {
+      src: '../../assets/Logo/desktop-placeholder.png',
+      alt: 'Desktop placeholder',
+    }
+  }
+
+  const renderTechnologies = (project) => {
+    return project.technologies?.map((tech, index) => (
+      <span
+        key={`${project.id}-tech-${index}`}
+        className={s.techBadge}
+        title={tech.name}
+      >
+        {iconMap[tech.icon] ? (
+          <FontAwesomeIcon icon={iconMap[tech.icon]} />
+        ) : (
+          tech.name
+        )}
+      </span>
+    ))
+  }
+
   const renderMobilePresentation = (presentation) => {
-    let sections = [];
-    let currentSection = [];
+    if (!presentation) {
+      return null
+    }
+
+    const sections = []
+    let currentSection = []
 
     presentation.forEach((element, index) => {
-      if (typeof element === 'object') {
+      if (typeof element === 'object' && element !== null) {
         if (element.titre) {
           if (currentSection.length > 0) {
             sections.push(
-              <div key={`section-${sections.length}`} className="section">
+              <div
+                key={`section-${sections.length}`}
+                className={s.presentationSection}
+              >
                 {currentSection}
               </div>
-            );
+            )
           }
-          currentSection = [<h2 key={index}>{element.titre}</h2>];
+
+          currentSection = [<h2 key={`title-${index}`}>{element.titre}</h2>]
         }
 
         if (element.liste) {
           currentSection.push(
             <ul key={`list-${index}`}>
-              {element.liste.map((item, i) => (
-                <li key={`item-${i}`}>{item}</li>
+              {element.liste.map((item, itemIndex) => (
+                <li key={`item-${index}-${itemIndex}`}>{item}</li>
               ))}
             </ul>
-          );
+          )
         }
       } else {
-        currentSection.push(<p key={index}>{element}</p>);
+        currentSection.push(<p key={`paragraph-${index}`}>{element}</p>)
       }
-    });
+    })
 
     if (currentSection.length > 0) {
       sections.push(
-        <div key={`section-${sections.length}`} className="section">
+        <div
+          key={`section-${sections.length}`}
+          className={s.presentationSection}
+        >
           {currentSection}
         </div>
-      );
+      )
     }
 
-    return sections;
-  };
+    return sections
+  }
+
   return (
-    <div className={s.SharedLayoutContainer}>
+    <section className={s.SharedLayoutContainer}>
       <nav className={s.SharedLayoutNav}>
         <ul className={s.tabsContainer}>
-          {categories.map((cat) => (
-            <motion.li
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={s.tabs}
-            >
-              <motion.div
-                className={s.tabButton}
-                animate={{
-                  fontWeight: selectedCategory === cat? "bold" : "normal",
-                  color: selectedCategory=== cat? "#000" : "#aaaaaa",
-                }}
-              >
-                {cat}
+          {categories.map((category) => {
+            const isSelected = selectedCategory === category
 
-              </motion.div>
-            </motion.li>
-          ))}
+            return (
+              <li
+                key={category}
+                className={s.tab}
+                onClick={() => setSelectedCategory(category)}
+              >
+                <motion.button
+                  className={s.tabButton}
+                  animate={{
+                    color: isSelected ? '#0D3B66' : '#665C55',
+                  }}
+                  transition={{
+                    duration: 0.25,
+                  }}
+                >
+                  {category}
+
+                  {isSelected && (
+                    <motion.span
+                      layoutId="activeCategory"
+                      className={s.activeIndicator}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 35,
+                      }}
+                    />
+                  )}
+                </motion.button>
+              </li>
+            )
+          })}
         </ul>
       </nav>
+
       <main className={s.SharedLayoutMain}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedProject ? selectedProject.title : "empty"}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className={s.content}
-          >
-            {filteredProjects.map((item)=> (
-              <motion.div
-                key={item.id}
-                className={s.projectCard}
-              >
-                <div className={s.projectPreview}>
-                  {item.img?.some(img => img.isMock) ? (
-                    <img
-                      src={item.img.find(img => img.isMock)?.src}
-                      alt={`Mockup de ${item.title}`}
+        <motion.div layout className={s.content}>
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => {
+              const image = getProjectImage(project)
+
+              return (
+                <motion.article
+                  layout
+                  key={project.id}
+                  className={s.projectCard}
+                  initial={{
+                    opacity: 0,
+                    y: 25,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -15,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    ease: 'easeOut',
+                  }}
+                  whileHover={{
+                    y: -5,
+                  }}
+                >
+                  <div className={s.projectPreview}>
+                    <motion.img
+                      src={image.src}
+                      alt={image.alt}
                       className={s.previewImage}
+                      whileHover={{
+                        scale: 1.025,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeOut',
+                      }}
                     />
-                  ) : item.category?.includes("mobile") ? (
-                    <img src="../../assets/Logo/mobile-placeholder.svg" alt="Mobile placeholder" />
-                  ) : (
-                    <img src="../../assets/Logo/desktop-placeholder.png" alt="Desktop placeholder" />
-                  )}
-                </div>
-                <motion.div className={s.ProjectDescription}>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <div className={s.techBadges}>
-                    {item.technologies?.map((tech, index) =>
-                    (<span key={index} className={s.techBadge}>
-                      {iconMap[tech.icon] ? <FontAwesomeIcon icon={iconMap[tech.icon]} /> : tech.name}
-                    </span>))}
                   </div>
 
-                  <motion.div className={s.button} onClick={() => handleClickButton(item)}>En
-                    savoir plus
-                  </motion.div>
-                </motion.div>
+                  <div className={s.ProjectDescription}>
+                    <div className={s.projectHeader}>
+                      <h3>{project.title}</h3>
 
-              </motion.div>
-            ))
-            }
-          </motion.div>
-        </AnimatePresence>
+                      {project.category?.[0] && (
+                        <span className={s.projectCategory}>
+                          {project.category[0]}
+                        </span>
+                      )}
+                    </div>
+
+                    <p>{project.description}</p>
+
+                    <div className={s.techBadges}>
+                      {renderTechnologies(project)}
+                    </div>
+
+                    <button
+                      className={s.projectButton}
+                      onClick={() => handleProjectClick(project)}
+                    >
+                      <span>En savoir plus</span>
+
+                      <span aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                </motion.article>
+              )
+            })}
+          </AnimatePresence>
+        </motion.div>
       </main>
-     <InfoDrawer isOpen={isDrawerOpen} onClose={()=>setDrawerOpen(false)}
 
-
-      >
+      <InfoDrawer isOpen={isDrawerOpen} onClose={() => setDrawerOpen(false)}>
         {selectedProject && (
           <>
             <h3 className={s.projectTitle}>{selectedProject.title}</h3>
-            {selectedProject && <InfiniteSlideCarousel images={selectedProject.img} />}
+
+            <InfiniteSlideCarousel images={selectedProject.img} />
+
             <div className={s.ProjectLinks}>
-              <h3>Lien utiles :</h3>
+              <h3>Liens utiles :</h3>
+
               <ul>
-                {selectedProject && selectedProject.links.map((link, index) => (
-                  <li key={index}>
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.name}>{link.name}</a>
+                {selectedProject.links?.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.name}
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {renderMobilePresentation(selectedProject.presentation)}
-
+            <div className={s.ProjectPresentation}>
+              {renderMobilePresentation(selectedProject.presentation)}
+            </div>
           </>
         )}
       </InfoDrawer>
-    </div>
+    </section>
   )
 }

@@ -1,65 +1,69 @@
-.mobile-view{
+.mobile-view {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  #projets, #cv ,#about, #contact{
-    margin:5% 0 ;
+  #projets,
+  #cv,
+  #about,
+  #contact {
+    margin: 5% 0;
   }
-  #about{
-  .about-page{
-    margin: 1% 5%;
-  }
-    width:100vw;
-    .mobile-tech-icons{
+  #about {
+    .about-page {
+      margin: 1% 5%;
+    }
+    width: 100vw;
+    .mobile-tech-icons {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
       flex-direction: row;
-      gap:5%;
-      margin:2% 0;
+      gap: 5%;
+      margin: 2% 0;
       width: 100%;
-      .tech-item{
+      .tech-item {
         display: flex;
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
-        padding:5% 0;
-        gap:3%;
+        padding: 5% 0;
+        gap: 3%;
       }
     }
   }
-  #cv{
-    width:95%;
+  #cv {
+    width: 95%;
   }
-  .projets{
-    margin:5% 0;
+  .projets {
+    margin: 5% 0;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    h1{
-      color: $primary-color;
+    h1 {
+      color: $text-color;
     }
   }
-  @include tinyDevice{
-    p{
+  @include tinyDevice {
+    p {
       font-size: larger;
     }
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       margin: 4% 0;
-
     }
-    h1{
+    h1 {
       font-size: xx-large;
       padding: 5% 1%;
     }
-    h2{
+    h2 {
       font-size: x-large;
     }
-    h3{
+    h3 {
       font-size: x-large;
     }
   }
