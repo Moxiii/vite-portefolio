@@ -1,0 +1,17 @@
+FROM node:26 as builder
+WORKDIR /app
+
+COPY api/package*.json ./
+
+run ci
+
+FROM node:26-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/node_modules ./node_modules
+COPY api/ .
+
+EXPOSE 3100
+
+CMD ["npm", "start"]

@@ -23,12 +23,12 @@ services:
     container_name: front
     build:
       context: .
-      dockerfile: Docker/dockerfile.dev.front
+      dockerfile: Docker/dockerfile.prod.front
 
     restart: unless-stopped
 
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:5173']
+      test: ['CMD', 'wget', '--spider', '-q', 'http://localhost']
       interval: 10s
       timeout: 3s
       retries: 5
@@ -42,21 +42,17 @@ services:
       - 'traefik.http.routers.front.rule=Host(`maximelapouge.fr`)'
       - 'traefik.http.routers.front.entrypoints=websecure'
       - 'traefik.http.routers.front.tls=true'
-      - 'traefik.http.services.front.loadbalancer.server.port=5173'
-
-    volumes:
-      - ./front:/app
-      - /app/node_modules
+      - 'traefik.http.services.front.loadbalancer.server.port=80'
 
   back:
     container_name: back
     build:
       context: .
-      dockerfile: ./Docker/dockerfile.dev.api
+      dockerfile: ./Docker/dockerfile.prod.api
     restart: unless-stopped
     environment:
       MONGO_URI: mongodb://db:27017/portfolio
-      FRONTEND_URL: https://portfolio.dev.fr
+      FRONTEND_URL: https://maximelapouge.fr
     networks:
       - portfolio-proxy
       - portfolio-internal
@@ -66,10 +62,6 @@ services:
       - 'traefik.http.routers.back-secure.entrypoints=websecure'
       - 'traefik.http.routers.back-secure.tls=true'
       - 'traefik.http.services.back.loadbalancer.server.port=3100'
-
-    volumes:
-      - ./api:/app/
-      - /app/node_modules
 
   db:
     container_name: db
