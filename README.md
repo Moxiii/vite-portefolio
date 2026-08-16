@@ -55,7 +55,3 @@ This is for work on React + discover CI/CD on FTP server
 - - CRUD routes for User (I will be the only user but is for make admin page and update my project easily and don't push + make docker image on each push)
 
 
-# IMPORTANT DON'T TRY TO ALLOW SSH PUSH ON WORKFLOWS: 
-SSH connexion are not completely make , i need to configure Pfsense or buy router for redirect external ${{secrets.SSH_PORT}} to my local machine .
-At least apache server and SSH connexion on local are make .
--> The last step is to redirect "A" rule from OVH FTP serv to my server for cerbot and get HTTPS super cool logo
