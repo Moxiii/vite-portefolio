@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY api/package*.json ./
 
-run ci
+RUN npm ci
 
 FROM node:26-alpine
 
