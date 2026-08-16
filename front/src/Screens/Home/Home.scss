@@ -1,17 +1,10 @@
 .home {
   overflow: hidden;
-  margin-left: 5%;
-  .text-zone {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-  }
+
   h2 {
     margin-top: 20px;
     margin-bottom: 50px;
     font-weight: 400;
-    font-size: 20px;
     letter-spacing: 3px;
     animation: fadeIn 1s 1.3s backwards;
     white-space: nowrap;

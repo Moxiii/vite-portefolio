@@ -10,24 +10,41 @@
   overflow: hidden;
 }
 
-h1 {
-  font-size: clamp(3rem, 7vw, 7rem);
-  margin: 0;
-}
-
-p {
-  font-size: 1.2rem;
-}
-
-.mainTechnologies {
+.technology {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  .technologyPop {
+    position: relative;
+    height: 10vh;
+    min-width: 15vw;
+    padding: 0.25rem 0.75rem;
 
-  margin: 5% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  span {
-    font-size: clamp(1.5rem, 3vw, 3rem);
-    font-weight: 600;
+    background-color: $accentuation-color;
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      inset: 0;
+
+      color: $background-color;
+
+      text-shadow:
+        0 0 2px $border-color,
+        0 0 4px rgba($border-color, 0.25);
+
+      backface-visibility: hidden;
+    }
   }
 }

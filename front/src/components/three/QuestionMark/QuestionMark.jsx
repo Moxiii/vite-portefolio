@@ -1,33 +1,34 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Text3D } from "@react-three/drei";
-import { useEffect, useRef, useState } from "react";
-import * as THREE from 'three';
-
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Text3D } from '@react-three/drei'
+import { useEffect, useRef, useState } from 'react'
 
 function RotatingQuestionMark() {
-  const [position, setPosition] = useState([0, 0, 0]);
-  const questionMarkRef = useRef(null);
-
+  const [position, setPosition] = useState([0, 0, 0])
+  const questionMarkRef = useRef(null)
+  const rotationVelocity = useRef({
+    x: 0,
+    y: 0,
+  })
   useEffect(() => {
     if (questionMarkRef.current) {
-      const width = questionMarkRef.current.geometry.boundingBox?.max.x || 0;
-      setPosition([-(width / 2), -3, 3]);
+      const width = questionMarkRef.current.geometry.boundingBox?.max.x || 0
+      setPosition([-(width / 2), -3, 5])
     }
-  }, []);
-const clock = new THREE.Clock();
-  useFrame(() => {
-    const elapsedTime = clock.getElapsedTime();
-    if (questionMarkRef.current) {
-      questionMarkRef.current.rotation.y = elapsedTime;
-    }
-  });
+  }, [])
+
+  useFrame((_, delta) => {
+    if (!questionMarkRef.current) return
+    questionMarkRef.current.rotation.y += delta * 0.7
+    questionMarkRef.current.rotation.x += rotationVelocity.current.x
+    questionMarkRef.current.rotation.y += rotationVelocity.current.y
+  })
 
   return (
     <Text3D
       ref={questionMarkRef}
       font="/fonts/DM_Sans_Regular.json"
-      size={4}
-      height={.2}
+      size={5}
+      height={0.2}
       curveSegments={12}
       bevelEnabled
       bevelThickness={0.02}
@@ -39,40 +40,23 @@ const clock = new THREE.Clock();
       ?
       <meshStandardMaterial color="#cf87ff" />
     </Text3D>
-  );
+  )
 }
 
-export default function QuestionMark3D({text}) {
+export default function QuestionMark3D() {
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <Canvas
-        camera={{ position: [0, 0, -3], fov: 70 }}
+        camera={{ position: [0, 0, -3], fov: 100 }}
         style={{
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%',
         }}
       >
         <directionalLight intensity={1.2} position={[0, 0, 5]} />
         <ambientLight intensity={2} />
         <RotatingQuestionMark />
       </Canvas>
-      {text && (
-        <div
-          style={{
-            height: "100%",
-            width: "100%",
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            fontSize: "2rem",
-            zIndex: 10,
-          }}
-        >
-
-        </div>
-      )}
     </div>
-  );
+  )
 }

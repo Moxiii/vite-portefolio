@@ -1,6 +1,6 @@
 .solution {
-  h1 {
-    color: $accentuation-color;
+  h1 , .h1 {
+    color: $background-color;
   }
   @include desktop {
     height: 500vh;
@@ -63,7 +63,7 @@
       top: 0;
     }
     .contrast {
-      color: $accentuation-color;
+      color: $secondary-accentuation-color;
     }
     .center {
       position: absolute;

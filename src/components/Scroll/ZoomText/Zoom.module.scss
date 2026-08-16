@@ -1,53 +1,49 @@
 .solution {
-  h1{
-    color:$primary-color;
+  h1 {
+    color: $accentuation-color;
   }
-  @include desktop{
+  @include desktop {
     height: 500vh;
     h1,
     h2 {
       font-size: 600%;
     }
-    .center{
+    .center {
       font-size: 50%;
     }
   }
-  @include mobile{
+  @include mobile {
     height: 250vh;
     h1,
     h2 {
       font-size: 400%;
     }
-    .center{
+    .center {
       font-size: 50%;
     }
-    .second{
+    .second {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-
     }
   }
-@include tinyDevice{
-  height: 300vh;
-  h1,
-  h2 {
-    font-size: 300%;
+  @include tinyDevice {
+    height: 300vh;
+    h1,
+    h2 {
+      font-size: 300%;
+    }
+    .center {
+      font-size: xx-small;
+    }
+    .second {
+      padding-bottom: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
   }
-  .center{
-    font-size:xx-small;
-  }
-  .second{
-    padding-bottom: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-
-  }
-
-}
   position: relative;
-
 
   .inner {
     position: sticky;
@@ -57,8 +53,8 @@
     height: calc(100 * var(--vh, 1vh));
     width: 100vw;
     &::after {
-      content: "";
-      background-color: $primary-color;
+      content: '';
+      background-color: $accentuation-color;
       position: absolute;
       height: 100%;
       width: 110vw;
@@ -80,8 +76,8 @@
     }
     .first {
       transform: translateY(calc(var(--progress1) * -100%));
-      h2{
-        color:$primary-color;
+      h2 {
+        color: $accentuation-color;
       }
       h1,
       h2 {

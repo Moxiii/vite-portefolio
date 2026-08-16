@@ -3,6 +3,7 @@ import { lazy } from 'react'
 const Cv = lazy(() => import('@screen/Cv/Cv.jsx'))
 const About = lazy(() => import('@screen/About/About.jsx'))
 const ZoomText = lazy(() => import('@components/Scroll/ZoomText/Zoom'))
+import Contact from '@components/Contact/Contact.jsx'
 const SharedLayout = lazy(
   () => import('@components/SharedLayout/SharedLayout.jsx')
 )
@@ -31,25 +32,20 @@ export default function MobileView() {
       options={lenisOption}
       style={{ height: '100vh', overflowY: 'auto' }}
     >
-      <div className="mobile-view">
-        <ZoomText
-          title1={'Portfolio'}
-          title2={'Maxime Lapouge'}
-          text={`Étudiant\nDéveloppeur\nIPI ${new Date().getFullYear()}`}
-        />
+      <section className="container about">
+        <About />
+      </section>
+      <section className="container projets">
+        <h1>Mes Projets:</h1>
+        <SharedLayout projects={projets} />
+      </section>
 
-        <section id="about">
-          <About />
-        </section>
-        <section className="projets">
-          <h1>Mes Projets:</h1>
-          <SharedLayout projects={projets} />
-        </section>
-
-        <section id="cv">
-          <Cv />
-        </section>
-      </div>
+      <section className="container cv">
+        <Cv />
+      </section>
+      <section className="container contact">
+        <Contact />
+      </section>
     </ReactLenis>
   )
 }

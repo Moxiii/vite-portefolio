@@ -7,7 +7,6 @@ import {
   faPython,
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
-import CubeSpinner from './CubeSpinner/CubeSpinner.jsx'
 import {
   faKeyboard,
   faMotorcycle,
@@ -27,6 +26,21 @@ import { useBreakPoint } from '@hook/IsDesktop/useBreakPoint.js'
 
 export default function About() {
   const { isMobile } = useBreakPoint()
+  const technlogies = [
+    'Java',
+    'React',
+    'Docker',
+    'python',
+    'Git',
+    'javascript',
+    'spring boot',
+    'lenis',
+    'gsap',
+    'MongoDB',
+    'traefik',
+    'keycloack',
+    'Linux',
+  ]
   const interests = [
     {
       title: 'Clavier custom',
@@ -66,68 +80,77 @@ export default function About() {
 
   return (
     <div className="container about-page">
-      <section className="about-me">
+      <section className="about-introduction">
         <div className="text-zone">
           <h1>A propos de moi</h1>
+          <h2>Qui je suis ?</h2>
           <p>
             Jeune homme passionné d&apos;informatique depuis tout petit,
-            j&apos;ai grandi avec une manette de NES dans les mains.{' '}
+            j&apos;ai grandi avec une manette de NES dans les mains.
           </p>
-
-          <p>Aujourd&apos;hui, je suis en voie d&apos;en faire mon métier ! </p>
-
           <p>
-            {' '}
-            D&apos;une curiosité sans faille, je continue de m&apos;auto-former
-            sur les technologies suivantes :{' '}
+            Aujourd&apos;hui je suis en Bachelor Concepteur Développeur
+            d&apos;application a Epitech pour continuer dans la voie de
+            l&apos;informatique
           </p>
-
-          {!isMobile ? (
-            <CubeSpinner isDesktop={!isMobile} />
-          ) : (
-            <div className="mobile-tech-icons">
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faJava} />
-                <p>Java</p>
-              </div>
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faDocker} />
-                <p>Docker</p>
-              </div>
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faReact} />
-                <p>React</p>
-              </div>
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faPython} />
-                <p>Python</p>
-              </div>
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faJsSquare} />
-                <p>JavaScript</p>
-              </div>
-              <div className="tech-item">
-                <FontAwesomeIcon icon={faGitAlt} />
-                <p>Git</p>
-              </div>
-            </div>
-          )}
-          <p>Technologies utilisées pour les projets Georges et Hera</p>
+          <p>
+            Je suis actuellement en recherche d&apos;alternance pour continuer
+            mon parcour scolaire !
+          </p>
         </div>
       </section>
-      <section className="formation">
+      <section className="learning">
         <div className="text-zone">
-          <h3>Sans oublier :</h3>
-          <p> Lenis , Gsap , Framer Motion pour les bibliothèques front. </p>
-          <p>Spring Boot et .Net pour les Framework Backend. </p>
-          <h3>Aussi du coté réseau : </h3>
+          <h2>Comment j'apprend ?</h2>
           <p>
-            Je surveille la disponibilité de serveur OVH Kimsufi pour
-            m&apos;entraîner à la CI/CD et au déploiement d&apos;applications
-            Javascript/Java{' '}
+            Ma curiosité me pousse a chercher par moi meme , je suis également
+            la fomation de Mr Bruno simon Three.js journey
+          </p>
+          <p>
+            je construit des projets puvant mettre utile au quotidients en plus
+            de continuer mon autoformation à côté de mon travail à temps plein
           </p>
         </div>
       </section>
+      <section className="technologies">
+        <div className="text-zone">
+          <h2>Mon environement technique</h2>
+          <div className="tech-cloud">
+            {technlogies.map((technology) => (
+              <div className="tech-item" key={technology}>
+                <span>{technology}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="projects">
+        <div className="text-zone">
+          <h2> Ce que je construit</h2>
+          <p>
+            Je préfère apprendre en construisant des projets concrets. Certains
+            répondent à un besoin personnel, d'autres me permettent simplement
+            d'expérimenter une technologie ou une nouvelle approche.
+          </p>
+          <p>
+            Comme mon site de veille pour stocker toute mes ressources texte /
+            videos / docs sous forme de liens et de pouvoir arreter de chercher
+            dans mes dossier firefox{' '}
+          </p>
+          <p>
+            Mais aussi en parrallelle je me construit un homelab , mon vieux PC
+            ne prendra pas ca retraite , pour stocker mon code avec GITEA et
+            pouvoir avoir un IDE sur n&apos;importe quel plateforme .
+          </p>
+          <p>
+            Ce homelab me servira comme playground pour Docker et traeffik ,
+            pour faire de la CI/CD sur mon serveur kimsufi , de serveur de
+            decodage videos pour un jour reprendre les streams sur twitch , le
+            deploiement et l'administration de services
+          </p>
+        </div>
+      </section>
+
       <section className="passion">
         <div className="text-zone">
           <h2>Mais aussi passionné par :</h2>
@@ -160,30 +183,37 @@ export default function About() {
               ))}
             </div>
           )}
-          <div className="sub-interest">
-            <h3>Des passions qui motive la création d&#39;outils.</h3>
-            <ul>
-              <li>
-                Hera : outil pour la vente de vêtements et objets de collection.
-              </li>
-              <li>
-                Un outil de configuration/aide a la création de clavier custom
-                est prévu.
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
       <section className="futur">
         <div className="text-zone">
-          <h2> Qu&apos;est-il prévu pour le futur ? </h2>
+          <h2> Le futur ? </h2>
           {!isMobile && <QuestionMark3D />}
-          <p>Apprentissage de Three.js pour proposer un portfolio interactif</p>
+          <span>Qu&apos;en est t&apos;il de l&apos;avenir</span>
+          <p>J'ai plein (trop) d&apos;idées :</p>
+          <ul>
+            <li>
+              Appronfodir le WebGL notament three.js (À moi les Awwwards dans
+              quelques années! )
+            </li>
+            <li>Continuer a me former sur le web design</li>
+            <li>Appronfodir le DevOps</li>
+            <li>
+              Continuer mon Homelab pour en faire un vrai playground de dev et
+              de test en tout genre
+            </li>
+            <li>
+              Continuer d&apos;améliorer mon portefolio et de partir dans de
+              nouvel aventure dans toute sorte de projets
+            </li>
+          </ul>
           <p>
-            Actuellement entrain de suivre la formation three.js journey afin
-            d&#39;améliorer ma comprehension de l&#39;outil et du WebGL en regle
-            générale
+            Ce portfolio fait lui-même partie de cette démarche d'apprentissage.
+            <br />
+            Il a connu moult versions, plus ou moins présentables, et continue
+            d'évoluer au fil de mes découvertes.
           </p>
+          <p>Je continue d'apprendre de jour en jour , push apres push </p>
         </div>
       </section>
     </div>

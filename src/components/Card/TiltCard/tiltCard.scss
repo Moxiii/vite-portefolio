@@ -1,5 +1,5 @@
-
 .tilt-card {
+  text-decoration: none;
   width: 200px;
   height: 250px;
   border-radius: 15px;
@@ -16,15 +16,18 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color:$primary-color;
+    color: $secondary-accentuation-color;
     height: 100%;
     border-radius: 10px;
     text-align: center;
     width: 100%;
     font-weight: bold;
     transform: translateZ(75px);
-    p{
-      color: black;
+    p {
+      color: $background-color;
+    }
+    .card-arrow {
+      margin-left: 2%;
     }
   }
 }

@@ -11,9 +11,9 @@ export default function Contact() {
     <section id="contact" className={s.contact}>
       <div className={s.contactHeader}>
         <h2>Me contacter</h2>
+        <span>Parlons-en.</span>
 
         <p>Une idée, un projet ou une opportunité ?</p>
-        <span>Parlons-en.</span>
       </div>
       <div className={s.contactCards}>
         <TiltCard

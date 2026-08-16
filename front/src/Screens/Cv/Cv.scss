@@ -1,6 +1,11 @@
-@import '../../const/const';
 .download-btn {
-  display: inline-flex;
+  @include desktop() {
+    .download-btn:hover {
+      background-color: $accentuation-color;
+      outline: 5px solid $success-color;
+    }
+  }
+  display: flex;
   padding: 4% 5%;
   background-color: $accentuation-color;
   color: $background-color;
@@ -15,14 +20,12 @@
   }
 }
 
-.download-btn:hover {
-  background-color: $background-color;
-  color: $accentuation-color;
-  outline: 1px solid $border-color;
-}
 .cv-embed {
-  margin-bottom: 10px;
-  .pdfContainer {
-    width: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2%;
+  width: 80vw;
+  height: auto;
 }

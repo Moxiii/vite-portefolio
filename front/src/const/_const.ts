@@ -1,5 +1,5 @@
 // @ts-ignore
-import CV from '../assets/Cv/CV LAPOUGE Maxime-4.pdf'
+import CV from '../assets/Cv/CV LAPOUGE Maxime.pdf'
 
 const links = {
   home: '/',

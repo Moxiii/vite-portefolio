@@ -5,10 +5,6 @@
   padding: 4rem 0;
 }
 
-// =====================================================
-// FILTER / NAVIGATION
-// =====================================================
-
 .SharedLayoutNav {
   margin-bottom: 3rem;
 }
@@ -47,7 +43,8 @@
   color: $secondary-text-color;
 
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+
   font-weight: 500;
 
   cursor: pointer;
@@ -68,22 +65,14 @@
 
   height: 2px;
 
-  background: $secondary-accentuation-color;
+  background: $accentuation-color;
 
   border-radius: 999px;
 }
 
-// =====================================================
-// MAIN
-// =====================================================
-
 .SharedLayoutMain {
   width: 100%;
 }
-
-// =====================================================
-// PROJECT GRID
-// =====================================================
 
 .content {
   display: grid;
@@ -95,10 +84,6 @@
   width: 100%;
 }
 
-// =====================================================
-// PROJECT CARD
-// =====================================================
-
 .projectCard {
   overflow: hidden;
 
@@ -109,25 +94,21 @@
 
   background: rgba(255, 255, 255, 0.22);
 
-  border: 1px solid $border-color;
-  border-radius: 18px;
+  border: 3px solid $background-color;
+  border-radius: 3%;
 
-  box-shadow: 0 8px 30px rgba(33, 26, 22, 0.04);
+  box-shadow: 0 8px 30px rgba($box-shadows, 0.2);
 
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
 
   &:hover {
-    border-color: rgba(196, 185, 90, 0.55);
+    border-color: $secondary-accentuation-color;
 
-    box-shadow: 0 12px 35px rgba(196, 185, 90, 0.12);
+    box-shadow: 5px 5px 20px 5px rgba($box-shadows, 0.5);
   }
 }
-
-// =====================================================
-// PROJECT IMAGE
-// =====================================================
 
 .projectPreview {
   overflow: hidden;
@@ -148,10 +129,6 @@
   object-fit: cover;
 }
 
-// =====================================================
-// PROJECT DESCRIPTION
-// =====================================================
-
 .ProjectDescription {
   display: flex;
   flex-direction: column;
@@ -160,10 +137,6 @@
 
   padding: 1.5rem;
 }
-
-// =====================================================
-// PROJECT HEADER
-// =====================================================
 
 .projectHeader {
   display: flex;
@@ -195,10 +168,6 @@
   text-transform: uppercase;
 }
 
-// =====================================================
-// PROJECT DESCRIPTION TEXT
-// =====================================================
-
 .ProjectDescription {
   p {
     margin: 0;
@@ -210,10 +179,6 @@
     line-height: 1.6;
   }
 }
-
-// =====================================================
-// TECHNOLOGIES
-// =====================================================
 
 .techBadges {
   display: flex;
@@ -253,10 +218,6 @@
   }
 }
 
-// =====================================================
-// PROJECT BUTTON
-// =====================================================
-
 .projectButton {
   align-self: flex-start;
 
@@ -291,10 +252,6 @@
   }
 }
 
-// =====================================================
-// PROJECT DETAIL / DRAWER
-// =====================================================
-
 .projectTitle {
   margin-bottom: 1.5rem;
 
@@ -304,10 +261,6 @@
 
   color: $text-color;
 }
-
-// =====================================================
-// PROJECT LINKS
-// =====================================================
 
 .ProjectLinks {
   display: flex;
@@ -375,10 +328,6 @@
   }
 }
 
-// =====================================================
-// PRESENTATION
-// =====================================================
-
 .ProjectPresentation {
   color: $text-color;
 
@@ -407,10 +356,6 @@
   }
 }
 
-// =====================================================
-// TABLET
-// =====================================================
-
 @media (max-width: 900px) {
   .SharedLayoutContainer {
     width: 90vw;
@@ -424,10 +369,6 @@
     gap: 1.5rem;
   }
 }
-
-// =====================================================
-// MOBILE
-// =====================================================
 
 @media (max-width: 600px) {
   .SharedLayoutContainer {
@@ -452,18 +393,6 @@
     &::-webkit-scrollbar {
       display: none;
     }
-  }
-
-  .tabButton {
-    white-space: nowrap;
-
-    padding: 0.45rem 0.65rem;
-
-    font-size: 0.85rem;
-  }
-
-  .content {
-    gap: 1.25rem;
   }
 
   .projectCard {

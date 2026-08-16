@@ -228,9 +228,6 @@ export default function SharedLayout({ projects }) {
                       src={image.src}
                       alt={image.alt}
                       className={s.previewImage}
-                      whileHover={{
-                        scale: 1.025,
-                      }}
                       transition={{
                         duration: 0.4,
                         ease: 'easeOut',

@@ -1,14 +1,16 @@
 .tilt-card {
   text-decoration: none;
-  width: 200px;
+  width: 100%;
+  max-width: 300px;
   height: 250px;
+
   border-radius: 15px;
   background: linear-gradient(to bottom right, $accentuation-color);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba($box-shadows, 0.2);
   transform-style: preserve-3d;
   transition: transform 0.3s ease-out;
 
@@ -20,11 +22,15 @@
     height: 100%;
     border-radius: 10px;
     text-align: center;
+    align-items: center;
     width: 100%;
     font-weight: bold;
     transform: translateZ(75px);
     p {
       color: $background-color;
+    }
+    svg {
+      width: 33%;
     }
     .card-arrow {
       margin-left: 2%;

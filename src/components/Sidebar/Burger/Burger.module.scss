@@ -1,12 +1,13 @@
-
-  .burgerSvg{
-    cursor: pointer;
-    position:fixed;
-    top:2%;
-    right:2%;
-    z-index: 10000;
+.burgerSvg {
+  cursor: pointer;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  z-index: 10000;
+  line {
+    stroke: $accentuation-color;
   }
-
+}
 
 .fullScreenMenu {
   position: fixed;
@@ -36,4 +37,3 @@
     }
   }
 }
-
