@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba($box-shadows, 0.2);
   transform-style: preserve-3d;
   transition: transform 0.3s ease-out;
 

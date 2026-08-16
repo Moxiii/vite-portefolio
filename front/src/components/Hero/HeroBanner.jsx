@@ -7,7 +7,7 @@ export default function Herobanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % technologies.length)
-    }, 2500)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [])
@@ -39,7 +39,7 @@ export default function Herobanner() {
                 opacity: 0,
               }}
               transition={{
-                duration: 1,
+                duration: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
