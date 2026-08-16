@@ -43,7 +43,8 @@
   color: $secondary-text-color;
 
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+
   font-weight: 500;
 
   cursor: pointer;
@@ -392,18 +393,6 @@
     &::-webkit-scrollbar {
       display: none;
     }
-  }
-
-  .tabButton {
-    white-space: nowrap;
-
-    padding: 0.45rem 0.65rem;
-
-    font-size: 0.85rem;
-  }
-
-  .content {
-    gap: 1.25rem;
   }
 
   .projectCard {

@@ -18,16 +18,16 @@
   background: $background-color;
   h1 {
     color: $accentuation-color;
-    font-size: xxx-large;
+    font-size: clamp(2.5rem, 6vw, 5rem);
     font-family: 'DM Sans', sans-serif;
   }
   h2 {
     color: $text-color;
-    font-size: xx-large;
+    font-size: clamp(1.8rem, 4vw, 3rem);
   }
   h3 {
     color: $text-color;
-    font-size: x-large;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
   }
   .text-zone {
     display: flex;
@@ -37,7 +37,7 @@
   }
 
   p {
-    font-size: large;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
     color: $text-color;
     font-family: sans-serif;
     font-weight: 300;

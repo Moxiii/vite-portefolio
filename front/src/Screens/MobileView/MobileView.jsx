@@ -3,6 +3,7 @@ import { lazy } from 'react'
 const Cv = lazy(() => import('@screen/Cv/Cv.jsx'))
 const About = lazy(() => import('@screen/About/About.jsx'))
 const ZoomText = lazy(() => import('@components/Scroll/ZoomText/Zoom'))
+import Contact from '@components/Contact/Contact.jsx'
 const SharedLayout = lazy(
   () => import('@components/SharedLayout/SharedLayout.jsx')
 )
@@ -41,6 +42,9 @@ export default function MobileView() {
 
       <section id="cv">
         <Cv />
+      </section>
+      <section className="container contact">
+        <Contact />
       </section>
     </ReactLenis>
   )

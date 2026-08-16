@@ -22,11 +22,15 @@
     height: 100%;
     border-radius: 10px;
     text-align: center;
+    align-items: center;
     width: 100%;
     font-weight: bold;
     transform: translateZ(75px);
     p {
       color: $background-color;
+    }
+    svg {
+      width: 33%;
     }
     .card-arrow {
       margin-left: 2%;
