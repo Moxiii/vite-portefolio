@@ -1,13 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faDocker,
-  faGitAlt,
-  faJava,
-  faJsSquare,
-  faPython,
-  faReact,
-} from '@fortawesome/free-brands-svg-icons'
-import {
   faKeyboard,
   faMotorcycle,
   faCar,
