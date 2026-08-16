@@ -1,0 +1,63 @@
+.SlideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 95%;
+
+  box-shadow: 0px 5px 30px rgba($border-color, 0.4);
+  border-radius: 10px;
+  padding: 3%;
+  margin: 5% 2%;
+}
+
+.SlideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.SlideText {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  h2 {
+    color: $text-color;
+  }
+}
+
+.SlideImage {
+  aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 500px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  @include mobile() {
+    width: 200px;
+  }
+}
+
+.PrevButton,
+.NextButton {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $accentuation-color;
+}
+
+.PrevButton {
+  left: 10px;
+}
+
+.NextButton {
+  right: 10px;
+}

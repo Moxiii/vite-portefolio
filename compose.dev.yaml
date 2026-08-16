@@ -1,0 +1,90 @@
+services:
+  traefik:
+    image: traefik:latest
+    restart: unless-stopped
+    container_name: traefik
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - portfolio-proxy
+
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: Docker/dockerfile.dev.front
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+    networks:
+      - portfolio-proxy
+      - portfolio-internal
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.front.rule=Host(`portfolio.dev.fr`)"
+      - "traefik.http.routers.front.entrypoints=websecure"
+      - "traefik.http.routers.front.tls=true"
+      - "traefik.http.services.front.loadbalancer.server.port=5173"
+
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+  back:
+    container_name: back
+    build:
+      context: .
+      dockerfile: ./Docker/dockerfile.dev.api
+    restart: unless-stopped
+    environment:
+      MONGO_URI: mongodb://db:27017/portefolio
+      FRONTEND_URL: https://portfolio.dev.fr
+    networks:
+      - portfolio-proxy
+      - portfolio-internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.back-secure.rule=Host(`api.dev.fr`)"
+      - "traefik.http.routers.back-secure.entrypoints=websecure"
+      - "traefik.http.routers.back-secure.tls=true"
+      - "traefik.http.services.back.loadbalancer.server.port=3000"
+
+    volumes:
+      - ./api:/app/
+      - /app/node_modules
+
+  db:
+    container_name: db
+    image: mongo:latest
+    restart: unless-stopped
+    networks:
+      - portfolio-internal
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+  letsencrypt:
+networks:
+  portfolio-proxy:
+    external: true
+  portfolio-internal:
+    external: false
