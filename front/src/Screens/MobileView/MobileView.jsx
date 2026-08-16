@@ -32,7 +32,7 @@ export default function MobileView() {
       options={lenisOption}
       style={{ height: '100vh', overflowY: 'auto' }}
     >
-      <section id="about">
+      <section className="container about">
         <About />
       </section>
       <section className="container projets">
@@ -40,7 +40,7 @@ export default function MobileView() {
         <SharedLayout projects={projets} />
       </section>
 
-      <section id="cv">
+      <section className="container cv">
         <Cv />
       </section>
       <section className="container contact">

@@ -10,20 +10,15 @@
   overflow: hidden;
 }
 
-
-
 .technology {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  span {
-    font-size: larger;
-  }
   .technologyPop {
     position: relative;
     height: 10vh;
-    min-width: 150px;
+    min-width: 15vw;
     padding: 0.25rem 0.75rem;
 
     display: flex;

@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react'
 import s from './HeroBanner.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
+import cn from 'clsx'
 export default function Herobanner() {
-  const technologies = ['Java', 'Spring Boot', 'JavaScript', 'React']
+  const technologies = [
+    'Java',
+    'Spring Boot',
+    'JavaScript',
+    'React',
+    'Docker',
+    'Python',
+  ]
   const [index, setIndex] = useState(0)
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,7 +21,7 @@ export default function Herobanner() {
   }, [])
 
   return (
-    <section className={s.heroContainer}>
+    <section className={cn(s.heroContainer , ".container")}>
       <h1>Développeur web</h1>
 
       <p>Je conçois des applications modernes et performantes</p>
@@ -21,7 +29,7 @@ export default function Herobanner() {
       <p>Développeur passionné par les nouvelles technologies</p>
 
       <div className={s.technology}>
-        <span>Développeur : </span>
+        <span>Je développe avec : </span>
         <div className={s.technologyPop}>
           <AnimatePresence mode="popLayout">
             <motion.span
