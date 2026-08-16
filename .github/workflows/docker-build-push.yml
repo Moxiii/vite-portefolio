@@ -23,7 +23,7 @@ jobs:
 
       - name: Rsync project to server
         run: |
-          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz --delete --dry-run \
+          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz --delete  \
           -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" \
           ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/web/portfolio/
           
