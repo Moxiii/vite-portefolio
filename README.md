@@ -57,4 +57,4 @@ This is for work on React + discover CI/CD on FTP server
 - - CRUD routes for Projects
 - - CRUD routes for User (I will be the only user but is for make admin page and update my project easily and don't push + make docker image on each push)
 
-# I can push on prod
+# I can push on prod !
