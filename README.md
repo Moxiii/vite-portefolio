@@ -8,50 +8,53 @@
     \|__|\|__|\|_______|\|__|\|__|\|_______|   \|__|           \|__|     \|_______|\|__|\|__|    \|__|  \|_______|\|__|    \|_______|\|_______|\|__|\|_______|
                                                                                                                                                               
                                                                                                                                                               
-  </pre>                                                                                                                                                            
+  </pre>
 
+## Run
 
-## Run 
 - For run locally use npm i && npm run dev
 
-For run server 
+For run server
+
 - npm install -global nodemon or npm i -global nodemon (thrust me is useful for work on express serv)
 - npm run dev
 - use nodemon ./api/server.js or node ./api/server.js
 
-## Destination 
-This is for work on React + discover CI/CD on FTP server 
--> derivation on goal , I try to make a local server before the end of deployement and this is what i really work : 
-- ### DEVOPS 
-- - Port fowarding 
+## Destination
+
+This is for work on React + discover CI/CD on FTP server
+-> derivation on goal , I try to make a local server before the end of deployement and this is what i really work :
+
+- ### DEVOPS
+- - Port fowarding
 - - Github workflows
 - - CI/CD
-- - Docker image build for both front and server 
+- - Docker image build for both front and server
 - - Apache Reverse Proxy for redirect trafic { ext <=> docker }
-- - Nginx to serve my page to docker  
+- - Nginx to serve my page to docker
 - - Multi-containers Docker App with Front cont , Back cont and DB cont (need think about DB data persistence)
 - ### A bit of React with vite
--  - First time with graphical lib
-- - Learn about Hooks / components / screen / store etc 
+- - First time with graphical lib
+- - Learn about Hooks / components / screen / store etc
 - - Error boundary class for raise error on page instead of log (will be a custom 404)
-- - Learn about scss & media query for reponsive 
-- - Cry on responsive 
-- - Cry even more on this s***
+- - Learn about scss & media query for reponsive
+- - Cry on responsive
+- - Cry even more on this s\*\*\*
 - - Learn css animation + Loading logic + make simple but efficient WebSite
-- - Unloading some parts for mobilViews 
-- - next is : 
-- - =>  FrameMotion on scroll 
-- - =>  allow scroll on About Section but stick the CUBE on Desk view
-- - =>  Make project appear / disapear on scroll on mobilViews 
-- - =>  FIX THE POSITION OF ALL BLOCK && LOADER ON MOBIL
-- - =>  Finally Complete the landing page for mobil && fix PDF view 
-- - => :before : Complete to coherent text and make THE linkedin post 
-- - => :after UX maybe work on color or some lil points for prod 
+- - Unloading some parts for mobilViews
+- - next is :
+- - => FrameMotion on scroll
+- - => allow scroll on About Section but stick the CUBE on Desk view
+- - => Make project appear / disapear on scroll on mobilViews
+- - => FIX THE POSITION OF ALL BLOCK && LOADER ON MOBIL
+- - => Finally Complete the landing page for mobil && fix PDF view
+- - => :before : Complete to coherent text and make THE linkedin post
+- - => :after UX maybe work on color or some lil points for prod
 - ### SQL
-- - Retrieve Project By Id and sort data for optimise SQL request 
-- - Retrieve Projet on Home Page and send back Mockup / Description / Title 
-- ### Work again on CRUD API 
+- - Retrieve Project By Id and sort data for optimise SQL request
+- - Retrieve Projet on Home Page and send back Mockup / Description / Title
+- ### Work again on CRUD API
 - - CRUD routes for Projects
 - - CRUD routes for User (I will be the only user but is for make admin page and update my project easily and don't push + make docker image on each push)
 
-
+# I can push on prod
