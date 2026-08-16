@@ -1,7 +1,9 @@
 .tilt-card {
   text-decoration: none;
-  width: 200px;
+  width: 100%;
+  max-width: 300px;
   height: 250px;
+
   border-radius: 15px;
   background: linear-gradient(to bottom right, $accentuation-color);
   cursor: pointer;

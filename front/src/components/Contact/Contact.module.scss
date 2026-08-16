@@ -39,14 +39,14 @@
 }
 
 .contactCards {
-  width: 100%;
+  width: 90vw;
 
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: center;
 
-  gap: 2rem;
+  gap: 5%;
 
   > * {
     flex: 1;
