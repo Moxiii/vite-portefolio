@@ -1,0 +1,28 @@
+@import '../../const/const';
+.download-btn {
+  display: inline-flex;
+  padding: 4% 5%;
+  background-color: $accentuation-color;
+  color: $background-color;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 5%;
+  @include tinyDevice {
+    color: $background-color;
+    background-color: $accentuation-color;
+    outline: solid 1px $border-color;
+  }
+}
+
+.download-btn:hover {
+  background-color: $background-color;
+  color: $accentuation-color;
+  outline: 1px solid $border-color;
+}
+.cv-embed {
+  margin-bottom: 10px;
+  .pdfContainer {
+    width: 100%;
+  }
+}

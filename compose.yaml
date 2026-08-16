@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker=true
+      - --api.dashboard=false
+      - --providers.docker.exposedbydefault=false
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.email=contact@maximelapouge.fr
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+    networks:
+      - portfolio_net
+
+
+  front:
+    container_name: portefolio-front
+    build:
+        context: .
+        dockerfile: Docker/Dockerfile.front
+    restart: unless-stopped
+    networks:
+      - portfolio_net
+    healthcheck:
+      test: ["CMD" , "curl" , "-f" , "http://localhost" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    labels:
+      - "traefik.enable=true"
+
+      # HTTP router, redirige vers HTTPS
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.dev.maximelapouge.fr`)"
+      - "traefik.http.routers.portfolio.entrypoints=web"
+      - "traefik.http.routers.portfolio.middlewares=redirect-to-https"
+
+      # HTTPS router
+      - "traefik.http.routers.portfolio-secure.rule=Host(`portfolio.dev.maximelapouge.fr`)"
+      - "traefik.http.routers.portfolio-secure.entrypoints=websecure"
+      - "traefik.http.routers.portfolio-secure.tls=true"
+      - "traefik.http.routers.portfolio-secure.tls.certresolver=myresolver"
+
+      # Service config
+      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
+
+      # Middleware pour la redirection HTTP -> HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+
+
+
+networks:
+  portfolio_net:
+    driver: bridge
