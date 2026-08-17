@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import bcrypt from 'bcryptjs'
 import mongoose from 'mongoose'
-import User from '../models/User'
+import User from '../models/User.ts'
 
 const username = process.env.USER_USERNAME
 const plainPassword = process.env.USER_PASSWORD

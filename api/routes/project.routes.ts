@@ -5,9 +5,9 @@ import {
   createProject,
   updateProject,
   deleteProject,
-} from '../controllers/project.controller'
-import requireAuth from '../middleware/auth.middleware'
-import { validateBody } from '../middleware/validateBody'
+} from '../controllers/project.controller.ts'
+import requireAuth from '../middleware/auth.middleware.ts'
+import { validateBody } from '../middleware/validateBody.ts'
 
 import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas'
 const router = Router()
