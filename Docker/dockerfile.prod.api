@@ -10,7 +10,7 @@ FROM node:26-alpine
 WORKDIR /app
 
 COPY --from=builder /app/node_modules ./node_modules
-COPY api/ .
+COPY api/ ./api/
 
 EXPOSE 3100
 
