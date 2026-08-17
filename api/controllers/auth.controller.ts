@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
 import { authenticateUser } from '../services/auth.service.ts'
 export async function login(req: Request, res: Response) {
   try {

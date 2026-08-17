@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
 import Project from '../models/Project.ts'
 
 export async function getProjects(req: Request, res: Response) {
