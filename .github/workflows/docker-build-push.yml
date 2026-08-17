@@ -9,28 +9,8 @@ jobs:
     environment: SECRET
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-
-      - name: Set Up SSH key
+      - name: Deploy on server
         run: |
-          mkdir -p $HOME/.ssh
-          echo "${{ secrets.SERVER_SSH_KEY }}" > $HOME/.ssh/id_rsa
-          chmod 600 $HOME/.ssh/id_rsa
-
-      - name: Rsync project to server
-        run: |
-          sshpass -p "${{ secrets.SSH_PSWD }}" rsync -avz --delete  \
-          -e "ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" \
-          ./ ubuntu@${{ secrets.SERVER_IP }}:/home/ubuntu/web/portfolio/
-          
-      - name: Deploy with server script
-        run: |
-          ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} "/home/ubuntu/web/deploy.sh /home/ubuntu/web/portfolio"
-
-      - name: cleanup
-        run: |
-          rm -rf $HOME/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no \
+            ${{ secrets.USER }}@${{ secrets.SERVER_IP }} \
+            "/home/${{ secrets.USER }}/infra/deploy.sh portfolio git@github:Moxiii/portefolio.git"
