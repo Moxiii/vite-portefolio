@@ -60,7 +60,7 @@ services:
       - 'traefik.http.routers.back-secure.rule=Host(`api.maximelapouge.fr`)'
       - 'traefik.http.routers.back-secure.entrypoints=websecure'
       - 'traefik.http.routers.back-secure.tls=true'
-      - 'traefik.http.routers.back.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.back-secure.tls.certresolver=letsencrypt'
       - 'traefik.http.services.back.loadbalancer.server.port=3100'
 
   db:
