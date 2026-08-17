@@ -1,5 +1,5 @@
 FROM node:26 as builder
-WORKDIR /app
+WORKDIR /app/api
 
 COPY api/package*.json ./
 
@@ -7,10 +7,10 @@ RUN npm ci
 
 FROM node:26-alpine
 
-WORKDIR /app
+WORKDIR /app/api
 
-COPY --from=builder /app/node_modules ./node_modules
-COPY api/ ./api/
+COPY --from=builder /app/api/node_modules ./node_modules
+COPY api/ ./
 
 EXPOSE 3100
 
