@@ -9,7 +9,7 @@ import {
 import requireAuth from '../middleware/auth.middleware.ts'
 import { validateBody } from '../middleware/validateBody.ts'
 
-import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas'
+import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas.ts'
 const router = Router()
 
 router.get('/', getProjects)
