@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose'
-import { PresentationBlock } from '../types/PresentationBlock.ts'
+import type { PresentationBlock } from '../types/PresentationBlock.ts'
 
 export interface IProject extends Document {
   title: string
