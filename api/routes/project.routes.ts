@@ -5,11 +5,11 @@ import {
   createProject,
   updateProject,
   deleteProject,
-} from '../controllers/project.controller.ts'
-import requireAuth from '../middleware/auth.middleware.ts'
-import { validateBody } from '../middleware/validateBody.ts'
+} from '../controllers/project.controller.js'
+import requireAuth from '../middleware/auth.middleware.js'
+import { validateBody } from '../middleware/validateBody.js'
 
-import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas.ts'
+import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas.js'
 const router = Router()
 
 router.get('/', getProjects)

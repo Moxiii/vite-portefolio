@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import authRoutes from './routes/aut.routes.ts'
-import ProjectRoutes from './routes/project.routes.ts'
+import authRoutes from './routes/aut.routes.js'
+import ProjectRoutes from './routes/project.routes.js'
 const app = express()
 
 app.use(
