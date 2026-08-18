@@ -1,28 +1,4 @@
 services:
-  traefik:
-    image: traefik:latest
-    restart: unless-stopped
-    container_name: traefik
-    command:
-      - '--api.dashboard=true'
-      - '--providers.docker=true'
-      - '--providers.docker.exposedbydefault=false'
-      - '--entrypoints.web.address=:80'
-      - '--entrypoints.websecure.address=:443'
-      - '--certificatesresolvers.letsencrypt.acme.email=contact@maximelapouge.fr'
-      - '--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json'
-      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
-      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
-
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - portfolio-proxy
-
   front:
     container_name: front
     build:
@@ -32,7 +8,7 @@ services:
     restart: unless-stopped
 
     networks:
-      - portfolio-proxy
+      - proxy
       - portfolio-internal
 
     labels:
@@ -53,7 +29,7 @@ services:
       MONGO_URI: mongodb://db:27017/portfolio
       FRONTEND_URL: https://maximelapouge.fr
     networks:
-      - portfolio-proxy
+      - proxy
       - portfolio-internal
     labels:
       - 'traefik.enable=true'
@@ -74,9 +50,8 @@ services:
 
 volumes:
   mongo_data:
-  letsencrypt:
 networks:
-  portfolio-proxy:
+  proxy:
     external: true
   portfolio-internal:
     external: false
