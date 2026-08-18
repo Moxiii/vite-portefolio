@@ -13,6 +13,7 @@ services:
 
     labels:
       - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
       - 'traefik.http.routers.front.rule=Host(`maximelapouge.fr`)'
       - 'traefik.http.routers.front.entrypoints=websecure'
       - 'traefik.http.routers.front.tls=true'
@@ -33,6 +34,7 @@ services:
       - portfolio-internal
     labels:
       - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
       - 'traefik.http.routers.back-secure.rule=Host(`api.maximelapouge.fr`)'
       - 'traefik.http.routers.back-secure.entrypoints=websecure'
       - 'traefik.http.routers.back-secure.tls=true'
