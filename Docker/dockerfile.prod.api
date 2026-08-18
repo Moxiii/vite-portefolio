@@ -1,4 +1,4 @@
-FROM node:26 as builder
+FROM node:26 AS builder
 WORKDIR /app/api
 
 COPY api/package*.json ./

@@ -1,9 +1,7 @@
 services:
   front:
     container_name: front
-    build:
-      context: .
-      dockerfile: Docker/dockerfile.prod.front
+    image: portfolio-front:latest
 
     restart: unless-stopped
 
@@ -22,9 +20,7 @@ services:
 
   back:
     container_name: back
-    build:
-      context: .
-      dockerfile: ./Docker/dockerfile.prod.api
+    image: portfolio-back:latest
     restart: unless-stopped
     environment:
       MONGO_URI: mongodb://db:27017/portfolio
