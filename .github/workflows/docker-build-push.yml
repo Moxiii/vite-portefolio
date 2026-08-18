@@ -17,5 +17,5 @@ jobs:
       - name: Deploy with server script
         run: |
           ssh \
-            -o StrictHostKeyChecking=no @{{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} \
-            "/home/@{{ secrets.SERVER_USER }}/web/infra/deploys.sh portfolio git@github:Moxiii/vite-portefolio"
+            -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} \
+            "/home/${{ secrets.SERVER_USER }}/web/infra/deploys.sh portfolio git@github:Moxiii/vite-portefolio"
