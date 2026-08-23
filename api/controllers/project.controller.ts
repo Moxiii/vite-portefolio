@@ -1,9 +1,10 @@
-import type { Request, Response } from 'express'
-import Project from '../models/Project.js'
-
+import { response, type Request, type Response } from 'express'
+import Project from '../models/Project.ts'
+import mongoose from 'mongoose'
 export async function getProjects(req: Request, res: Response) {
+  console.log('🔥 GET ALL PROJECTS')
   try {
-    const projects = await Project.find({ visible: true })
+    const projects = await Project.find()
 
     res.status(200).json(projects)
   } catch (error) {
@@ -14,13 +15,29 @@ export async function getProjects(req: Request, res: Response) {
     })
   }
 }
-
-export async function getProjectById(req: Request, res: Response) {
+export async function getPublicProjects(req: Request, res: Response) {
+  console.log('🔥 GET VISIBLE PROJECTS')
   try {
-    const project = await Project.findOne({
-      _id: req.params.id,
-      visible: true,
+    const projects = await Project.find({ visible: true })
+    res.status(200).json(projects)
+  } catch (error) {
+    console.error(error)
+
+    res.status(500).json({
+      message: 'Unable to retrieve projects',
     })
+  }
+}
+export async function getProjectById(req: Request, res: Response) {
+  const { id } = req.params
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({
+      message: 'Invalid project id',
+    })
+  }
+  try {
+    const project = await Project.findById(id)
 
     if (!project) {
       return res.status(404).json({

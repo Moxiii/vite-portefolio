@@ -21,7 +21,7 @@ export default function Herobanner() {
   }, [])
 
   return (
-    <section className={cn(s.heroContainer , ".container")}>
+    <section className={cn(s.heroContainer, '.container')}>
       <h1>Développeur web</h1>
 
       <p>Je conçois des applications modernes et performantes</p>
