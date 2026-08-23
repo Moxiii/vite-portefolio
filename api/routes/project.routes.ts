@@ -1,18 +1,24 @@
 import { Router } from 'express'
 import {
   getProjects,
+  getPublicProjects,
   getProjectById,
   createProject,
   updateProject,
   deleteProject,
-} from '../controllers/project.controller'
-import requireAuth from '../middleware/auth.middleware'
-import { validateBody } from '../middleware/validateBody'
+} from '../controllers/project.controller.ts'
+import requireAuth from '../middleware/auth.middleware.ts'
+import { validateBody } from '../middleware/validateBody.ts'
 
-import { projectSchema, updateProjectSchema } from '../schemas/ProjectSchemas'
+import {
+  projectSchema,
+  updateProjectSchema,
+} from '../schemas/ProjectSchemas.ts'
 const router = Router()
 
+router.get('/public', getPublicProjects)
 router.get('/', getProjects)
+
 router.get('/:id', getProjectById)
 
 router.post('/', requireAuth, validateBody(projectSchema), createProject)

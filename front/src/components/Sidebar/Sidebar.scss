@@ -1,0 +1,65 @@
+.nav-bar {
+  width: 5%;
+  background: $accentuation-color;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  min-height: 500px;
+  transition: all 0.3s ease;
+  .icon-color {
+    color: $background-color;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    a {
+      display: grid;
+      place-items: center;
+      position: relative;
+      text-decoration: none;
+      justify-content: center;
+      margin: 10%;
+      &.active {
+        .icon-color {
+          color: $secondary-accentuation-color;
+        }
+      }
+
+      svg {
+        grid-area: 1 / 1;
+        height: auto;
+        width: 70%;
+        transition: opacity 0.3s ease;
+      }
+
+      &::after {
+        content: attr(data-title);
+
+        grid-area: 1 / 1;
+
+        color: $background-color;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        svg {
+          opacity: 0;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

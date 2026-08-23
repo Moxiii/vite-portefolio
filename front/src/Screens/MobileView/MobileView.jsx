@@ -1,0 +1,51 @@
+import './MobileView.scss'
+import { lazy } from 'react'
+const Cv = lazy(() => import('@screen/Cv/Cv.jsx'))
+const About = lazy(() => import('@screen/About/About.jsx'))
+const ZoomText = lazy(() => import('@components/Scroll/ZoomText/Zoom'))
+import Contact from '@components/Contact/Contact.jsx'
+const SharedLayout = lazy(
+  () => import('@components/SharedLayout/SharedLayout.jsx')
+)
+
+import { ReactLenis } from 'lenis/react'
+import { useEffect, useState } from 'react'
+import FetchProject from '../../Hook/Fetch/FetchProject.js'
+
+export default function MobileView() {
+  const [projets, setProjets] = useState([])
+  const lenisOption = {
+    autoRaf: true,
+    smooth: true,
+    lerp: 0.1,
+  }
+  useEffect(() => {
+    const getData = async () => {
+      const projects = await FetchProject()
+      setProjets(projects)
+    }
+    getData()
+  }, [])
+  return (
+    <ReactLenis
+      root
+      options={lenisOption}
+      style={{ height: '100vh', overflowY: 'auto' }}
+    >
+      <section className="container about">
+        <About />
+      </section>
+      <section className="container projets">
+        <h1>Mes Projets:</h1>
+        <SharedLayout projects={projets} />
+      </section>
+
+      <section className="container cv">
+        <Cv />
+      </section>
+      <section className="container contact">
+        <Contact />
+      </section>
+    </ReactLenis>
+  )
+}

@@ -1,6 +1,6 @@
 FROM node:26 as builder
 
-WORKDIR /app/api
+WORKDIR /app
 
 COPY api/package*.json ./
 
@@ -8,8 +8,8 @@ RUN npm ci
 
 FROM node:26
 
-WORKDIR /app/api
-COPY --from=builder /app/api/node_modules ./node_modules
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
 COPY api/ ./
 
 CMD [ "npm" , "run" , "api" ]

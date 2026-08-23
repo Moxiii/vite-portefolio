@@ -2,19 +2,20 @@ FROM node:26 as builder
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY front/package*.json ./
 
 RUN npm ci
 
 FROM node:26
+WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 
-COPY  /public ./public
-COPY /src ./src
-COPY .eslintrc.cjs ./
-COPY index.html ./
-COPY jsconfig.json ./
-COPY vite.config.js ./
+COPY front/public ./public
+COPY front/src ./src
+COPY front/.eslintrc.cjs ./
+COPY front/index.html ./
+COPY front/jsconfig.json ./
+COPY front/vite.config.js ./
 
 EXPOSE 5173
 CMD ["npm","run","dev"]

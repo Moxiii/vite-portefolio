@@ -1,0 +1,60 @@
+services:
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: Docker/dockerfile.prod.front
+
+    restart: unless-stopped
+
+    networks:
+      - proxy
+      - portfolio-internal
+
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.front.rule=Host(`maximelapouge.fr`)'
+      - 'traefik.http.routers.front.entrypoints=websecure'
+      - 'traefik.http.routers.front.tls=true'
+      - 'traefik.http.routers.front.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.front.loadbalancer.server.port=80'
+
+  back:
+    container_name: back
+    build:
+      context: .
+      dockerfile: ./Docker/dockerfile.prod.api
+    restart: unless-stopped
+    environment:
+      MONGO_URI: mongodb://db:27017/portfolio
+      FRONTEND_URL: https://maximelapouge.fr
+    networks:
+      - proxy
+      - portfolio-internal
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.back-secure.rule=Host(`api.maximelapouge.fr`)'
+      - 'traefik.http.routers.back-secure.entrypoints=websecure'
+      - 'traefik.http.routers.back-secure.tls=true'
+      - 'traefik.http.routers.back-secure.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.back.loadbalancer.server.port=3100'
+
+  db:
+    container_name: db
+    image: mongo:latest
+    restart: unless-stopped
+    networks:
+      - portfolio-internal
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+
+networks:
+  proxy:
+    external: true
+  portfolio-internal:
+    external: false

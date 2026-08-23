@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@const/*": ["src/const/*"],
+      "@src/*": ["src/*"],
+      "@screen/*": ["src/Screens/*"],
+      "@hook/*": ["src/Hook/*"]
+    }
+  }
+}

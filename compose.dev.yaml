@@ -1,26 +1,4 @@
 services:
-  traefik:
-    image: traefik:latest
-    restart: unless-stopped
-    container_name: traefik
-    command:
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --providers.docker=true
-      - --providers.docker.exposedbydefault=false
-      - --api.dashboard=true
-      - --entrypoints.websecure.http.tls=true
-      - --entrypoints.web.http.redirections.entryPoint.to=websecure
-      - --entrypoints.web.http.redirections.entryPoint.scheme=https
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - portfolio-proxy
-
   front:
     container_name: front
     build:
@@ -29,25 +7,20 @@ services:
 
     restart: unless-stopped
 
-    healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost']
-      interval: 10s
-      timeout: 3s
-      retries: 5
-
     networks:
-      - portfolio-proxy
+      - proxy
       - portfolio-internal
 
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.front.rule=Host(`portfolio.dev.fr`)'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.front.rule=Host(`portfolio.localhost`)'
       - 'traefik.http.routers.front.entrypoints=websecure'
       - 'traefik.http.routers.front.tls=true'
       - 'traefik.http.services.front.loadbalancer.server.port=5173'
 
     volumes:
-      - .:/app
+      - ./front:/app
       - /app/node_modules
 
   back:
@@ -56,19 +29,24 @@ services:
       context: .
       dockerfile: ./Docker/dockerfile.dev.api
     restart: unless-stopped
+    environment:
+      MONGO_URI: mongodb://db:27017/portfolio
+      FRONTEND_URL: https://portfolio.localhost
+      CHOKIDAR_USEPOLLING: 'true'
     networks:
-      - portfolio-proxy
+      - proxy
       - portfolio-internal
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.back-secure.rule=Host(`api.dev.fr`)'
+      - 'traefik.http.routers.back-secure.rule=Host(`portfolio-api.localhost`)'
+      - 'traefik.docker.network=proxy'
       - 'traefik.http.routers.back-secure.entrypoints=websecure'
       - 'traefik.http.routers.back-secure.tls=true'
-      - 'traefik.http.services.back.loadbalancer.server.port=3000'
+      - 'traefik.http.services.back.loadbalancer.server.port=3100'
 
     volumes:
-      - ./api:/app/api
-      - /app/api/node_modules
+      - ./api:/app/
+      - /app/node_modules
 
   db:
     container_name: db
@@ -83,7 +61,7 @@ volumes:
   mongo_data:
   letsencrypt:
 networks:
-  portfolio-proxy:
+  proxy:
     external: true
   portfolio-internal:
     external: false
