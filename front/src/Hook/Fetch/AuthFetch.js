@@ -7,7 +7,6 @@ export async function login(username, password) {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ username, password }),
-        
       }
     )
     if (!response.ok) {
@@ -33,6 +32,24 @@ export async function logout() {
     return await response.json()
   } catch (error) {
     console.error('Logout error:', error)
+    throw error
+  }
+}
+
+export async function me() {
+  try {
+    const response = await fetch(
+      'https://portfolio-api.localhost/api/auth/me',
+      { method: 'GET', credentials: 'include' }
+    )
+    if (!response.ok) {
+      const error = await response.json().catch(() => null)
+
+      throw new Error(error?.message || `check failed (${response.status})`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error('Check failed:', error)
     throw error
   }
 }
