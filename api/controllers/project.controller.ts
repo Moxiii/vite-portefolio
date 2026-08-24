@@ -1,4 +1,4 @@
-import { response, type Request, type Response } from 'express'
+import type { Request, Response } from 'express'
 import Project from '../models/Project.ts'
 import mongoose from 'mongoose'
 export async function getProjects(req: Request, res: Response) {
