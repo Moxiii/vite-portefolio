@@ -55,7 +55,7 @@ export default function SharedLayout({ projects }) {
       return
     }
 
-    navigate(`/project/${project.id}`)
+    navigate(`/project/${project._id}`)
   }
 
   const getProjectImage = (project) => {

@@ -5,6 +5,8 @@ const links = {
   home: '/',
   about: '/about',
   cv: '/cv',
+  login: '/login',
+  admin: '/admin',
   download: {
     cv: CV,
   },

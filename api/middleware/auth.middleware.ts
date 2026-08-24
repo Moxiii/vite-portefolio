@@ -1,12 +1,10 @@
 import type { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-
+import { JWT_SECRET } from '../config/auth.ts'
 interface JwtPayload {
   sub: string
   username: string
 }
-
-
 
 export default function requireAuth(
   req: Request,
@@ -16,12 +14,12 @@ export default function requireAuth(
   const token = req.cookies.auth_token
 
   if (!token) {
-    return res.status(410).json({
+    return res.status(401).json({
       message: 'Auth required',
     })
   }
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload
+    const payload = jwt.verify(token, JWT_SECRET) as JwtPayload
     req.user = payload
     next()
   } catch {

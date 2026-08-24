@@ -17,7 +17,7 @@ import {
 const router = Router()
 
 router.get('/public', getPublicProjects)
-router.get('/', getProjects)
+router.get('/', requireAuth, getProjects)
 
 router.get('/:id', getProjectById)
 

@@ -11,14 +11,30 @@ export async function login(req: Request, res: Response) {
     const token = await authenticateUser(username, password)
     res.cookie('auth_token', token, {
       httpOnly: true,
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
     })
     return res.status(200).json({
       message: 'Login successful',
+      user: { username: username },
     })
   } catch (error) {
     return res.status(401).json({
       message: 'Invalid credentials',
     })
   }
+}
+export async function logout(req: Request, res: Response) {
+  res.clearCookie('auth_token', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  })
+  return res.status(200).json({ message: 'Logout successful' })
+}
+
+export async function me(req: Request, res: Response) {
+  return res.status(200).json({
+    user: req.user,
+  })
 }

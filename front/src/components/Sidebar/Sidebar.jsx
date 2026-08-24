@@ -2,13 +2,7 @@ import { NavLink } from 'react-router-dom'
 import './Sidebar.scss'
 import links from '../../const/_const.ts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faUser,
-  faHome,
-  faEnvelope,
-  faFile,
-} from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faUser, faHome, faFile } from '@fortawesome/free-solid-svg-icons'
 
 export default function Sidebar() {
   return (

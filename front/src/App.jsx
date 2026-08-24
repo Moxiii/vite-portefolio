@@ -5,12 +5,13 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout/Layout.jsx'
 import Home from './Screens/Home/Home.jsx'
 import About from './Screens/About/About.jsx'
-import Contact from './components/Contact/Contact.jsx'
 import Cv from './Screens/Cv/Cv.jsx'
 import Projets from './components/Projets/Projets.jsx'
 import ErrorBoundary from './Hook/ErrorBoundary/ErrorBoundary.jsx'
+import Login from './Screens/Admin/Login/Login'
+import Dashboard from './Screens/Admin/Dashboard/Dashboard'
 import { ReactLenis } from 'lenis/react'
-
+import ProtectedRoute from './Route/ProtectedRoute'
 import ReactGA from 'react-ga4'
 import NotFound from './Screens/NotFound/NotFound.jsx'
 
@@ -41,6 +42,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/cv" element={<Cv />} />
             <Route path="/project/:id" element={<Projets />} />
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

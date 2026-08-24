@@ -4,7 +4,8 @@ const SharedLayout = lazy(
   () => import('@components/SharedLayout/SharedLayout.jsx')
 )
 
-import FetchProject from '../../Hook/Fetch/FetchProject.js'
+import { FetchProject } from '@hook/Fetch/FetchProject.js'
+
 import Contact from '@components/Contact/Contact.jsx'
 import Herobanner from '@components/Hero/HeroBanner.jsx'
 export default function Home() {
