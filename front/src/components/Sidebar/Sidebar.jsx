@@ -2,9 +2,18 @@ import { NavLink } from 'react-router-dom'
 import './Sidebar.scss'
 import links from '../../const/_const.ts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faHome, faFile } from '@fortawesome/free-solid-svg-icons'
+import {
+  faUser,
+  faHome,
+  faFile,
+  faGauge,
+  faRightToBracket,
+} from '@fortawesome/free-solid-svg-icons'
+
+import { useAuth } from '@src/AuthProvider/AuthProvider'
 
 export default function Sidebar() {
+  const { isAuthenticated } = useAuth()
   return (
     <div className="nav-bar">
       <nav>
@@ -35,6 +44,20 @@ export default function Sidebar() {
         >
           <FontAwesomeIcon icon={faFile} className="icon-color" />
         </NavLink>
+        {isAuthenticated && (
+          <NavLink
+            to={links.dashboard}
+            data-title="dashboard"
+            activeclassname="active"
+          >
+            <FontAwesomeIcon icon={faGauge} className="icon-color" />
+          </NavLink>
+        )}
+        {!isAuthenticated && (
+          <NavLink to={links.login} data-title="login" activeclassname="active">
+            <FontAwesomeIcon icon={faRightToBracket} />
+          </NavLink>
+        )}
       </nav>
     </div>
   )

@@ -1,5 +1,4 @@
-// @ts-ignore
-import CV from '../assets/Cv/CV Lapouge Maxime.pdf'
+const CV = new URL('../assets/Cv/CV Lapouge Maxime.pdf', import.meta.url).href
 
 const links = {
   home: '/',
@@ -7,6 +6,7 @@ const links = {
   cv: '/cv',
   login: '/login',
   admin: '/admin',
+  dashboard: '/dashboard',
   download: {
     cv: CV,
   },

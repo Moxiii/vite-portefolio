@@ -14,6 +14,7 @@ import { ReactLenis } from 'lenis/react'
 import ProtectedRoute from './Route/ProtectedRoute'
 import ReactGA from 'react-ga4'
 import NotFound from './Screens/NotFound/NotFound.jsx'
+import { AuthProvider } from './AuthProvider/AuthProvider'
 
 const TRACK_ID = 'G-QFY45Q5VPP'
 ReactGA.initialize(TRACK_ID)
@@ -36,19 +37,21 @@ function App() {
       style={{ height: '100vh', overflowY: 'auto' }}
     >
       <ErrorBoundary>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cv" element={<Cv />} />
-            <Route path="/project/:id" element={<Projets />} />
-            <Route path="/login" element={<Login />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cv" element={<Cv />} />
+              <Route path="/project/:id" element={<Projets />} />
+              <Route path="/login" element={<Login />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </AuthProvider>
       </ErrorBoundary>
     </ReactLenis>
   )

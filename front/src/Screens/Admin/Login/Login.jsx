@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import s from './Login.module.scss'
-import { login } from '@src/Hook/Fetch/AuthFetch'
+import { useAuth } from '@src/AuthProvider/AuthProvider'
+import { Navigate } from 'react-router-dom'
 export default function Login() {
+  const { login, isAuthentaticated } = useAuth()
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
@@ -14,6 +16,9 @@ export default function Login() {
       console.error(error)
       setError('Identifiants invalides')
     }
+  }
+  if (isAuthentaticated) {
+    return <Navigate to="/dasboard" replace />
   }
   return (
     <div className="container">
